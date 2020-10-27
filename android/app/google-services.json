@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "873781689239",
+    "firebase_url": "https://rider-f8b23.firebaseio.com",
+    "project_id": "rider-f8b23",
+    "storage_bucket": "rider-f8b23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873781689239:android:74f04b9c1b4a752f99e2d2",
+        "android_client_info": {
+          "package_name": "com.rnfb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873781689239-23d16mjeg0suf7dbv4k2q5f78pircieq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSXwr6F0OeJVo-xG9yeNYpXsZ6eNdi-W0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873781689239-23d16mjeg0suf7dbv4k2q5f78pircieq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

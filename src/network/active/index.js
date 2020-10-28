@@ -43,18 +43,24 @@ export const UpdateActive = async (guestUserId, driver, driveid) => {
 };
 
 
-/*
-export const UpdateActive =  (guestUserId, driver, driveid) => {
-  //try {
+/*export const UpdateActive =  (guestUserId, driver, driveid) => {
+ // var currentdriveid = firebase.database().ref("actives/" + guestUserId + "/driveid");
     return firebase
       .database()
       .ref("actives/" + guestUserId + "/driveid")
-      .transaction(function(driveId){
+      .transaction(function(id){
+        id = firebase.database().ref("actives/" + guestUserId + "/driveid");
+        //console.log(driveid)  
+        //console.log(currentdriveid)
+        if (id == "no" ) {
+          return driveid
+        } else {
+          console.log("Task have been taken!!!")
+        }
         //console.log(guestUserId)
         //console.log(driveId)
         //console.log(driveId == null)
         //return driveid
-        return driveId
   })
 }
 */

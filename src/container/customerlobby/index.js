@@ -16,26 +16,12 @@ import { InputField, RoundCornerButton, Logo } from "../../component";
 export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
-  //drivenow = "k";
   const [drivet,setDriver] = useState("");
   const [locationt,setLocation] = useState("");
   const [pricet,setPrice] = useState("");
   const [waitert,setWaiter] = useState("");
-  // var allprice = 800;
-  // var head = 8;
-  // var eachprice = allprice/head;
 
-  const [userDetail, setUserDetail] = useState({
-    id: "",
-    driver: "",
-    location: "",
-    price:"",
-    driveid:"",
-    //drivenow:"",
-  });
-  // const [getScrollPosition, setScrollPosition] = useState(0);
-  // const [allUsers, setAllUsers] = useState([]);
-  // const { profileImg, name } = userDetail;
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -75,7 +61,7 @@ export default ({ navigation }) => {
         firebase
         .database()
         .ref("actives/"+uuid+"/driver")
-        .once("value", (dataSnapshot) => {
+        .on("value", (dataSnapshot) => {
           drivenow = dataSnapshot.val();
           setDriver(drivenow)
           dispatchLoaderAction({
@@ -85,7 +71,7 @@ export default ({ navigation }) => {
         firebase
         .database()
         .ref("actives/"+uuid+"/location")
-        .once("value", (dataSnapshot) => {
+        .on("value", (dataSnapshot) => {
           locationnow = dataSnapshot.val();
           setLocation(locationnow)
           dispatchLoaderAction({
@@ -95,7 +81,7 @@ export default ({ navigation }) => {
         firebase
         .database()
         .ref("actives/"+uuid+"/price")
-        .once("value", (dataSnapshot) => {
+        .on("value", (dataSnapshot) => {
           pricenow = dataSnapshot.val();
           setPrice(pricenow)
           dispatchLoaderAction({
@@ -105,7 +91,7 @@ export default ({ navigation }) => {
         firebase
         .database()
         .ref("actives/"+uuid+"/waiter")
-        .once("value", (dataSnapshot) => {
+        .on("value", (dataSnapshot) => {
           waiternow = dataSnapshot.val();
           setWaiter(waiternow)
           dispatchLoaderAction({
@@ -120,7 +106,7 @@ export default ({ navigation }) => {
     }
   }, []);
 
-  // * LOG OUT
+
   const logout = () => {
     LogOutUser()
       .then(() => {
@@ -140,17 +126,6 @@ export default ({ navigation }) => {
   };
   
 
-  // * ON IMAGE TAP
-  const imgTap = (profileImg, name) => {
-    if (!profileImg) {
-      navigation.navigate("ShowFullImg", {
-        name,
-        imgText: name.charAt(0),
-      });
-    } else {
-      navigation.navigate("ShowFullImg", { name, img: profileImg });
-    }
-  };
   //var loca  = firebase.database().ref
 
 
@@ -163,83 +138,10 @@ export default ({ navigation }) => {
 
   };
 
-  //var location = {location}
-  //var price = {price}
-  //var driver = {driver}
-  // * GET OPACITY
-
-
-  const getOpacity = () => {
-    if (deviceHeight < smallDeviceHeight) {
-      return deviceHeight / 4;
-    } else {
-      return deviceHeight / 6;
-    }
-  };
   return (
     <SafeAreaView 
     style={{ flex: 1, backgroundColor: color.WHITE }}
-    //style={stylex.container}
     >
-      {/* <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      /> */}
-      {/* <FlatList
-        alwaysBounceVertical={false}
-        data={allUsers}
-        keyExtractor={(_, index) => index.toString()}
-        onScroll={(event) =>
-          setScrollPosition(event.nativeEvent.contentOffset.y)
-        }
-        ListHeaderComponent={
-          <View
-            style={{
-              opacity:
-                getScrollPosition < getOpacity()
-                  ? (getOpacity() - getScrollPosition) / 100
-                  : 0,
-            }}
-          >
-          </View>
-        }
-        renderItem={({ item }) => (
-          <ShowActives
-            location={item.location}
-          />
-        )}
-      /> */}
-
-      
-      
-      {/* renderItem={({ item }) => (
-                <ShowActives
-                //style={{}}
-                location={item.location}
-                  price={item.price}
-                  driver = {item.driver} />
-              )} */}
-              
-
-      {/* {getScrollPosition > getOpacity() && (
-        <StickyHeader
-          name={name}
-          img={profileImg}
-          onImgTap={() => imgTap(profileImg, name)}
-        />
-      )} */}
-      {/* renderItem={({item}) => (
-          <ShowActives
-            //driver={item.driver}
-            location={item.location}
-            //price={item.price}
-           
-          />
-         )} */}
-      {/* <Text>{dr}</Text>
-      <Text>{loc}</Text>
-      <Text>{pri}</Text> */}
       <Text
       style={color.RED}
       >
@@ -260,7 +162,7 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
-      <RoundCornerButton title=  "Chat"
+      <RoundCornerButton title =  "Chat"
        onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} />
       <RoundCornerButton title="Cancel Search" 
        onPress={() => onCanc()} />

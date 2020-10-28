@@ -74,7 +74,7 @@ export default ({ navigation }) => {
           checkdriverid = dataSnapshot.val();
           if (uuid != checkdriverid){
             navigation.navigate("Task Feed");
-            Alert.alert("Sorry Someone got this task before you a second ago");
+            //Alert.alert("Sorry Someone got this task before you a second ago");
           } 
           dispatchLoaderAction({
             type: LOADING_STOP,

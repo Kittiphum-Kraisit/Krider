@@ -73,6 +73,18 @@ export default ({ navigation }) => {
     try {
       firebase
         .database()
+        .ref("actives/"+uuid+"/uuid")
+        .on("value", (dataSnapshot) => {
+          checkstill = dataSnapshot.val();
+          if (uuid != checkstill){
+            navigation.navigate("Location Picker");
+          }
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+      firebase
+        .database()
         .ref("actives/"+uuid+"/driveid")
         .on("value", (dataSnapshot) => {
           driveidnow = dataSnapshot.val();

@@ -130,11 +130,11 @@ export default ({ navigation }) => {
 
 
   const onChattap = ( driver, driveid) => {
-      navigation.navigate("Chat", {
-        driver,
-        driveid,
-        currentUserId: uuid,
-      });
+    navigation.navigate("Chat", {
+      name: driver,
+      guestUserId: driveid,
+      currentUserId: uuid,
+    });
 
   };
 

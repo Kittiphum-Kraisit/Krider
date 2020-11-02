@@ -11,7 +11,6 @@ import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { LogOutUser, RemoveActive,RemoveTask } from "../../network";
 import { RoundCornerButton, Logo } from "../../component";
 
-
 export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
@@ -152,8 +151,8 @@ export default ({ navigation }) => {
 
   const onChattap = ( driver, driveid) => {
       navigation.navigate("Chat", {
-        driver,
-        driveid,
+        name: driver,
+        guestUserId: driveid,
         currentUserId: uuid,
       });
 
@@ -194,7 +193,7 @@ export default ({ navigation }) => {
         Cost: {pricet} baht
         </Text>
       <RoundCornerButton title=  "Chat"
-       onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} />
+       onPress={() => onChattap(drivet, uuid)} />
       <RoundCornerButton title="End Job" 
        onPress={() => onEndJob()} />
       {/* <FlatList

@@ -184,13 +184,11 @@ const Chat = ({ route, navigation }) => {
                 <TouchableOpacity style={styles.CameraBtn} onPress={() => handleSend()}>
                   <Image 
                   //title="camera"
-                  
                   //onPress={() => handleCamera()}
                   source={require("./Send_Krider5.png")}
                   //color={color.WHITE}
                   //size={appStyle.fieldHeight}
-                  //size = {50}
-                  
+                  //size = {50}  
                 />
                 </TouchableOpacity>
               </View>

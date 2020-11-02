@@ -1,9 +1,32 @@
-/**
- * @format
- */
+import RoundCornerButton from "./button/RoundCornerButton";
+import CuteButton from "./button/CuteButton"
+import InputField from "./input";
+import Logo from "./logo";
+import Loader from "./loader";
+import Profile from "./profile";
+import ShowUsers from "./showUsers";
+import StickyHeader from "./stickyHeader";
+import ChatBox from "./chatBox";
+import FieldInput from "./fieldInput";
+import ShowTasks from "./ShowTasks";
+import ShowActives from "./ShowActives";
+import ShowDriver from "./ShowDriver";
+import ShowPrice from "./ShowPrice";
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+export {
+  RoundCornerButton,
+  CuteButton,
+  InputField,
+  Logo,
+  Loader,
+  Profile,
+  ShowUsers,
+  StickyHeader,
+  ChatBox,
+  FieldInput,
+  ShowTasks,
+  ShowActives,
+  ShowDriver,
+  ShowPrice
 
-AppRegistry.registerComponent(appName, () => App);
+};

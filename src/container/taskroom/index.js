@@ -193,7 +193,7 @@ export default ({ navigation }) => {
         Cost: {pricet} baht
         </Text>
       <RoundCornerButton title=  "Chat"
-       onPress={() => onChattap(drivet, uuid)} />
+       onPress={() => onChattap(drivet, cuuid)} />
       <RoundCornerButton title="End Job" 
        onPress={() => onEndJob()} />
       {/* <FlatList

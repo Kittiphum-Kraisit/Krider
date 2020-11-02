@@ -17,6 +17,7 @@ export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
   const [drivet,setDriver] = useState("");
+  const [driveidt,setDriverid] = useState("");
   const [locationt,setLocation] = useState("");
   const [pricet,setPrice] = useState("");
   const [waitert,setWaiter] = useState("");
@@ -57,6 +58,16 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
+      firebase
+        .database()
+        .ref("actives/"+uuid+"/driveid")
+        .on("value", (dataSnapshot) => {
+          driveidnow = dataSnapshot.val();
+          setDriverid(driveidnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
  
         firebase
         .database()
@@ -129,10 +140,10 @@ export default ({ navigation }) => {
   //var loca  = firebase.database().ref
 
 
-  const onChattap = ( driver, driveid) => {
+  const onChattap = ( drivername, driveidna) => {
     navigation.navigate("Chat", {
-      name: driver,
-      guestUserId: driveid,
+      name: drivername,
+      guestUserId: driveidna,
       currentUserId: uuid,
     });
 
@@ -163,7 +174,7 @@ export default ({ navigation }) => {
         Cost: {pricet} baht
         </Text>
       <RoundCornerButton title =  "Chat"
-       onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} />
+       onPress={() => onChattap(drivet,driveidt)} />
       <RoundCornerButton title="Cancel Search" 
        onPress={() => onCanc()} />
       {/* <FlatList

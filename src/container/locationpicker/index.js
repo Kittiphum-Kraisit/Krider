@@ -92,7 +92,7 @@ export default ({ navigation }) => {
   //         dispatchLoaderAction({
   //           type: LOADING_STOP,
   //         });
-  //         setInitialState();
+  //         setInitialState(); goBack
   //         navigation.navigate("Dashboard");
   // }
   
@@ -129,7 +129,9 @@ export default ({ navigation }) => {
         
       ),
     });
-  }, [navigation]);
+  },
+   [navigation]
+   );
   
 
   // const handleOnChange = (name, value) => {

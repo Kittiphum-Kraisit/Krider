@@ -38,7 +38,7 @@ export default ({ navigation }) => {
   const [allUsers, setAllUsers] = useState([]);
   const [allUsersn, setAllUsersn] = useState([]);
   const {  name } = userDetailn;
-   const [selectedValue, setSelectedValue] = useState("");
+  // const [selectedValue, setSelectedValue] = useState("");
  // const [name,setUserDetailn]=useState("");
   
 
@@ -80,7 +80,37 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
-      firebase
+      // firebase
+      //   .database()
+      //   .ref("tasks")
+      //   .on("value", (dataSnapshot) => {
+      //     let users = [];
+      //     let currentUser = {
+      //       id: "",
+      //       location: "",
+      //       price: "",
+      //     };
+      //     dataSnapshot.forEach((child) => {
+      //       if (uuid === child.val().uuid) {
+      //         currentUser.id = uuid;
+      //         currentUser.name = child.val().name;
+      //         currentUser.location = child.val().location;
+      //         currentUser.price = child.val().price;
+      //       } else {
+      //         users.push({
+      //           id: child.val().uuid,
+      //           location: child.val().location,
+      //           price: child.val().price,
+      //         });
+      //       }
+      //     });
+      //     setUserDetail(currentUser);
+      //     setAllUsers(users);
+      //     dispatchLoaderAction({
+      //       type: LOADING_STOP,
+      //     });
+      //   });
+         firebase
         .database()
         .ref("tasks")
         .on("value", (dataSnapshot) => {
@@ -97,54 +127,25 @@ export default ({ navigation }) => {
               currentUser.location = child.val().location;
               currentUser.price = child.val().price;
             } else {
+
               users.push({
                 id: child.val().uuid,
                 location: child.val().location,
                 price: child.val().price,
               });
+
+            
             }
           });
           setUserDetail(currentUser);
           setAllUsers(users);
+          
+        
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
+          
         });
-        //  firebase
-        // .database()
-        // .ref("tasks")
-        // .on("value", (dataSnapshot) => {
-        //   let users = [];
-        //   let currentUser = {
-        //     id: "",
-        //     location: "",
-        //     price: "",
-        //   };
-        //   dataSnapshot.forEach((child) => {
-        //     if (uuid === child.val().uuid) {
-        //       currentUser.id = uuid;
-        //       currentUser.name = child.val().name;
-        //       currentUser.location = child.val().location;
-        //       currentUser.price = child.val().price;
-        //     } else {
-              
-        //       users.push({
-        //         id: child.val().uuid,
-        //         location: child.val().location,
-        //         price: child.val().price,
-        //       });
-        //       setAllUsers(users);
-            
-        //     }
-        //   });
-        //   setUserDetail(currentUser);
-          
-        
-        //   dispatchLoaderAction({
-        //     type: LOADING_STOP,
-        //   });
-          
-        // });
         firebase
         .database()
         .ref("users")
@@ -178,80 +179,79 @@ export default ({ navigation }) => {
       });
     }
   }, []);
-  const acceptTap = ( guestUserId) => {
+//   const acceptTap = ( guestUserId) => {
 
-           RemoveTask(guestUserId);
-           //let reusersagain = [];
-           UpdateActive(guestUserId,name,uuid);
-           setCus(guestUserId);
-           //setAllUsers(reusersagain);
-           navigation.navigate("Task Room");
-  };
-  const zonerMaster = (zoneitem)=>{
-     let reusers = [];
-     setAllUsers(reusers);
-     setSelectedValue(zoneitem);
-     setZone(zoneitem);
-    //  if(zoneitem=="a"){
-    //    navigation.navigate("Task Feed Zone A");
+//            RemoveTask(guestUserId);
+//            let reusersagain = [];
+//            UpdateActive(guestUserId,name,uuid);
+//            setCus(guestUserId);
+//            setAllUsers(reusersagain);
+//            navigation.navigate("Task Room");
+//   };
+//   const zonerMaster = (zoneitem)=>{
+//      //let reusers = [];
+//      //setAllUsers(reusers);
+//      setSelectedValue(zoneitem);
+//      setZone(zoneitem);
+//      if(zoneitem=="a"){
+//        navigation.navigate("Task Feed Zone A");
 
-    //  }
-    //  else if(zoneitem=="b"){
-    //    navigation.navigate("Task Feed Zone B");
+//      }
+//      else if(zoneitem=="b"){
+//        navigation.navigate("Task Feed Zone B");
 
-    //  }
-    //  else if(zoneitem=="c"){
-    //    navigation.navigate("Task Feed Zone C");
+//      }
+//      else if(zoneitem=="c"){
+//        navigation.navigate("Task Feed Zone C");
 
-    //  }
-    //  else if(zoneitem=="d"){
-    //    navigation.navigate("Task Feed Zone D");
+//      }
+//      else if(zoneitem=="d"){
+//        navigation.navigate("Task Feed Zone D");
 
-    //  }
-    //  else if(zoneitem=="z"){
-    //    navigation.navigate("Task Feed");
+//      }
+//      else if(zoneitem=="z"){
+//        navigation.navigate("Task Feed");
 
-    //  }
-    //  navigation.navigate("Task Loader");
-     firebase
-        .database()
-        .ref("tasks")
-        .on("value", (dataSnapshot) => {
-          let users = [];
-          let currentUser = {
-            id: "",
-            location: "",
-            price: "",
-          };
-          dataSnapshot.forEach((child) => {
-            if (uuid === child.val().uuid) {
-              currentUser.id = uuid;
-              currentUser.name = child.val().name;
-              currentUser.location = child.val().location;
-              currentUser.price = child.val().price;
-            } else {
-              if (child.val().zone== zonesort
-              || child.val().allzone == zonesort
-              ){
-              users.push({
-                id: child.val().uuid,
-                location: child.val().location,
-                price: child.val().price,
-              });
-              
-            }
-            }
-          });
-          setUserDetail(currentUser);
-          setAllUsers(users);
+//      }
+//     //  navigation.navigate("Task Loader");
+//     //  firebase
+//     //     .database()
+//     //     .ref("tasks")
+//     //     .on("value", (dataSnapshot) => {
+//     //       let users = [];
+//     //       let currentUser = {
+//     //         id: "",
+//     //         location: "",
+//     //         price: "",
+//     //       };
+//     //       dataSnapshot.forEach((child) => {
+//     //         if (uuid === child.val().uuid) {
+//     //           currentUser.id = uuid;
+//     //           currentUser.name = child.val().name;
+//     //           currentUser.location = child.val().location;
+//     //           currentUser.price = child.val().price;
+//     //         } else {
+//     //           if (child.val().zone== zonesort
+//     //           || child.val().allzone == zonesort
+//     //           ){
+//     //           users.push({
+//     //             id: child.val().uuid,
+//     //             location: child.val().location,
+//     //             price: child.val().price,
+//     //           });
+//     //           setAllUsers(users);
+//     //         }
+//     //         }
+//     //       });
+//     //       setUserDetail(currentUser);
           
         
-          dispatchLoaderAction({
-            type: LOADING_STOP,
-          });
+//     //       dispatchLoaderAction({
+//     //         type: LOADING_STOP,
+//     //       });
           
-        });
-  }
+//     //     });
+//   }
   // const mutex = new Mutex();
   // const acceptTap = async( guestUserId) => {
   //   console.log(guestUserId)
@@ -296,9 +296,17 @@ export default ({ navigation }) => {
     //render(){
   return(
     <SafeAreaView style={{ flex: 1, backgroundColor: color.WHITE }}>
-      {/* <RoundCornerButton title="Zone Select" 
-       onPress={() => navigation.navigate("Select Your Zone")} /> */}
-      <Picker
+        <RoundCornerButton title="All Zone" 
+       onPress={() => navigation.navigate("Task Feed")} />
+       <RoundCornerButton title="Zone A" 
+       onPress={() => navigation.navigate("Task Feed Zone A")} />
+       <RoundCornerButton title="Zone B" 
+       onPress={() => navigation.navigate("Task Feed Zone B")} />
+       <RoundCornerButton title="Zone C" 
+       onPress={() => navigation.navigate("Task Feed Zone C")} />
+       <RoundCornerButton title="Zone D" 
+       onPress={() => navigation.navigate("Task Feed Zone D")} />
+      {/* <Picker
         selectedValue={selectedValue}
         style={{ height: 50, width: 150 }}
         onValueChange={(itemValue, itemIndex) => zonerMaster(itemValue)}
@@ -308,10 +316,10 @@ export default ({ navigation }) => {
         <Picker.Item label="Zone B" value="b" />
         <Picker.Item label="Zone C" value="c" />
         <Picker.Item label="Zone D" value="d" />
-      </Picker>
+      </Picker> */}
       {/* All tasks */}
   {/* <Text>{zonesort}</Text> */}
-      <FlatList
+      {/* <FlatList
         alwaysBounceVertical={false}
         data={allUsers}
         keyExtractor={(_, index) => index.toString()}
@@ -339,7 +347,7 @@ export default ({ navigation }) => {
           />
         )}
       />
-      
+       */}
 
     </SafeAreaView>
     

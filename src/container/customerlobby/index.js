@@ -71,18 +71,18 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
-      firebase
-        .database()
-        .ref("actives/"+uuid+"/uuid")
-        .on("value", (dataSnapshot) => {
-          checkstill = dataSnapshot.val();
-          if (uuid != checkstill){
-            navigation.navigate("Location Picker");
-          }
-          dispatchLoaderAction({
-            type: LOADING_STOP,
-          });
-        });
+      // firebase
+      //   .database()
+      //   .ref("actives/"+uuid+"/uuid")
+      //   .on("value", (dataSnapshot) => {
+      //     checkstill = dataSnapshot.val();
+      //     if (uuid != checkstill){
+      //       navigation.navigate("Location Picker");
+      //     }
+      //     dispatchLoaderAction({
+      //       type: LOADING_STOP,
+      //     });
+      //   });
       firebase
         .database()
         .ref("actives/"+uuid+"/driveid")
@@ -219,6 +219,8 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
+
+        <Text>Chat</Text>
          <Button
        titleStyle={{
        color: color.BLACK,
@@ -242,6 +244,7 @@ export default ({ navigation }) => {
        onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} /> */}
       <RoundCornerButton title="Cancel Search" 
        onPress={() => onCanc()} />
+       <Text>Cancel Search</Text>
        <Button
        titleStyle={{
        color: color.BLACK,
@@ -261,6 +264,7 @@ export default ({ navigation }) => {
         disabled={!isFound}
         title= "Cancel Search"
        />
+       <Text>I Meet My Driver</Text>
        <Button 
       // style = {styles.text}
        titleStyle={{

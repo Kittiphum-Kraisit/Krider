@@ -1,4 +1,5 @@
 import firebase from "../../firebase/config";
+import { appStyle } from "../../utility";
 
 export const AddTask = async (location,price,uid,cusname ) => {
   try {
@@ -9,7 +10,9 @@ export const AddTask = async (location,price,uid,cusname ) => {
         location: location,
         cusname: cusname,
         price: price,
-        uuid: uid,      
+        uuid: uid,
+        zone: "b",
+        allzone : "z",
       });
   } catch (error) {
     return error;

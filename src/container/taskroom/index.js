@@ -74,19 +74,19 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
-      firebase
-        .database()
-        .ref("actives/"+cuuid+"/driveid")
-        .on("value", (dataSnapshot) => {
-          checkdriverid = dataSnapshot.val();
-          if (uuid != checkdriverid){
-            cuuid = ""
-            navigation.navigate("Task Feed");
-          }
-          dispatchLoaderAction({
-            type: LOADING_STOP,
-          });
-        });
+      // firebase
+      //   .database()
+      //   .ref("actives/"+cuuid+"/driveid")
+      //   .on("value", (dataSnapshot) => {
+      //     checkdriverid = dataSnapshot.val();
+      //     if (uuid != checkdriverid){
+      //       cuuid = ""
+      //       navigation.navigate("Task Feed");
+      //     }
+      //     dispatchLoaderAction({
+      //       type: LOADING_STOP,
+      //     });
+      //   });
       
         firebase
         .database()

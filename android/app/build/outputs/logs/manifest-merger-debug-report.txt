@@ -1,14 +1,15 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
-INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
-INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
-INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
-MERGED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
+INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
+MERGED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
 MERGED from [com.facebook.flipper:flipper:0.33.1] C:\Users\PUN\.gradle\caches\transforms-2\files-2.1\a7402c49c636074a9277b8beefd3f8de\jetified-flipper-0.33.1\AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.33.1] C:\Users\PUN\.gradle\caches\transforms-2\files-2.1\2e40a2d74e98a154c2d9f090d089eb0b\jetified-flipper-network-plugin-0.33.1\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.33.1] C:\Users\PUN\.gradle\caches\transforms-2\files-2.1\1097da9e53e41eb5871d4c4f86698dcb\jetified-flipper-fresco-plugin-0.33.1\AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-community_async-storage] E:\Convo-master\node_modules\@react-native-community\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-community_geolocation] E:\Convo-master\node_modules\@react-native-community\geolocation\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_masked-view] E:\Convo-master\node_modules\@react-native-community\masked-view\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_toolbar-android] E:\Convo-master\node_modules\@react-native-community\toolbar-android\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-gesture-handler] E:\Convo-master\node_modules\react-native-gesture-handler\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
@@ -88,13 +89,13 @@ INJECTED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml:2:1-8:12
 		INJECTED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
 		INJECTED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml
 	xmlns:tools
 		ADDED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-29:12
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:1-30:12
 		INJECTED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -122,10 +123,14 @@ uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:6:5-80
 	android:name
 		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:7:5-78
+	android:name
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:7:22-76
 application
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:8:5-27:19
-MERGED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:8:5-27:19
-MERGED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:8:5-27:19
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:9:5-28:19
+MERGED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:9:5-28:19
+MERGED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:9:5-28:19
 MERGED from [:react-native-image-picker] E:\Convo-master\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-19:19
 MERGED from [:react-native-image-picker] E:\Convo-master\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-19:19
 MERGED from [com.facebook.react:react-native:0.62.2] C:\Users\PUN\.gradle\caches\transforms-2\files-2.1\fe40484d4b4f6385f251d0376813e3ee\jetified-react-native-0.62.2\AndroidManifest.xml:11:5-20
@@ -169,55 +174,55 @@ MERGED from [com.facebook.soloader:annotation:0.8.2] C:\Users\PUN\.gradle\caches
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\PUN\.gradle\caches\transforms-2\files-2.1\7b5662779ef6d74d8f53e6d9fe703edf\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:10:7-39
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:10:7-39
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:11:7-39
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:11:7-39
 	tools:ignore
 		ADDED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml:7:75-114
 	android:roundIcon
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:12:7-52
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:12:7-52
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:13:7-52
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:13:7-52
 	tools:targetApi
 		ADDED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml:7:54-74
 	android:icon
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:11:7-41
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:11:7-41
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:12:7-41
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:12:7-41
 	android:allowBackup
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:13:7-34
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:13:7-34
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:14:7-34
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:14:7-34
 	android:theme
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:14:7-38
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:14:7-38
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:15:7-38
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:15:7-38
 	android:usesCleartextTraffic
 		ADDED from E:\Convo-master\android\app\src\debug\AndroidManifest.xml:7:18-53
 	android:name
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:9:7-38
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:9:7-38
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:10:7-38
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:10:7-38
 activity#com.rnfb.MainActivity
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:15:7-25:18
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:16:7-26:18
 	android:label
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:17:9-41
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:18:9-41
 	android:launchMode
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:19:9-40
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:20:9-40
 	android:windowSoftInputMode
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:20:9-48
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:21:9-48
 	android:configChanges
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:18:9-86
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:19:9-86
 	android:name
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:16:9-37
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:17:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:21:9-24:25
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:22:9-25:25
 action#android.intent.action.MAIN
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:22:13-65
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:23:13-65
 	android:name
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:22:21-62
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:23:21-62
 category#android.intent.category.LAUNCHER
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:23:13-73
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:24:13-73
 	android:name
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:23:23-70
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:24:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:26:7-84
+ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:27:7-84
 	android:name
-		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:26:17-81
+		ADDED from E:\Convo-master\android\app\src\main\AndroidManifest.xml:27:17-81
 uses-sdk
 INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Convo-master\android\app\src\main\AndroidManifest.xml
@@ -230,6 +235,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.33.1] C:\Users\PUN\.gr
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.33.1] C:\Users\PUN\.gradle\caches\transforms-2\files-2.1\1097da9e53e41eb5871d4c4f86698dcb\jetified-flipper-fresco-plugin-0.33.1\AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-community_async-storage] E:\Convo-master\node_modules\@react-native-community\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_async-storage] E:\Convo-master\node_modules\@react-native-community\async-storage\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_geolocation] E:\Convo-master\node_modules\@react-native-community\geolocation\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-community_geolocation] E:\Convo-master\node_modules\@react-native-community\geolocation\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_masked-view] E:\Convo-master\node_modules\@react-native-community\masked-view\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_masked-view] E:\Convo-master\node_modules\@react-native-community\masked-view\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_toolbar-android] E:\Convo-master\node_modules\@react-native-community\toolbar-android\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import ImagePicker from "react-native-image-picker";
 import { Profile, ShowUsers, StickyHeader,ShowActives, ShowDriver, ShowPrice } from "../../component";
@@ -12,7 +12,7 @@ import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
-import { Button } from "native-base";
+
 
 export default ({ navigation }) => {
   const globalState = useContext(Store);
@@ -174,10 +174,10 @@ export default ({ navigation }) => {
 
 
 
-  const onChattap = () => {
+  const onChattap = (drivername,driveridna) => {
       navigation.navigate("Chat", {
-        driver,
-        driveid,
+        name: drivername,
+        guestUserId: driveridna,
         currentUserId: uuid,
       });
 
@@ -219,8 +219,11 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
+        <RoundCornerButton title="Cancel Search" 
+       onPress={() => onCanc()} />
 
-        <Text>Chat</Text>
+        <Text> </Text>
+        <Text> </Text>
          <Button
        titleStyle={{
        color: color.BLACK,
@@ -228,7 +231,7 @@ export default ({ navigation }) => {
    }}
        style = {{ 
          //backgroundColor: color.Orange,
-    width: '90%',
+    width: '50%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
@@ -236,15 +239,15 @@ export default ({ navigation }) => {
     marginVertical: appStyle.btnMarginVertical,
     fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
-         onPress={() => onChattap()}
+         onPress={() => onChattap(drivet,driveidt)}
         disabled={isFound}
         title= "Chat"
        />
       {/* <RoundCornerButton title=  "Chat"
        onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} /> */}
-      <RoundCornerButton title="Cancel Search" 
-       onPress={() => onCanc()} />
-       <Text>Cancel Search</Text>
+      
+       <Text> </Text>
+       <Text> </Text>
        <Button
        titleStyle={{
        color: color.BLACK,
@@ -252,7 +255,7 @@ export default ({ navigation }) => {
    }}
        style = {{ 
          //backgroundColor: color.Orange,
-    width: '90%',
+    width: '50%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
@@ -264,7 +267,8 @@ export default ({ navigation }) => {
         disabled={!isFound}
         title= "Cancel Search"
        />
-       <Text>I Meet My Driver</Text>
+       <Text> </Text>
+       <Text> </Text>
        <Button 
       // style = {styles.text}
        titleStyle={{
@@ -273,13 +277,13 @@ export default ({ navigation }) => {
    }}
       style = {{ 
          //backgroundColor: color.Orange,
-    width: '90%',
+    width: '50%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: appStyle.btnMarginVertical,
-    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
  }}
         onPress={() => onMeet()}
         disabled={isMetc}

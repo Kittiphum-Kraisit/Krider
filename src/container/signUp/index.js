@@ -68,7 +68,7 @@ export default ({ navigation }) => {
               dispatchLoaderAction({
                 type: LOADING_STOP,
               });
-              navigation.replace("Login");
+              navigation.replace("Role Select");
             })
             .catch((err) => {
               dispatchLoaderAction({

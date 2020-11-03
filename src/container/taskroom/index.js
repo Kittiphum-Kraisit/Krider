@@ -7,8 +7,8 @@ import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
-import { uuid, smallDeviceHeight,cuuid } from "../../utility/constants";
-import { clearAsyncStorage } from "../../asyncStorage";
+import { uuid, smallDeviceHeight,cuuid, setUniqueValue } from "../../utility/constants";
+import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
@@ -152,19 +152,21 @@ export default ({ navigation }) => {
       .catch((err) => alert(err));
   };
   const onEndJob = () => {
-    navigation.navigate("Task Feed");
-    RemoveTask(cuuid);
+    setnewuuid = uuid;
     RemoveActive(cuuid);
-
+    clearAsyncStorage()
+    setAsyncStorage(keys.uuid,setnewuuid)
+    setUniqueValue(setnewuuid);
+    navigation.navigate("Task Feed");
   };
   
 
 
 
-  const onChattap = ( driver, driveid) => {
+  const onChattap = ( custname, cusid) => {
       navigation.navigate("Chat", {
-        driver,
-        driveid,
+        name: custname,
+        guestUserId: cusid,
         currentUserId: uuid,
       });
 
@@ -213,10 +215,25 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
-      <RoundCornerButton title=  "Chat"
-       onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} />
+      {/* <RoundCornerButton title=  "Chat"
+       onPress={() => onChattap(drivet,cuuid)} /> */}
       <RoundCornerButton title="End Job" 
        onPress={() => onEndJob()} />
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => onChattap(drivet,cuuid)}
+        title= "Chat"
+       />
+       <Text> </Text>
+       <Text> </Text>
        <Button
        style = {{ backgroundColor: color.Orange,
     width: '90%',
@@ -231,6 +248,7 @@ export default ({ navigation }) => {
         disabled={isMet}
         title= "End Job"
        />
+       
     </SafeAreaView>
   );
 };

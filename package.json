@@ -10,15 +10,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "com.facebook.fresco:fresco":"1.10.0",
-    "com.facebook.fresco:animated-gif":"1.10.0",
-    
     "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/toolbar-android": "0.1.0-rc.2",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
     "async-mutex": "^0.2.4",
+    "com.facebook.fresco:animated-gif": "1.10.0",
+    "com.facebook.fresco:fresco": "1.10.0",
     "firebase": "^7.24.0",
     "native-base": "^2.13.14",
     "react": "^16.14.0",

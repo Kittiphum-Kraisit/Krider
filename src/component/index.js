@@ -11,6 +11,8 @@ import ShowTasks from "./ShowTasks";
 import ShowActives from "./ShowActives";
 import ShowDriver from "./ShowDriver";
 import ShowPrice from "./ShowPrice";
+import ShowLocas from "./ShowLocas";
+
 
 export {
   RoundCornerButton,
@@ -25,6 +27,6 @@ export {
   ShowTasks,
   ShowActives,
   ShowDriver,
-  ShowPrice
-
+  ShowPrice,
+  ShowLocas,
 };

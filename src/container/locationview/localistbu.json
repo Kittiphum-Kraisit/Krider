@@ -1,0 +1,363 @@
+[
+    {   
+        "id" : "1",
+        "locaname" : "H.Q.(Rector and Central Administration)",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "2",
+        "locaname" : "King Mongkut’s Institute of Technology Latkrabang International Demonstration School (KMIDS)",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "3",
+        "locaname" : "Faculty of Medicine",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "4",
+        "locaname" : "Common Lecture Building (Prathep Building)",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "5",
+        "locaname" : "KMITL Medical Center",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "6",
+        "locaname" : "Nanotechnology Research Center",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "7",
+        "locaname" : "Plaza Avenue",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "8",
+        "locaname" : "Automation Research Center",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "9",
+        "locaname" : "Department of Electrical, Computer and Control Engineering (ECC Building)",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "10",
+        "locaname" : "College of Advanced Manufacturing Innovation (AMI)",
+        "ip" : "",
+        "zone" : "a"
+    },    {   
+        "id" : "11",
+        "locaname" : "Swimming Pool",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "12",
+        "locaname" : "Alumni Building",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "13",
+        "locaname" : "Student Dormitory",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "14",
+        "locaname" : "Sport Complex",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "15",
+        "locaname" : "Gymnasium 2",
+        "ip" : "",
+        "zone" : "a"
+    },
+    {   
+        "id" : "16",
+        "locaname" : "E12 Building, Faculty of Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "17",
+        "locaname" : "Staff Condominium",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "18",
+        "locaname" : "Faculty of Architecture",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "19",
+        "locaname" : "Department of Chemical Engineering, Department of Food Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "20",
+        "locaname" : "Common of Lecture Building, Faculty of Architecture",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "21",
+        "locaname" : "Prasom Rangsiroj Auditorium, Faculty of Architecture",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "22",
+        "locaname" : "Department of Civil Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "23",
+        "locaname" : "Department of Mechanical Engineering,Department of Industrial Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "24",
+        "locaname" : "Department of Instrumentation Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "25",
+        "locaname" : "HM Building",
+        "ip" : "https://goo.gl/maps/iUnL3JKHUeeZP59v5",
+        "zone" : "d"
+    },
+    {   
+        "id" : "26",
+        "locaname" : "Institute of Music and Engineering (IMSE)",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "27",
+        "locaname" : "Department of Electronics Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "28",
+        "locaname" : "Faculty of Architecture Office",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "29",
+        "locaname" : "Office of the Dean, Faculty of Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "30",
+        "locaname" : "Department of Telecommunication Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "31",
+        "locaname" : "Main Auditorium, Faculty of Engineering",
+        "ip" : "",
+        "zone" : "d"
+    },
+    {   
+        "id" : "32",
+        "locaname" : "KMITL Convention Hall",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "33",
+        "locaname" : "Central Library",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "34",
+        "locaname" : "Chao Phya Surawongwaiwat (Worn Bunnang) Monument",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "35",
+        "locaname" : "Faculty of Agricultural Technology",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "36",
+        "locaname" : "Faculty of Agro-Industry",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "37",
+        "locaname" : "Agricultural Food Court KMITL",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "38",
+        "locaname" : "Agricultural Communication Studio",
+        "ip" : "",
+        "zone" : "c"
+    },
+    {   
+        "id" : "39",
+        "locaname" : "Student’s Association",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "40",
+        "locaname" : "Office of the Dean, Faculty of Science",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "41",
+        "locaname" : "Office of Scientific Instrument, Faculty of Science",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "42",
+        "locaname" : "KMITL Chulabhorn Walailak 2 Building",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "43",
+        "locaname" : "KMITL Chulabhorn Walailak Auditorium",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "44",
+        "locaname" : "Phra Chom Klao Building, Faculty of Science",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "45",
+        "locaname" : "KMITL Chulabhorn Walailak 1 Building",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "46",
+        "locaname" : "Chom Trai Building, Faculty of Industrial Education of Technology",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "47",
+        "locaname" : "Faculty of Industrial Education and Technology",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "48",
+        "locaname" : "Bunnag Building",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "49",
+        "locaname" : "King Rama IV Monument KMITL’s Museum",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "50",
+        "locaname" : "KMITL Business School",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "51",
+        "locaname" : "Faculty of Information Technology",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "52",
+        "locaname" : "International Academy of Aviation Industry",
+        "ip" : "",
+        "zone" : "b"
+    },
+    {   
+        "id" : "53",
+        "locaname" : "Airport Rail Link Latkrabang",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "54",
+        "locaname" : "Robinson Latkrabang",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "55",
+        "locaname" : "Soi Keki 4",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "56",
+        "locaname" : "Soi RNP",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "57",
+        "locaname" : "Paseo Latkrabang",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "58",
+        "locaname" : "College Town",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "59",
+        "locaname" : "Soi Baan Klang Suan",
+        "ip" : "",
+        "zone" : "z"
+    },
+    {   
+        "id" : "60",
+        "locaname" : "AJ Park",
+        "ip" : "",
+        "zone" : "z"
+    }
+    
+
+]

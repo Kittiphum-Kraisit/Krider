@@ -19,6 +19,7 @@ import {
   ZoneC,
   ZoneD,
   ZoneSelect,
+  MapTour
 } from "../container";
 import { color } from "../utility";
 import zoneselector from "../container/zoneselector";
@@ -73,6 +74,13 @@ function NavContainer() {
         <Stack.Screen
           name="Chat"
           component={Chat}
+          options={{
+            headerBackTitle: null,
+          }}
+        />
+        <Stack.Screen
+          name="Map Tour"
+          component={MapTour}
           options={{
             headerBackTitle: null,
           }}

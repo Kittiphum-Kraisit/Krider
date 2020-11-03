@@ -80,12 +80,12 @@ const Loader = () => {
         
     //   </View> */}
     // </View>
-    <Animated.Image style={styles.indicator} 
+    <Image style={styles.indicator} 
     source={require('./kogo.png')}
     //source={require('./kogo.png')}
     >
        
-  </Animated.Image>
+  </Image>
   // <Animated.Image style={styles.container} source={require('./animated loader.png')}>
   //      </Animated.Image>
 

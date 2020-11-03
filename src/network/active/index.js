@@ -27,7 +27,7 @@ export const RemoveActive = async (guestid) => {
   }
 };
 
-export const UpdateActive = async (guestUserId, driver, driveid) => {
+export const UpdateActive = async (guestUserId, driver,driveid) => {
   try {
     return await firebase
       .database()
@@ -35,32 +35,58 @@ export const UpdateActive = async (guestUserId, driver, driveid) => {
       .update({
         waiter:"Found your driver",
         driver: driver,
-        driveid: driveid
+        driveid: driveid,
       });
   } catch (error) {
     return error;
   }
 };
-
-
-/*export const UpdateActive =  (guestUserId, driver, driveid) => {
- // var currentdriveid = firebase.database().ref("actives/" + guestUserId + "/driveid");
-    return firebase
+ 
+export const UpdateActiveMeet = async (myId) => {
+  try {
+    return await firebase
       .database()
-      .ref("actives/" + guestUserId + "/driveid")
-      .transaction(function(id){
-        id = firebase.database().ref("actives/" + guestUserId + "/driveid");
-        //console.log(driveid)  
-        //console.log(currentdriveid)
-        if (id == "no" ) {
-          return driveid
-        } else {
-          console.log("Task have been taken!!!")
-        }
-        //console.log(guestUserId)
-        //console.log(driveId)
-        //console.log(driveId == null)
-        //return driveid
-  })
-}
-*/
+      .ref("actives/" + myId)
+      .update({
+        waiter:"Enjoy The Ride !",
+      });
+  } catch (error) {
+    return error;
+  }
+};
+// export const UpdateActive = async (guestUserId, driver, driveid) => {
+//   // try {
+//     return await firebase
+//       .database()
+//       .ref("actives/" + guestUserId + "/driveid")
+//       .transaction(function(driveId){
+//         if (driveId === null) {
+//           return driveId
+//         } else {
+//           console.log('User driveId already exists.');
+//           return; // Abort the transaction.
+//         }
+//       } , function(error, committed, snapshot) {
+//     if (error) {
+//       console.log("transaction failed",error);
+//     } else if (!committed) {
+//       console.log("aborted");
+//     } else {
+//       console.log("IT'S WORKING")
+//     }
+//   })
+// }
+// export const UpdateActiveDid = async (guestUserId, driveid) => {
+//   try {
+//     return await firebase
+//       .database()
+//       .ref("actives/" + guestUserId)
+//       .update({
+//         driveid: driveid,
+//       });
+//   } catch (error) {
+//     return error;
+//   }
+// };
+
+

@@ -25,6 +25,7 @@ import { smallDeviceHeight } from "../../utility/constants";
 const Chat = ({ route, navigation }) => {
   const { params } = route;
   const { name, img, imgText, guestUserId, currentUserId } = params;
+  //const { name, img, imgText,driveid, currentUserId } = params;
   const [msgValue, setMsgValue] = useState("");
   const [messeges, setMesseges] = useState([]);
   useLayoutEffect(() => {
@@ -40,6 +41,7 @@ const Chat = ({ route, navigation }) => {
         .ref("messeges")
         .child(currentUserId)
         .child(guestUserId)
+        //.child(driveid)
         .on("value", (dataSnapshot) => {
           let msgs = [];
           dataSnapshot.forEach((child) => {
@@ -184,11 +186,13 @@ const Chat = ({ route, navigation }) => {
                 <TouchableOpacity style={styles.CameraBtn} onPress={() => handleSend()}>
                   <Image 
                   //title="camera"
+                  
                   //onPress={() => handleCamera()}
                   source={require("./Send_Krider5.png")}
                   //color={color.WHITE}
                   //size={appStyle.fieldHeight}
-                  //size = {50}  
+                  //size = {50}
+                  
                 />
                 </TouchableOpacity>
               </View>

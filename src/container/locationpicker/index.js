@@ -92,7 +92,7 @@ export default ({ navigation }) => {
   //         dispatchLoaderAction({
   //           type: LOADING_STOP,
   //         });
-  //         setInitialState();
+  //         setInitialState(); goBack
   //         navigation.navigate("Dashboard");
   // }
   
@@ -129,7 +129,9 @@ export default ({ navigation }) => {
         
       ),
     });
-  }, [navigation]);
+  },
+   [navigation]
+   );
   
 
   // const handleOnChange = (name, value) => {
@@ -208,6 +210,12 @@ export default ({ navigation }) => {
   const DataPusher = (location,price,uuid) => {
      AddTask(location,price,uuid,name);
      AddActive(location,price,uuid,name);
+      
+  };
+    const DataPusher2 = (location,price,uuid) => {
+     AddTask(location,price,uuid,name);
+     AddActive(location,price,uuid,name);
+     navigation.navigate("Lobby");
       
   };
   // const SelPick = () => {
@@ -319,10 +327,12 @@ export default ({ navigation }) => {
             }
         />
       </Fragment>
-       <RoundCornerButton title="Find Driver" 
-       onPress={() => DataPusher(location,price,uuid)} />
+       {/* <RoundCornerButton title="Find Driver" 
+       onPress={() => DataPusher(location,price,uuid)} /> */}
        <RoundCornerButton title="Enter Lobby" 
        onPress={() =>  navigation.navigate("Lobby")} />
+       <RoundCornerButton title="Find Driver" 
+       onPress={() =>  DataPusher2(location,price,uuid)} />
        {/* <RoundCornerButton title="Dashboard" 
        onPress={() =>  navigation.navigate("Dashboard")} /> */}
        

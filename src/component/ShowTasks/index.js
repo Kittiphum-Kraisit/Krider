@@ -24,12 +24,10 @@ const ShowTasks = ({ location, onAcceptTap ,price}) => {
 
           <Body>
             <Text style={styles.LocationName}
-             //onPress={onNameTap}
              >
               {location} 
             </Text>
             <Text style={styles.PriceName}
-             //onPress={onNameTap}
              >
               Price: {price} Baht
             </Text>

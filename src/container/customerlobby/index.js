@@ -1,28 +1,41 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import ImagePicker from "react-native-image-picker";
 import { Profile, ShowUsers, StickyHeader,ShowActives, ShowDriver, ShowPrice } from "../../component";
 import firebase from "../../firebase/config";
-import { color } from "../../utility";
+import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask } from "../../network";
+import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
+
 
 export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
   const [drivet,setDriver] = useState("");
-  const [driveidt,setDriverid] = useState("");
   const [locationt,setLocation] = useState("");
   const [pricet,setPrice] = useState("");
   const [waitert,setWaiter] = useState("");
+  const [driveidt,setDriveid] = useState("");
+  const [isFound,checkFound] = useState(true);
+  const [isMetc,checkMeetc] = useState(true);
 
-
+  const [userDetail, setUserDetail] = useState({
+    id: "",
+    driver: "",
+    location: "",
+    price:"",
+    driveid:"",
+    //drivenow:"",
+  });
+  const [getScrollPosition, setScrollPosition] = useState(0);
+  const [allUsers, setAllUsers] = useState([]);
+  const { profileImg, name } = userDetail;
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -58,17 +71,28 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
+      // firebase
+      //   .database()
+      //   .ref("actives/"+uuid+"/uuid")
+      //   .on("value", (dataSnapshot) => {
+      //     checkstill = dataSnapshot.val();
+      //     if (uuid != checkstill){
+      //       navigation.navigate("Location Picker");
+      //     }
+      //     dispatchLoaderAction({
+      //       type: LOADING_STOP,
+      //     });
+      //   });
       firebase
         .database()
         .ref("actives/"+uuid+"/driveid")
         .on("value", (dataSnapshot) => {
           driveidnow = dataSnapshot.val();
-          setDriverid(driveidnow)
+          setDriveid(driveidnow)
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
         });
- 
         firebase
         .database()
         .ref("actives/"+uuid+"/driver")
@@ -105,6 +129,10 @@ export default ({ navigation }) => {
         .on("value", (dataSnapshot) => {
           waiternow = dataSnapshot.val();
           setWaiter(waiternow)
+          if(waiternow != "Finding your driver"){
+            checkFound(false)
+            checkMeetc(false)
+          }
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
@@ -117,7 +145,7 @@ export default ({ navigation }) => {
     }
   }, []);
 
-
+  // * LOG OUT
   const logout = () => {
     LogOutUser()
       .then(() => {
@@ -135,24 +163,42 @@ export default ({ navigation }) => {
     RemoveActive(uuid);
 
   };
-  
-
-  //var loca  = firebase.database().ref
-
-
-  const onChattap = ( drivername, driveidna) => {
-    navigation.navigate("Chat", {
-      name: drivername,
-      guestUserId: driveidna,
-      currentUserId: uuid,
-    });
+  const onMeet = () => {
+    UpdateActiveMeet(uuid);
+    checkMeetc(true);
 
   };
 
+  
+
+
+
+
+  const onChattap = (drivername,driveridna) => {
+      navigation.navigate("Chat", {
+        name: drivername,
+        guestUserId: driveridna,
+        currentUserId: uuid,
+      });
+
+  };
+
+  
+
+
+  const getOpacity = () => {
+    if (deviceHeight < smallDeviceHeight) {
+      return deviceHeight / 4;
+    } else {
+      return deviceHeight / 6;
+    }
+  };
   return (
     <SafeAreaView 
     style={{ flex: 1, backgroundColor: color.WHITE }}
+    //style={stylex.container}
     >
+      
       <Text
       style={color.RED}
       >
@@ -173,13 +219,98 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
-      <RoundCornerButton title =  "Chat"
-       onPress={() => onChattap(drivet,driveidt)} />
-      <RoundCornerButton title="Cancel Search" 
+        <RoundCornerButton title="Cancel Search" 
        onPress={() => onCanc()} />
+
+        <Text> </Text>
+        <Text> </Text>
+         <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+         onPress={() => onChattap(drivet,driveidt)}
+        disabled={isFound}
+        title= "Chat"
+       />
+      {/* <RoundCornerButton title=  "Chat"
+       onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} /> */}
+      
+       <Text> </Text>
+       <Text> </Text>
+       <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => onCanc()}
+        disabled={!isFound}
+        title= "Cancel Search"
+       />
+       <Text> </Text>
+       <Text> </Text>
+       <Button 
+      // style = {styles.text}
+       titleStyle={{
+       color: color.WHITE,
+       fontSize: 16,
+   }}
+      style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+ }}
+        onPress={() => onMeet()}
+        disabled={isMetc}
+        title= "I Meet My Driver"
+       />
       {/* <FlatList
 
       /> */}
     </SafeAreaView>
   );
 };
+// const styles = StyleSheet.create({
+//   text:{
+//     fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+//     },
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#fff',
+//   },
+//   myButton:{
+//     width: '90%',
+//     borderRadius: appStyle.btnBorderRadius,
+//     height: appStyle.btnHeight,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     marginVertical: appStyle.btnMarginVertical,
+//   }
+// });

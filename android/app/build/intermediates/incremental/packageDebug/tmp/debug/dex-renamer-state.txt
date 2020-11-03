@@ -1,4 +1,4 @@
-#Tue Oct 20 15:33:07 ICT 2020
+#Tue Nov 03 20:32:08 ICT 2020
 base.0=C\:\\Users\\ACE\\Desktop\\Extra\\Work\\KRider\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Convo-master\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
+            "outputFile": "C:\\.Year1\\1\\CodeW\\Amypro\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\PUN\\.gradle\\caches\\transforms-2\\files-2.1\\7b5662779ef6d74d8f53e6d9fe703edf\\core-1.1.0\\res\\values-or\\values-or.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "31",
-                        "startColumns": "4",
-                        "startOffsets": "3144",
-                        "endColumns": "100",
-                        "endOffsets": "3240"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\PUN\\.gradle\\caches\\transforms-2\\files-2.1\\a79b2af7a83b8377c16426fce195853a\\jetified-play-services-basement-17.0.0\\res\\values-or\\values.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\a79b2af7a83b8377c16426fce195853a\\jetified-play-services-basement-17.0.0\\res\\values-or\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\PUN\\.gradle\\caches\\transforms-2\\files-2.1\\535be843c23df54b7e7e53a75a3dcdc4\\appcompat-1.1.0\\res\\values-or\\values-or.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\7b5662779ef6d74d8f53e6d9fe703edf\\core-1.1.0\\res\\values-or\\values-or.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "31",
+                        "startColumns": "4",
+                        "startOffsets": "3144",
+                        "endColumns": "100",
+                        "endOffsets": "3240"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\535be843c23df54b7e7e53a75a3dcdc4\\appcompat-1.1.0\\res\\values-or\\values-or.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

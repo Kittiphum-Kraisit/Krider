@@ -1,4 +1,5 @@
 import RoundCornerButton from "./button/RoundCornerButton";
+import CuteButton from "./button/CuteButton"
 import InputField from "./input";
 import Logo from "./logo";
 import Loader from "./loader";
@@ -14,6 +15,7 @@ import ShowPrice from "./ShowPrice";
 
 export {
   RoundCornerButton,
+  CuteButton,
   InputField,
   Logo,
   Loader,

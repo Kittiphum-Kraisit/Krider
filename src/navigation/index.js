@@ -12,7 +12,8 @@ import {
   AsRider,
   Lobby,
   Taskroom,
-  RoleSelect
+  RoleSelect,
+  LocationF
 } from "../container";
 import { color } from "../utility";
 
@@ -101,6 +102,13 @@ function NavContainer() {
         <Stack.Screen
           name="Role Select"
           component={RoleSelect}
+          options={{
+            headerBackTitle: null,
+          }}
+        />
+        <Stack.Screen
+          name="Yardfon"
+          component={LocationF}
           options={{
             headerBackTitle: null,
           }}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import ImagePicker from "react-native-image-picker";
 import { Profile, ShowUsers, StickyHeader,ShowActives, ShowDriver, ShowPrice } from "../../component";
@@ -20,9 +20,12 @@ export default ({ navigation }) => {
   //cuuid = cuuid;
   const [drivet,setDriver] = useState("");
   const [locationt,setLocation] = useState("");
+  const [endlocationt,setEndLocation] = useState("");
   const [pricet,setPrice] = useState("");
   const [waitert,setWaiter] = useState("");
   const [isMet,checkMeet] = useState(true);
+  const [startipt,setStartIp]=useState("");
+  const [destipt,setDestIp]=useState("");
 
   // var allprice = 800;
   // var head = 8;
@@ -100,10 +103,40 @@ export default ({ navigation }) => {
         });
         firebase
         .database()
-        .ref("actives/"+cuuid+"/location")
+        .ref("actives/"+cuuid+"/startlocation")
         .on("value", (dataSnapshot) => {
           locationnow = dataSnapshot.val();
           setLocation(locationnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
+        .ref("actives/"+cuuid+"/endlocation")
+        .on("value", (dataSnapshot) => {
+          endlocationnow = dataSnapshot.val();
+          setEndLocation(endlocationnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
+        .ref("actives/"+cuuid+"/startip")
+        .on("value", (dataSnapshot) => {
+          startipnow = dataSnapshot.val();
+          setStartIp(startipnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
+        .ref("actives/"+cuuid+"/destip")
+        .on("value", (dataSnapshot) => {
+          destipnow = dataSnapshot.val();
+          setDestIp(destipnow)
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
@@ -159,6 +192,10 @@ export default ({ navigation }) => {
     setUniqueValue(setnewuuid);
     navigation.navigate("Task Feed");
   };
+  const openLink = (itsip) => {
+    Linking.openURL(itsip);
+  };
+
   
 
 
@@ -207,7 +244,7 @@ export default ({ navigation }) => {
       style={color.BLACK}
       style={{textAlign: "center",}}
       >
-        Detail of your task: {locationt} 
+        Detail of your ride: From {locationt}  To {endlocationt}
         </Text>
         <Text
       style={color.BLACK}
@@ -215,8 +252,49 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
+        <Text> </Text>
+       <Text> </Text>
       {/* <RoundCornerButton title=  "Chat"
        onPress={() => onChattap(drivet,cuuid)} /> */}
+       <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => openLink(startipt)}
+        title= "Direction To Customer"
+       />
+       <Text> </Text>
+       <Text> </Text>
+
+       <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => openLink(destipt)}
+        title= "Direction To Destination"
+       />
       <RoundCornerButton title="End Job" 
        onPress={() => onEndJob()} />
        <Button

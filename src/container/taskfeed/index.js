@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { ShowTasks } from "../../component";
 import firebase from "../../firebase/config";
@@ -37,7 +37,7 @@ export default ({ navigation }) => {
 
   const [userDetail, setUserDetail] = useState({
     id: "",
-    location: "",
+    startlocation: "",
     price: "",
   });
   const [allUsers, setAllUsers] = useState([]);
@@ -46,8 +46,9 @@ export default ({ navigation }) => {
    const [selectedValue, setSelectedValue] = useState("");
  // const [name,setUserDetailn]=useState("");
  const [nearest,setnear]=useState("Identify your zone ");
- near = "hithere"
- const [tryme,settry]=useState("sawas");
+ var near = "hithere"
+ //const [tryme,settry]=useState("sawas");
+
   
 
 
@@ -205,20 +206,23 @@ export default ({ navigation }) => {
           let users = [];
           let currentUser = {
             id: "",
-            location: "",
+            startlocation: "",
             price: "",
           };
           dataSnapshot.forEach((child) => {
             if (uuid === child.val().uuid) {
               currentUser.id = uuid;
               currentUser.name = child.val().name;
-              currentUser.location = child.val().location;
+              currentUser.startlocation = child.val().startlocation;
               currentUser.price = child.val().price;
             } else {
               users.push({
                 id: child.val().uuid,
-                location: child.val().location,
+                startlocation: child.val().startlocation,
                 price: child.val().price,
+                endlocation: child.val().endlocation,
+                startip: child.val().startip,
+                destip: child.val().destip,
               });
             }
           });
@@ -305,6 +309,12 @@ export default ({ navigation }) => {
            //setAllUsers(reusersagain);
            navigation.navigate("Task Room");
 
+  };
+  const startloTap = (beginip) => {
+    Linking.openURL(beginip);
+  };
+  const endloTap = (finip) => {
+    Linking.openURL(finip);
   };
   const IdentZone = ()=>{
     getLocation();
@@ -420,23 +430,32 @@ export default ({ navigation }) => {
           let users = [];
           let currentUser = {
             id: "",
-            location: "",
+            startlocation: "",
             price: "",
           };
           dataSnapshot.forEach((child) => {
             if (uuid === child.val().uuid) {
               currentUser.id = uuid;
               currentUser.name = child.val().name;
-              currentUser.location = child.val().location;
+              currentUser.startlocation = child.val().startlocation;
               currentUser.price = child.val().price;
+              // currentUser.startlocation = child.val().startlocation;
+              // currentUser.price = child.val().price;
+              // currentUser.endlocation = child.val().endlocation;
+              // currentUser.zone = child.val().zone;
+              // currentUser.startip = child.val().startip;
+              // currentUser.desip = child.val().desip;
             } else {
               if (child.val().zone== zonesort
               || child.val().allzone == zonesort
               ){
               users.push({
                 id: child.val().uuid,
-                location: child.val().location,
+                startlocation: child.val().startlocation,
                 price: child.val().price,
+                endlocation: child.val().endlocation,
+                startip: child.val().startip,
+                desip: child.val().desip,
               });
               
             }
@@ -554,9 +573,14 @@ export default ({ navigation }) => {
         }
         renderItem={({ item }) => (
           <ShowTasks
-            location={item.location}
+            startlocation={item.startlocation}
+            endlocation = {item.endlocation}
             price = {item.price}
+            //checkip = {item.startip}
             onAcceptTap={() => acceptTap(item.id)}
+            onStartloTap={() => startloTap(item.startip)}
+            onEndloTap={() => endloTap(item.destip)}
+            
             
           />
         )}

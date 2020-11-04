@@ -23,10 +23,13 @@ export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
   //const [selectedValue, setSelectedValue] = useState("java");
-  var location = "From E12 Building To HM Building"
+  var location = "E12 Building";
   //var location2 = "World"
-  var price = 20
-  
+  var price = 40;
+  var destip = "https://goo.gl/maps/Jvk9PG1CUehnUAo89";
+  var destination = "Bunnag Building";
+  var startip = "https://goo.gl/maps/A8mT6vJGL19ZDcgv8";
+  var dummyzone = "d";
   
 
   var items = [
@@ -212,9 +215,9 @@ export default ({ navigation }) => {
      AddActive(location,price,uuid,name);
       
   };
-    const DataPusher2 = (location,price,uuid) => {
-     AddTask(location,price,uuid,name);
-     AddActive(location,price,uuid,name);
+    const DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
+     AddTask(location,destinationq,price,uuid,name,dummyzoneq,startipq,destipq);
+     AddActive(location,destinationq,price,uuid,name,startipq,destipq);
      navigation.navigate("Lobby");
       
   };
@@ -332,7 +335,7 @@ export default ({ navigation }) => {
        <RoundCornerButton title="Enter Lobby" 
        onPress={() =>  navigation.navigate("Lobby")} />
        <RoundCornerButton title="Find Driver" 
-       onPress={() =>  DataPusher2(location,price,uuid)} />
+       onPress={() =>  DataPusher2(location,destination,price,uuid,dummyzone,startip,destip)} />
        {/* <RoundCornerButton title="Dashboard" 
        onPress={() =>  navigation.navigate("Dashboard")} /> */}
        

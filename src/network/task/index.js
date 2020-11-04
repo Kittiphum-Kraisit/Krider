@@ -26,5 +26,3 @@ export const RemoveTask = async (guestid) => {
     return error;
   }
 };
-
-

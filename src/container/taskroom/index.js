@@ -224,31 +224,31 @@ export default ({ navigation }) => {
   };
   return (
     <SafeAreaView 
-    style={{ flex: 1, backgroundColor: color.WHITE }}
+    style={{ flex: 1, backgroundColor: color.Orange }}
     //style={stylex.container}
     >
-      
+      <Text> </Text>
+       <Text> </Text>
       <Text
-      style={color.RED}
-      style={{textAlign: "center",}}
+      style={{textAlign: "center",color : color.BLUE,fontSize: 25, fontWeight: 'bold'}}
       >
         Status: Pick up your customer
         </Text>
+        <Text> </Text>
       <Text
-      style={color.BLACK}
-      style={{textAlign: "center",}}
+      style={{color : color.WHITE,fontSize: 20}}
       >
         Your Customer: {drivet}
         </Text>
+        <Text> </Text>
         <Text
-      style={color.BLACK}
-      style={{textAlign: "center",}}
+      style={{color : color.WHITE,fontSize: 20}}
       >
         Detail of your ride: From {locationt}  To {endlocationt}
         </Text>
+        <Text> </Text>
         <Text
-      style={color.BLACK}
-      style={{textAlign: "center",}}
+      style={{color : color.WHITE,fontSize: 20}}
       >
         Cost: {pricet} baht
         </Text>

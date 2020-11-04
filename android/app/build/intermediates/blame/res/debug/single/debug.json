@@ -1,15 +1,15 @@
 [
     {
-        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher1.png"
     },
     {
-        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher1.png"
     },
     {
-        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher1.png"
     },
     {
         "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -20,23 +20,95 @@
         "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher2.png"
+    },
+    {
         "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round2.png"
     },
     {
-        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher2.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round2.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher1.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher1.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher2.png"
     },
     {
         "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round2.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher2.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\Convo-master\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round2.png.flat",
+        "source": "E:\\Convo-master\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round2.png"
     }
 ]

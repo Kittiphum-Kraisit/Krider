@@ -232,34 +232,39 @@ export default ({ navigation }) => {
   };
   return (
     <SafeAreaView 
-    style={{ flex: 1, backgroundColor: color.WHITE }}
+    style={{ flex: 1, backgroundColor: color.Orange }}
     //style={stylex.container}
     >
+      <Text> </Text>
+        <Text> </Text>
       
       <Text
-      style={color.RED}
+      style={{textAlign: "center",color : color.BLUE,fontSize: 25,fontWeight: 'bold'}}
       >
         Status: {waitert}
         </Text>
+        <Text> </Text>
       <Text
-      style={color.BLACK}
+      style={{color :color.WHITE, fontSize: 20}}
       >
         Your driver: {drivet}
         </Text>
+        <Text> </Text>
         <Text
-      style={color.BLACK}
+      style={{color:color.WHITE,fontSize: 20}}
+      
       >
         Detail of your ride: From {locationt}  To {endlocationt}
         </Text>
-        
+        <Text> </Text>
         <Text
-      style={color.BLACK}
+      style={{color:color.WHITE,fontSize: 20}}
       >
         Cost: {pricet} baht
         </Text>
         
-        <RoundCornerButton title="Cancel Search" 
-       onPress={() => onCanc()} />
+        {/* <RoundCornerButton title="Cancel Search" 
+       onPress={() => onCanc()} /> */}
 
         <Text> </Text>
         <Text> </Text>
@@ -269,7 +274,7 @@ export default ({ navigation }) => {
        fontSize: 20,
    }}
        style = {{ 
-         //backgroundColor: color.Orange,
+        backgroundColor: color.Orange,
     width: '50%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
@@ -295,12 +300,12 @@ export default ({ navigation }) => {
        style = {{ 
          //backgroundColor: color.Orange,
     width: '50%',
-    height: appStyle.btnHeight,
+    // height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: appStyle.btnMarginVertical,
-    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+    // marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold'
   }}
         onPress={() => onCanc()}
         disabled={!isFound}
@@ -315,7 +320,7 @@ export default ({ navigation }) => {
        fontSize: 16,
    }}
       style = {{ 
-         //backgroundColor: color.Orange,
+         backgroundColor: color.Orange,
     width: '50%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,

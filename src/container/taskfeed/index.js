@@ -514,7 +514,7 @@ export default ({ navigation }) => {
 
     //render(){
   return(
-    <SafeAreaView style={{ flex: 1, backgroundColor: color.WHITE }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: color.CREAM }}>
       <RoundCornerButton title="Map Tour" 
        onPress={() => navigation.navigate("Map Tour")} />
        {/* <RoundCornerButton title="Identify My Zone" 
@@ -528,7 +528,8 @@ export default ({ navigation }) => {
        <Text
        style={color.BLACK}>Longitude: {currentLong}</Text> */}
        <Text
-       style={color.BLACK}>Your Nearest Zone: {nearest}</Text>
+       style={{textAlign: "center",color : color.WHITE,fontSize: 18, fontWeight: 'bold'}}
+       >Your Nearest Zone: {nearest}</Text>
        {/* <Button
         //onPress={() => }
         onPress={trygetLocation}
@@ -541,7 +542,7 @@ export default ({ navigation }) => {
        
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
+        style={{ height: 70, width: 150,color : color.WHITE ,fontSize: 18, fontWeight: 'bold'}}
         onValueChange={(itemValue, itemIndex) => zonerMaster(itemValue)}
       >
         <Picker.Item label="All Zone" value="z" />

@@ -191,7 +191,7 @@ export default ({ navigation }) => {
     }
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: color.WHITE }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: color.CREAM }}>
       {/* {getScrollPosition > getOpacity() && (
         <StickyHeader
           name={name}
@@ -199,9 +199,15 @@ export default ({ navigation }) => {
         //   onImgTap={() => imgTap(profileImg, name)}
         />
       )} */}
+      <Text> </Text>
+      <Text> </Text>
       <Text
-
-      >Welcome Back {name} ! Select your role to continue</Text>
+      style={{textAlign: "center",color : color.Orange,fontSize: 25,fontWeight: 'bold'}}
+      >Welcome Back {name} ! </Text>
+      <Text
+      style={{textAlign: "center",color : color.WHITE,fontSize: 25,fontWeight: 'bold'}}
+      > Select your role to continue </Text>
+      <Text> </Text>
       <RoundCornerButton title="Enter As Driver" 
        onPress={() => navigation.navigate("Task Feed")} />
        <RoundCornerButton title="Enter As Customer" 

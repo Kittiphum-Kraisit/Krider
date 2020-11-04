@@ -1,6 +1,6 @@
 import firebase from "../../firebase/config";
 
-export const AddActive = async (location,price,uid,cusname ) => {
+export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,stip,deip ) => {
   try {
     return await firebase
       .database()
@@ -8,11 +8,14 @@ export const AddActive = async (location,price,uid,cusname ) => {
       .set({
         waiter:"Finding your driver",
         cusname:cusname,
-        location: location,
+        startlocation: firstlocation,
+        endlocation: lastlocation,
         price: price,
         uuid: uid,
         driver: " ",
         driveid: "no",
+        startip : stip,
+        destip : deip
       });
   } catch (error) {
     return error;
@@ -68,6 +71,14 @@ DriverRef = firebase.database().ref("actives/" + guestUserId + "driver" )
 DriverRef.transaction.update(function(name){
   if (name == null) {
     return driver
+  } else {
+    console.log("Name is already written")
+  }
+});
+DriverRef = firebase.database().ref("actives/" + guestUserId + "waiter" )
+DriverRef.transaction.update(function(wait){
+  if (wait == "Finding your driver") {
+    return "Found your driver"
   } else {
     console.log("Name is already written")
   }

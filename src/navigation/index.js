@@ -13,16 +13,9 @@ import {
   Lobby,
   Taskroom,
   RoleSelect,
-  TaskLoader,
-  ZoneA,
-  ZoneB,
-  ZoneC,
-  ZoneD,
-  ZoneSelect,
-  MapTour
+  LocationF
 } from "../container";
 import { color } from "../utility";
-import zoneselector from "../container/zoneselector";
 
 const Stack = createStackNavigator();
 
@@ -79,83 +72,24 @@ function NavContainer() {
           }}
         />
         <Stack.Screen
-          name="Map Tour"
-          component={MapTour}
-          options={{
-            headerBackTitle: null,
-          }}
-        />
-        <Stack.Screen
           name="Location Picker"
           component={AsCus}
           options={{
             headerBackTitle: null,
-             headerLeft: null,
           }}
         />
         <Stack.Screen
           name="Task Feed"
           component={AsRider}
-          //options={{ headerShown: false }}
           options={{
             headerBackTitle: null,
-             headerLeft: null,
-          }}
-        />
-        <Stack.Screen
-          name="Task Feed Zone A"
-          component={ZoneA}
-          //options={{ headerShown: false }}
-          options={{
-            headerBackTitle: null,
-             headerLeft: null,
-          }}
-        />
-        <Stack.Screen
-          name="Task Feed Zone B"
-          component={ZoneB}
-          //options={{ headerShown: false }}
-          options={{
-            headerBackTitle: null,
-             headerLeft: null,
-          }}
-        />
-        <Stack.Screen
-          name="Task Feed Zone C"
-          component={ZoneC}
-          //options={{ headerShown: false }}
-          options={{
-            headerBackTitle: null,
-             headerLeft: null,
-          }}
-        />
-        <Stack.Screen
-          name="Task Feed Zone D"
-          component={ZoneD}
-          //options={{ headerShown: false }}
-          options={{
-            headerBackTitle: null,
-             headerLeft: null,
           }}
         />
         <Stack.Screen
           name="Lobby"
           component={Lobby}
-          options={{ headerShown: false }}
-          // options={{
-          //   headerBackTitle: null,
-          //    headerLeft: null,
-
-          // }}
-        />
-        <Stack.Screen
-          name="Select Your Zone"
-          component={ZoneSelect}
-         // options={{ headerShown: false }}
           options={{
             headerBackTitle: null,
-             headerLeft: null,
-
           }}
         />
         <Stack.Screen
@@ -163,7 +97,6 @@ function NavContainer() {
           component={Taskroom}
           options={{
             headerBackTitle: null,
-             headerLeft: null,
           }}
         />
         <Stack.Screen
@@ -171,18 +104,14 @@ function NavContainer() {
           component={RoleSelect}
           options={{
             headerBackTitle: null,
-             headerLeft: null,
           }}
         />
         <Stack.Screen
-          name="Task Loader"
-          component={TaskLoader}
-          options={{ headerShown: false }}
-          // options={{
-          //   headerBackTitle: null,
-          //    headerLeft: null,
-
-          // }}
+          name="Yardfon"
+          component={LocationF}
+          options={{
+            headerBackTitle: null,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

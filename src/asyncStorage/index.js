@@ -3,9 +3,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 export const keys = {
   uuid: 'uuid',
 };
-export const cuskeys ={
-  cuuid: 'cuuid',
-};
 
 const setAsyncStorage = async (key, item) => {
   try {

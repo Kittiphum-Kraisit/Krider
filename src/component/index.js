@@ -1,4 +1,5 @@
 import RoundCornerButton from "./button/RoundCornerButton";
+import CuteButton from "./button/CuteButton"
 import InputField from "./input";
 import Logo from "./logo";
 import Loader from "./loader";
@@ -11,11 +12,10 @@ import ShowTasks from "./ShowTasks";
 import ShowActives from "./ShowActives";
 import ShowDriver from "./ShowDriver";
 import ShowPrice from "./ShowPrice";
-import ShowLocas from "./ShowLocas";
-
 
 export {
   RoundCornerButton,
+  CuteButton,
   InputField,
   Logo,
   Loader,
@@ -27,6 +27,6 @@ export {
   ShowTasks,
   ShowActives,
   ShowDriver,
-  ShowPrice,
-  ShowLocas,
+  ShowPrice
+
 };

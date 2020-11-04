@@ -24,6 +24,7 @@ const ShowTasks = ({ location, onAcceptTap ,price}) => {
 
           <Body>
             <Text style={styles.LocationName}
+
              >
               {location} 
             </Text>

@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
 import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import ImagePicker from "react-native-image-picker";
-import { Profile, ShowUsers, StickyHeader,ShowActives, ShowDriver, ShowPrice } from "../../component";
 import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
@@ -11,7 +9,7 @@ import { uuid, smallDeviceHeight } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet } from "../../network";
-import { InputField, RoundCornerButton, Logo } from "../../component";
+import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
 
 
 export default ({ navigation }) => {
@@ -71,18 +69,6 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
-      // firebase
-      //   .database()
-      //   .ref("actives/"+uuid+"/uuid")
-      //   .on("value", (dataSnapshot) => {
-      //     checkstill = dataSnapshot.val();
-      //     if (uuid != checkstill){
-      //       navigation.navigate("Location Picker");
-      //     }
-      //     dispatchLoaderAction({
-      //       type: LOADING_STOP,
-      //     });
-      //   });
       firebase
         .database()
         .ref("actives/"+uuid+"/driveid")
@@ -169,22 +155,14 @@ export default ({ navigation }) => {
 
   };
 
-  
-
-
-
-
-  const onChattap = (drivername,driveridna) => {
+  const onChattap = () => {
       navigation.navigate("Chat", {
-        name: drivername,
-        guestUserId: driveridna,
+        driver,
+        driveid,
         currentUserId: uuid,
       });
 
   };
-
-  
-
 
   const getOpacity = () => {
     if (deviceHeight < smallDeviceHeight) {
@@ -219,19 +197,14 @@ export default ({ navigation }) => {
       >
         Cost: {pricet} baht
         </Text>
-        <RoundCornerButton title="Cancel Search" 
-       onPress={() => onCanc()} />
-
-        <Text> </Text>
-        <Text> </Text>
-         <Button
+        <Button title = "Chat"
        titleStyle={{
        color: color.BLACK,
        fontSize: 20,
    }}
        style = {{ 
          //backgroundColor: color.Orange,
-    width: '50%',
+    width: '90%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
@@ -239,23 +212,21 @@ export default ({ navigation }) => {
     marginVertical: appStyle.btnMarginVertical,
     fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
-         onPress={() => onChattap(drivet,driveidt)}
+        onPress={() => onChattap()}
         disabled={isFound}
-        title= "Chat"
+        
        />
-      {/* <RoundCornerButton title=  "Chat"
-       onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} /> */}
+      <RoundCornerButton title="Cancel Search (Debug)" 
+       onPress={() => onCanc()} />
       
-       <Text> </Text>
-       <Text> </Text>
-       <Button
+      <Button
        titleStyle={{
        color: color.BLACK,
        fontSize: 20,
    }}
        style = {{ 
          //backgroundColor: color.Orange,
-    width: '50%',
+    width: '90%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
@@ -267,8 +238,6 @@ export default ({ navigation }) => {
         disabled={!isFound}
         title= "Cancel Search"
        />
-       <Text> </Text>
-       <Text> </Text>
        <Button 
       // style = {styles.text}
        titleStyle={{
@@ -277,13 +246,13 @@ export default ({ navigation }) => {
    }}
       style = {{ 
          //backgroundColor: color.Orange,
-    width: '50%',
+    width: '90%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: appStyle.btnMarginVertical,
-    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
  }}
         onPress={() => onMeet()}
         disabled={isMetc}
@@ -295,22 +264,4 @@ export default ({ navigation }) => {
     </SafeAreaView>
   );
 };
-// const styles = StyleSheet.create({
-//   text:{
-//     fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
-//     },
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#fff',
-//   },
-//   myButton:{
-//     width: '90%',
-//     borderRadius: appStyle.btnBorderRadius,
-//     height: appStyle.btnHeight,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     marginVertical: appStyle.btnMarginVertical,
-//   }
-// });
+

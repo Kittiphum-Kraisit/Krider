@@ -5,7 +5,7 @@ export default StyleSheet.create({
   btn: {
     //backgroundColor: appStyle.fieldBgColor,
     backgroundColor: color.Orange,
-    width: '90%',
+    width: '95%',
     height: appStyle.btnHeight,
     borderRadius: appStyle.btnBorderRadius,
     alignItems: 'center',

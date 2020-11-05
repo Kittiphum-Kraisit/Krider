@@ -4,7 +4,7 @@ import { Card, CardItem, Left, Body, Thumbnail } from "native-base";
 import styles from "./styles";
 import { color } from "../../utility";
 
-const ShowTasks = ({ location, onAcceptTap ,price}) => {
+const ShowTasks = ({ startlocation,endlocation,price, onAcceptTap,onStartloTap ,onEndloTap}) => {
   return (
     <Card style={styles.cardStyle}>
       <CardItem style={styles.cardItemStyle}>
@@ -20,13 +20,28 @@ const ShowTasks = ({ location, onAcceptTap ,price}) => {
           title="ACCEPT TASK" 
           onPress={onAcceptTap}
            />
+           {/* <Button 
+          color= "rgb(0,120,0)"
+          title="Startpoint Direction" 
+          onPress={onStartloTap}
+           />
+           <Button 
+          color= "rgb(0,120,0)"
+          title="Endpoint Direction" 
+          onPress={onEndloTap}
+           /> */}
           
 
           <Body>
             <Text style={styles.LocationName}
-
+            onPress={onStartloTap}
              >
-              {location} 
+             From {startlocation} 
+            </Text>
+            <Text style={styles.LocationName}
+            onPress={onEndloTap}
+             >
+             To {endlocation} 
             </Text>
             <Text style={styles.PriceName}
              >

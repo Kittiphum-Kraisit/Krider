@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
-import { uuid, smallDeviceHeight,cuuid } from "../../utility/constants";
-import { clearAsyncStorage } from "../../asyncStorage";
+import { uuid, smallDeviceHeight,cuuid, setUniqueValue } from "../../utility/constants";
+import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask } from "../../network";
 import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
@@ -16,9 +16,17 @@ export default ({ navigation }) => {
   const { dispatchLoaderAction } = globalState;
   const [cusn,setCusname] = useState("");
   const [locationt,setLocation] = useState("");
+  const [endlocationt,setEndLocation] = useState("");
   const [pricet,setPrice] = useState("");
   const [waitert,setWaiter] = useState("");
   const [isMet,checkMeet] = useState(true);
+  const [startipt,setStartIp]=useState("");
+  const [destipt,setDestIp]=useState("");
+
+  // var allprice = 800;
+  // var head = 8;
+  // var eachprice = allprice/head;
+
   const [userDetail, setUserDetail] = useState({
     id: "",
     driver: "",
@@ -77,10 +85,40 @@ export default ({ navigation }) => {
         });
         firebase
         .database()
-        .ref("actives/"+cuuid+"/location")
+        .ref("actives/"+cuuid+"/startlocation")
         .on("value", (dataSnapshot) => {
           locationnow = dataSnapshot.val();
           setLocation(locationnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
+        .ref("actives/"+cuuid+"/endlocation")
+        .on("value", (dataSnapshot) => {
+          endlocationnow = dataSnapshot.val();
+          setEndLocation(endlocationnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
+        .ref("actives/"+cuuid+"/startip")
+        .on("value", (dataSnapshot) => {
+          startipnow = dataSnapshot.val();
+          setStartIp(startipnow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
+        .ref("actives/"+cuuid+"/destip")
+        .on("value", (dataSnapshot) => {
+          destipnow = dataSnapshot.val();
+          setDestIp(destipnow)
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
@@ -129,19 +167,25 @@ export default ({ navigation }) => {
       .catch((err) => alert(err));
   };
   const onEndJob = () => {
-    navigation.navigate("Task Feed");
-    RemoveTask(cuuid);
+    setnewuuid = uuid;
     RemoveActive(cuuid);
-
+    clearAsyncStorage()
+    setAsyncStorage(keys.uuid,setnewuuid)
+    setUniqueValue(setnewuuid);
+    navigation.navigate("Task Feed");
   };
+  const openLink = (itsip) => {
+    Linking.openURL(itsip);
+  };
+
   
 
 
 
-  const onChattap = ( driver, driveid) => {
+  const onChattap = ( custname, cusid) => {
       navigation.navigate("Chat", {
-        driver,
-        driveid,
+        name: custname,
+        guestUserId: cusid,
         currentUserId: uuid,
       });
 
@@ -155,43 +199,109 @@ export default ({ navigation }) => {
   };
   return (
     <SafeAreaView 
-    style={{ flex: 1, backgroundColor: color.WHITE }}
+    style={{ flex: 1, backgroundColor: color.Orange }}
     //style={stylex.container}
     >
-      
+      <Text> </Text>
+       <Text> </Text>
       <Text
-      style={color.RED}
-      style={{textAlign: "center",}}
+      style={{textAlign: "center",color : color.BLUE,fontSize: 25, fontWeight: 'bold'}}
       >
         Status: Pick up your customer
         </Text>
+        <Text> </Text>
       <Text
-      style={color.BLACK}
-      style={{textAlign: "center",}}
+      style={{color : color.WHITE,fontSize: 20}}
       >
         Your Customer: {cusn}
         </Text>
+        <Text> </Text>
         <Text
-      style={color.BLACK}
-      style={{textAlign: "center",}}
+      style={{color : color.WHITE,fontSize: 20}}
       >
-        Detail of your task: {locationt} 
+        Detail of your ride: From {locationt}  To {endlocationt}
         </Text>
+        <Text> </Text>
         <Text
-      style={color.BLACK}
-      style={{textAlign: "center",}}
+      style={{color : color.WHITE,fontSize: 20}}
       >
         Cost: {pricet} baht
         </Text>
-      <RoundCornerButton title=  "Chat"
-       onPress={() => onChattap("aero","nvojufBwJJfuFqaIlYg17rtjLVo2")} />
+        <Text> </Text>
+       <Text> </Text>
+      {/* <RoundCornerButton title=  "Chat"
+       onPress={() => onChattap(drivet,cuuid)} /> */}
+       <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => openLink(startipt)}
+        title= "Direction To Customer"
+       />
+       <Text> </Text>
+       <Text> </Text>
+
+       <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+         //backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => openLink(destipt)}
+        title= "Direction To Destination"
+       />
       <RoundCornerButton title="End Job" 
        onPress={() => onEndJob()} />
-      <Button
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => onChattap(drivet,cuuid)}
+        title= "Chat"
+       />
+       <Text> </Text>
+       <Text> </Text>
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
         onPress={() => onEndJob()}
         disabled={isMet}
         title= "End Job"
        />
+       
     </SafeAreaView>
   );
 };

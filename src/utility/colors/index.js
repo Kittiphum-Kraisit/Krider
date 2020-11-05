@@ -26,6 +26,9 @@ export const BLACK = "rgb(0, 0, 0)";
 export const SEMI_TRANSPARENT = "rgba(0,0,0,0.5)";
 export const RED = "rgba(255, 0, 0, 1)";
 export const SILVER = "rgb(192,192,192)";
+export const BLUE = "rgb(0, 0, 255)";
+export const AQUA = "rgb(0, 255, 255)";
+export const CREAM = "rgb(251, 198, 135)";
 
 export const DARK_GRAY = "rgb(46, 46, 46)";
 

@@ -1,15 +1,20 @@
 import firebase from "../../firebase/config";
+import { appStyle } from "../../utility";
 
-export const AddTask = async (location,price,uid,cusname ) => {
+export const AddTask = async (firstlocation,lastlocation,price,uid,cusname,stzone,stip,deip ) => {
   try {
     return await firebase
       .database()
       .ref("tasks/" + uid)
       .set({
-        location: location,
+        startlocation: firstlocation,
+        endlocation: lastlocation,
         cusname: cusname,
         price: price,
-        uuid: uid,      
+        uuid: uid,
+        zone: stzone,
+        startip : stip,
+        destip : deip,
       });
   } catch (error) {
     return error;

@@ -148,7 +148,7 @@ export default ({ navigation }) => {
             <View style={[globalStyle.containerCentered]}>
               {/* <Logo /> */}
               <Image style={globalStyle.tinyLogo}
-    source={require('./kogo.png')}
+    source={require('./kogoagain.png')}
   />
             </View>
           )}

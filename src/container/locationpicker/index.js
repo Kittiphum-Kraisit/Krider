@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect, Component, Fragment } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker ,Image} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import firebase from "../../firebase/config";
 import { Store } from "../../context/store";
@@ -10,7 +10,7 @@ import { UpdateUser, LogOutUser , AddTask, AddActive } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import { globalStyle, color } from "../../utility";
 import SearchableDropdown from 'react-native-searchable-dropdown';
-
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
@@ -73,10 +73,91 @@ export default ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <SimpleLineIcons
+        <View>
+          <TouchableOpacity style={{ right: 10 }} onPress={() =>
+            Alert.alert(
+              "Options",
+              "What do you want to do ?",
+              [
+                {
+                  text: "Log out",
+                  onPress: () => Alert.alert(
+              "Log Out",
+              "Do you want to log out ?",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "No",
+                },
+              ],
+              { cancelable: false }
+            ),
+                },
+                {
+                  text:"Change Role",
+                  onPress:()=>navigation.navigate("Role Select"),
+                },
+                {
+                  text: "Support",
+                  onPress: () => Alert.alert(
+              "Support",
+              "What do you want us to help you with ?",
+              [
+                {
+                  text: "Contact Us",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+                {
+                  text: "Map Tour",
+                  onPress:()=>navigation.navigate("Map Tour"),
+                }
+              ],
+              { cancelable: false }
+            ),
+                },
+                
+                
+
+              ],
+              { cancelable: false }
+            )
+          }>
+                  <Image 
+                  source={require("./logkout4.png")}
+                />
+                </TouchableOpacity>
+                {/* <SimpleLineIcons
           name="logout"
           size={26}
           color={color.WHITE}
+          style={{ right: 30 }}
+          onPress={() =>
+            Alert.alert(
+              "Accident Prevention",
+              "Do you want to log out",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+              ],
+              { cancelable: false }
+            )
+          }
+        /> */}
+        {/* <SimpleLineIcons
+          name="logout"
+          size={26}
+          color={color.Orange}
           style={{ right: 10 }}
           onPress={() =>
             Alert.alert(
@@ -94,7 +175,30 @@ export default ({ navigation }) => {
               { cancelable: false }
             )
           }
-        />
+        /> */}
+        </View>
+        // <SimpleLineIcons
+        //   name="logout"
+        //   size={26}
+        //   color={color.WHITE}
+        //   style={{ right: 10 }}
+        //   onPress={() =>
+        //     Alert.alert(
+        //       "Accident Prevention",
+        //       "Do you want to log out",
+        //       [
+        //         {
+        //           text: "Sure",
+        //           onPress: () => logout(),
+        //         },
+        //         {
+        //           text: "Cancel",
+        //         },
+        //       ],
+        //       { cancelable: false }
+        //     )
+        //   }
+        // />
         
       ),
     });

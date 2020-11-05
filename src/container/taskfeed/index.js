@@ -252,6 +252,7 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     getLocation();
+    subLocation();
     const requestLocaPermission = async()=>{
       if (Platform.OS==='ios'){
         getLocation();
@@ -437,6 +438,7 @@ export default ({ navigation }) => {
   }
   const ZoneCal = () => {
     getLocation();
+    subLocation();
 
     //near = "Locating you"
     if (currentLong>=100.778166 && currentLong<=100.9){

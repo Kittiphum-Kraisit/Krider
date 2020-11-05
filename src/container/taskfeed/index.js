@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking,Image} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { ShowTasks } from "../../component";
 import firebase from "../../firebase/config";
@@ -142,10 +142,91 @@ export default ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <SimpleLineIcons
+        <View>
+          <TouchableOpacity style={{ right: 10 }} onPress={() =>
+            Alert.alert(
+              "Options",
+              "What you do you want ?",
+              [
+                {
+                  text: "Log out",
+                  onPress: () => Alert.alert(
+              "Log Out",
+              "Do you want to log out ?",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "No",
+                },
+              ],
+              { cancelable: false }
+            ),
+                },
+                {
+                  text:"Change Role",
+                  onPress:()=>navigation.navigate("Role Select"),
+                },
+                {
+                  text: "Support",
+                  onPress: () => Alert.alert(
+              "Support",
+              "What do you want us to help you with ?",
+              [
+                {
+                  text: "Contact Us",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+                {
+                  text: "Map Tour",
+                  onPress:()=>navigation.navigate("Map Tour"),
+                }
+              ],
+              { cancelable: false }
+            ),
+                },
+                
+                
+
+              ],
+              { cancelable: false }
+            )
+          }>
+                  <Image 
+                  source={require("./logkout4.png")}
+                />
+                </TouchableOpacity>
+                {/* <SimpleLineIcons
           name="logout"
           size={26}
           color={color.WHITE}
+          style={{ right: 30 }}
+          onPress={() =>
+            Alert.alert(
+              "Accident Prevention",
+              "Do you want to log out",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+              ],
+              { cancelable: false }
+            )
+          }
+        /> */}
+        {/* <SimpleLineIcons
+          name="logout"
+          size={26}
+          color={color.Orange}
           style={{ right: 10 }}
           onPress={() =>
             Alert.alert(
@@ -163,8 +244,8 @@ export default ({ navigation }) => {
               { cancelable: false }
             )
           }
-        />
-        
+        /> */}
+        </View>
       ),
     });
   }, [navigation]);
@@ -515,8 +596,8 @@ export default ({ navigation }) => {
     //render(){
   return(
     <SafeAreaView style={{ flex: 1, backgroundColor: color.CREAM }}>
-      <RoundCornerButton title="Map Tour" 
-       onPress={() => navigation.navigate("Map Tour")} />
+      {/* <RoundCornerButton title="Map Tour" 
+       onPress={() => navigation.navigate("Map Tour")} /> */}
        {/* <RoundCornerButton title="Identify My Zone" 
         onPress={getLocation}
        /> */}

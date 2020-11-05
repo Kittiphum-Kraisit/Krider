@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
 import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import ImagePicker from "react-native-image-picker";
-import { Profile, ShowUsers, StickyHeader,ShowActives, ShowDriver, ShowPrice } from "../../component";
 import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
@@ -11,14 +9,12 @@ import { uuid, smallDeviceHeight,cuuid, setUniqueValue } from "../../utility/con
 import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask } from "../../network";
-import { InputField, RoundCornerButton, Logo } from "../../component";
+import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
 
 export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
-  //drivenow = "k";
-  //cuuid = cuuid;
-  const [drivet,setDriver] = useState("");
+  const [cusn,setCusname] = useState("");
   const [locationt,setLocation] = useState("");
   const [endlocationt,setEndLocation] = useState("");
   const [pricet,setPrice] = useState("");
@@ -37,7 +33,7 @@ export default ({ navigation }) => {
     location: "",
     price:"",
     driveid:"",
-    //drivenow:"",
+    //cusnow:"",
   });
   const [getScrollPosition, setScrollPosition] = useState(0);
   const [allUsers, setAllUsers] = useState([]);
@@ -77,26 +73,12 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
-      // firebase
-      //   .database()
-      //   .ref("actives/"+cuuid+"/driveid")
-      //   .on("value", (dataSnapshot) => {
-      //     checkdriverid = dataSnapshot.val();
-      //     if (uuid != checkdriverid){
-      //       cuuid = ""
-      //       navigation.navigate("Task Feed");
-      //     }
-      //     dispatchLoaderAction({
-      //       type: LOADING_STOP,
-      //     });
-      //   });
-      
         firebase
         .database()
         .ref("actives/"+cuuid+"/cusname")
         .on("value", (dataSnapshot) => {
-          drivenow = dataSnapshot.val();
-          setDriver(drivenow)
+          cusnow = dataSnapshot.val();
+          setCusname(cusnow)
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
@@ -208,13 +190,6 @@ export default ({ navigation }) => {
       });
 
   };
-
-  //var location = {location}
-  //var price = {price}
-  //var driver = {driver}
-  // * GET OPACITY
-
-
   const getOpacity = () => {
     if (deviceHeight < smallDeviceHeight) {
       return deviceHeight / 4;
@@ -238,7 +213,7 @@ export default ({ navigation }) => {
       <Text
       style={{color : color.WHITE,fontSize: 20}}
       >
-        Your Customer: {drivet}
+        Your Customer: {cusn}
         </Text>
         <Text> </Text>
         <Text

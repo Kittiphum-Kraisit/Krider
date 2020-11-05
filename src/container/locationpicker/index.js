@@ -1,17 +1,13 @@
 import React, { useContext, useEffect, useState, useLayoutEffect, Component, Fragment } from "react";
 import { SafeAreaView, Alert, Text, View, FlatList ,Picker ,Image} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import ImagePicker from "react-native-image-picker";
-import { Profile, ShowUsers, StickyHeader } from "../../component";
 import firebase from "../../firebase/config";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
-import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser , AddTask, AddActive } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
-import { setAsyncStorage, keys } from "../../asyncStorage";
 import { globalStyle, color } from "../../utility";
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -68,43 +64,13 @@ export default ({ navigation }) => {
 //     name: 'c',
 //   },
 // ];
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       selectedItems: [
-//         {
-//           id: 5,
-//           name: 'RNP Alley',
-//         },
-//         {
-//           id: 6,
-//           name: 'AJ Park',
-//         }
-//       ]
-//     }
-//   }
-// }
 
   const [userDetail, setUserDetail] = useState({
     id: "",
     name: "",
     profileImg: "",
   });
-  // const onGoPress = ()=> {
-  //   setAsyncStorage(keys.uuid, res.user.uid);
-  //         setUniqueValue(res.user.uid);
-  //         dispatchLoaderAction({
-  //           type: LOADING_STOP,
-  //         });
-  //         setInitialState(); goBack
-  //         navigation.navigate("Dashboard");
-  // }
-  
-  //<RoundCornerButton title="Enter" onPress={() => onGoPress()} />
 
-  //const [getScrollPosition, setScrollPosition] = useState(0);
-  //const [allUsers, setAllUsers] = useState([]);
   const { profileImg, name } = userDetail; //df
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -238,32 +204,7 @@ export default ({ navigation }) => {
         
       ),
     });
-  },
-   [navigation]
-   );
-  
-
-  // const handleOnChange = (name, value) => {
-  //   setCredential({
-  //     ...credential,
-  //     [name]: value,
-  //   });
-  // };
-  //   // * ON INPUT FOCUS
-
-  // const handleFocus = () => {
-  //   setTimeout(() => {
-  //     toggleLogo(false);
-  //   }, 200);
-  // };
-  // // * ON INPUT BLUR
-
-  // const handleBlur = () => {
-  //   setTimeout(() => {
-  //     toggleLogo(true);
-  //   }, 200);
-  // };
-
+  }, [navigation]);
   useEffect(() => {
     dispatchLoaderAction({
       type: LOADING_START,
@@ -339,15 +280,8 @@ export default ({ navigation }) => {
           {/* Single */}
           <SearchableDropdown
             onItemSelect={(item) => {
-              //const items = this.state.selectedItems;
-              //items.push(item)
-              //this.setState({ selectedItems: items });
             }}
             containerStyle={{ padding: 5 }}
-            // onRemoveItem={(item, index) => {
-            //   const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
-            //   this.setState({ selectedItems: items });
-            //}}
             itemStyle={{
               padding: 10,
               marginTop: 2,
@@ -371,7 +305,6 @@ export default ({ navigation }) => {
                     borderColor: '#ccc',
                     borderRadius: 5,
                 },
-                //onTextChange: text => alert(text)
               }
             }
             listProps={
@@ -381,28 +314,15 @@ export default ({ navigation }) => {
             }
         />
       </Fragment>
-      {/* <InputField
-              placeholder="If you can't find location above"
-              value={email}
-              onChangeText={(text) => handleOnChange("email", text)}
-              onFocus={() => handleFocus()}
-              onBlur={() => handleBlur()}
-            /> */}
       <Text>ENDPOINT</Text>
       <Fragment>
           
           {/* Single */}
           <SearchableDropdown
             onItemSelect={(item) => {
-              //const items = this.state.selectedItems;
-              //items.push(item)
-              //this.setState({ selectedItems: items });
             }}
             containerStyle={{ padding: 5 }}
-            // onRemoveItem={(item, index) => {
-            //   const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
-            //   this.setState({ selectedItems: items });
-            //}}
+            
             itemStyle={{
               padding: 10,
               marginTop: 2,
@@ -426,7 +346,6 @@ export default ({ navigation }) => {
                     borderColor: '#ccc',
                     borderRadius: 5,
                 },
-                //onTextChange: text => alert(text)
               }
             }
             listProps={
@@ -436,10 +355,10 @@ export default ({ navigation }) => {
             }
         />
       </Fragment>
-       {/* <RoundCornerButton title="Find Driver" 
-       onPress={() => DataPusher(location,price,uuid)} /> */}
        <RoundCornerButton title="Enter Lobby" 
        onPress={() =>  navigation.navigate("Lobby")} />
+       <RoundCornerButton title="Enter Yardfon" 
+       onPress={() =>  navigation.navigate("Yardfon")} />
        <RoundCornerButton title="Find Driver" 
        onPress={() =>  DataPusher2(location,destination,price,uuid,dummyzone,startip,destip)} />
        {/* <RoundCornerButton title="Dashboard" 

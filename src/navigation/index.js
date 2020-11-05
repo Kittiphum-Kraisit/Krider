@@ -13,6 +13,7 @@ import {
   Lobby,
   Taskroom,
   RoleSelect,
+  LocationF,
   TaskLoader,
   ZoneA,
   ZoneB,
@@ -176,6 +177,12 @@ function NavContainer() {
           }}
         />
         <Stack.Screen
+          name="Yardfon"
+          component={LocationF}
+          options={{
+            headerBackTitle: null,
+          }}/>
+          <Stack.Screen
           name="Task Loader"
           component={TaskLoader}
           options={{ headerShown: false }}

@@ -146,7 +146,7 @@ export default ({ navigation }) => {
           <TouchableOpacity style={{ right: 10 }} onPress={() =>
             Alert.alert(
               "Options",
-              "What you do you want ?",
+              "What do you want ?",
               [
                 {
                   text: "Log out",
@@ -434,23 +434,30 @@ export default ({ navigation }) => {
     if (currentLong>=100.778166 && currentLong<=100.9){
       if (currentLa>=13.728611 && currentLa<=13.9){
         near = "Zone B"
+        
       }else if (currentLa<13.728611 && currentLa>=13.1){
         near = "Zone A"
+        
       }else {
         near = "You are too far from KMITL"
+        
       }
     }
     else if (currentLong <100.778166 && currentLong >=100.1){
       if (currentLa>=13.728611 && currentLa<=13.9){
         near = "Zone C"
+        
       }else if (currentLa <13.728611 && currentLa>= 13.1){
         near = "Zone D"
+        
       }else {
         near = "You are too far from KMITL"
+        
       }
     }
     else {
       near = "You are too far from KMITL"
+      
     }
     setnear(near)
 

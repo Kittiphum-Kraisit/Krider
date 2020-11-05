@@ -30,42 +30,44 @@ export default ({ navigation }) => {
   var destination = "Bunnag Building";
   var startip = "https://goo.gl/maps/A8mT6vJGL19ZDcgv8";
   var dummyzone = "d";
+  let items = require('./localist.json');
+  
   
 
-  var items = [
-  {
-    id: 1,
-    name: 'HM Building',
-  },
-  {
-    id: 2,
-    name: 'E12 Building',
-  },
-  {
-    id: 3,
-    name: 'Airport raillink',
-  },
-  {
-    id: 4,
-    name: 'a',
-  },
-  {
-    id: 5,
-    name: 'RNP Alley',
-  },
-  {
-    id: 6,
-    name: 'AJ Park',
-  },
-  {
-    id: 7,
-    name: 'b',
-  },
-  {
-    id: 8,
-    name: 'c',
-  },
-];
+//   var items = [
+//   {
+//     id: 1,
+//     name: 'HM Building',
+//   },
+//   {
+//     id: 2,
+//     name: 'E12 Building',
+//   },
+//   {
+//     id: 3,
+//     name: 'Airport raillink',
+//   },
+//   {
+//     id: 4,
+//     name: 'a',
+//   },
+//   {
+//     id: 5,
+//     name: 'RNP Alley',
+//   },
+//   {
+//     id: 6,
+//     name: 'AJ Park',
+//   },
+//   {
+//     id: 7,
+//     name: 'b',
+//   },
+//   {
+//     id: 8,
+//     name: 'c',
+//   },
+// ];
 // class App extends React.Component {
 //   constructor(props) {
 //     super(props);

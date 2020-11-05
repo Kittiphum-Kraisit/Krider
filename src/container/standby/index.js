@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,Image } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,Image,Linking } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import ImagePicker from "react-native-image-picker";
 import { Profile, ShowUsers, StickyHeader } from "../../component";
@@ -64,7 +64,7 @@ export default ({ navigation }) => {
               [
                 {
                   text: "Contact Us",
-                  onPress: () => logout(),
+                  onPress: () => Linking.openURL('mailto:konfiree@gmail.com?subject=K-RIDER Support&body=Describe Your Problems Here'),
                 },
                 {
                   text: "Cancel",

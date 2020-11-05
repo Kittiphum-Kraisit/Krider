@@ -46,7 +46,7 @@ export default ({ navigation }) => {
    const [selectedValue, setSelectedValue] = useState("");
  // const [name,setUserDetailn]=useState("");
  const [nearest,setnear]=useState("Identify your zone ");
- var near = "hithere"
+ //var near = "hi"
  //const [tryme,settry]=useState("sawas");
 
   
@@ -177,7 +177,7 @@ export default ({ navigation }) => {
               [
                 {
                   text: "Contact Us",
-                  onPress: () => logout(),
+                  onPress: () => Linking.openURL('mailto:konfiree@gmail.com?subject=K-RIDER Support&body=Describe Your Problems Here'),
                 },
                 {
                   text: "Cancel",
@@ -251,6 +251,7 @@ export default ({ navigation }) => {
   }, [navigation]);
 
   useEffect(() => {
+    getLocation();
     const requestLocaPermission = async()=>{
       if (Platform.OS==='ios'){
         getLocation();
@@ -427,39 +428,46 @@ export default ({ navigation }) => {
     setnear(near)
     settry("deekrub")
   }
+  const DoubleCal = ()=>{
+    getLocation();
+    getLocation();
+    ZoneCal();
+    getLocation();
+     ZoneCal();
+  }
   const ZoneCal = () => {
     getLocation();
 
-    near = "Locating you"
+    //near = "Locating you"
     if (currentLong>=100.778166 && currentLong<=100.9){
       if (currentLa>=13.728611 && currentLa<=13.9){
-        near = "Zone B"
+        setnear("Zone B")
         
       }else if (currentLa<13.728611 && currentLa>=13.1){
-        near = "Zone A"
+        setnear("Zone A")
         
       }else {
-        near = "You are too far from KMITL"
+        setnear("You are too far from KMITL")
         
       }
     }
     else if (currentLong <100.778166 && currentLong >=100.1){
       if (currentLa>=13.728611 && currentLa<=13.9){
-        near = "Zone C"
+        setnear("Zone C")
         
       }else if (currentLa <13.728611 && currentLa>= 13.1){
-        near = "Zone D"
+       setnear("Zone D")
         
       }else {
-        near = "You are too far from KMITL"
+        setnear("You are too far from KMITL")
         
       }
     }
     else {
-      near = "You are too far from KMITL"
+      setnear("You are too far from KMITL")
       
     }
-    setnear(near)
+    //setnear(near)
 
   };
   // near = "Locating you"

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect, Component, Fragment } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker ,Image} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker ,Image,Linking} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import firebase from "../../firebase/config";
 import { Store } from "../../context/store";
@@ -110,7 +110,7 @@ export default ({ navigation }) => {
               [
                 {
                   text: "Contact Us",
-                  onPress: () => logout(),
+                  onPress: () => Linking.openURL('mailto:konfiree@gmail.com?subject=K-RIDER Support&body=Describe Your Problems Here'),
                 },
                 {
                   text: "Cancel",

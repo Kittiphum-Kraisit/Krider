@@ -34,15 +34,12 @@ const ShowTasks = ({ startlocation,endlocation,price, onAcceptTap,onStartloTap ,
 
           <Body>
             <Text style={styles.LocationName}
-<<<<<<< HEAD
-=======
             onPress={onStartloTap}
              >
              From {startlocation} 
             </Text>
             <Text style={styles.LocationName}
             onPress={onEndloTap}
->>>>>>> d03791078f77854e869a727950637c35a112cd03
              >
              To {endlocation} 
             </Text>

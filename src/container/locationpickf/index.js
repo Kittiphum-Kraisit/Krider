@@ -20,7 +20,13 @@ export default class App extends Component {
       super();
       this.state={
         PickerValue:'',
-        Price: 0
+        Price: 0,
+        place1: '',
+        place2: '',
+        zone1: '',
+        ip1: '',
+        ip2: '',
+        myactualname: ''
       }
     };
      DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
@@ -151,6 +157,15 @@ export default class App extends Component {
   places = {}
   onChangeHandler = (place, value) => {
     this.places[place] = value
+    if (place == "place1"){
+      this.setState({place1 : value.name })
+      this.setState({zone1 : value.zone })
+      this.setState({ip1 : value.ip })
+    } else if (place == "place2"){
+      this.setState({place2 : value.name})
+      this.setState({ip2 : value.ip })
+    }
+
     if (Object.keys(this.places).length == 2){
       this.setState({price: Prices(this.places["place1"], this.places["place2"])})
     }

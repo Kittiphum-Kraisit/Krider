@@ -643,11 +643,11 @@ export default ({ navigation }) => {
         style={{ height: 70, width: 150,color : color.WHITE ,fontSize: 18, fontWeight: 'bold'}}
         onValueChange={(itemValue, itemIndex) => zonerMaster(itemValue)}
       >
-        <Picker.Item label="All Zone" value="z" />
-        <Picker.Item label="Zone A" value="a" />
-        <Picker.Item label="Zone B" value="b" />
-        <Picker.Item label="Zone C" value="c" />
-        <Picker.Item label="Zone D" value="d" />
+        <Picker.Item label="All Zone" value="Z" />
+        <Picker.Item label="Zone A" value="A" />
+        <Picker.Item label="Zone B" value="B" />
+        <Picker.Item label="Zone C" value="C" />
+        <Picker.Item label="Zone D" value="D" />
       </Picker>
       {/* All tasks */}
   {/* <Text>{zonesort}</Text> */}

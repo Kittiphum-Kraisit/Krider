@@ -248,6 +248,7 @@ export default ({ navigation }) => {
   }}
         onPress={() => openLink(startipt)}
         title= "Direction To Customer"
+        disabled={!isMet}
        />
        <Text> </Text>
        <Text> </Text>
@@ -269,6 +270,7 @@ export default ({ navigation }) => {
   }}
         onPress={() => openLink(destipt)}
         title= "Direction To Destination"
+        disabled={isMet}
        />
       <RoundCornerButton title="End Job" 
        onPress={() => onEndJob()} />

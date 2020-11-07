@@ -20,6 +20,18 @@ export const AddTask = async (firstlocation,lastlocation,price,uid,cusname,stzon
     return error;
   }
 };
+export const AddPrice = async (price ) => {
+  try {
+    return await firebase
+      .database()
+      .ref("prices/" + uid)
+      .set({
+        myprice: price
+      });
+  } catch (error) {
+    return error;
+  }
+};
 
 export const RemoveTask = async (guestid) => {
   try {

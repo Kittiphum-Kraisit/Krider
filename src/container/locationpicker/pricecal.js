@@ -7,13 +7,13 @@ const Prices2 = (place1,place2) => {
               //console.log('20');
               return 'ask your driver'
             }
-          else if (place1 == place2){
-            //console.log('10');
-            return '10'
-          }
+          // else if (place1 == place2){
+          //   //console.log('10');
+          //   return '10'
+          // }
           else {
             //console.log('15');
-            return '15'
+            return '10'
           }
         }
         else if (place1 !== place2){

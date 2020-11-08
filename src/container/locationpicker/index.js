@@ -182,7 +182,7 @@ var ccost = 0;
             )
           }>
                   <Image 
-                  source={require("./logkout4.png")}
+                  source={require("./optionsmaster.png")}
                 />
                 </TouchableOpacity>
                 {/* <SimpleLineIcons

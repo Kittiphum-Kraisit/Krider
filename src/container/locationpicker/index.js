@@ -6,7 +6,7 @@ import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight, setZone } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
-import { UpdateUser, LogOutUser , AddTask, AddActive,AddPrice } from "../../network";
+import { UpdateUser, LogOutUser , AddTask, AddActive } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import { globalStyle, color } from "../../utility";
 import SearchableDropdown from 'react-native-searchable-dropdown';
@@ -43,11 +43,10 @@ export default ({ navigation }) => {
     ip: "",
   });
   const [myitem2,setMyitem2] = useState("");
-  const[fp,setFP]=useState(0);
-  const[sp,setSP]=useState('');
-  const [plcs,setplcs]=useState({});
-  const [ggg,setggg]=useState(0);
-  const [pricenow,setpricenow] = useState("hh");
+
+ 
+
+
   
 
 
@@ -99,9 +98,7 @@ var ccost = 0;
   var Place=()=>{
       alert(myitem);
     }
-  var zonef = "";
-  var pp = "";
-  var zch = 0;
+ 
   const  onChangeHandler =  (place, value) => {
     //setCost(Prices2(startZone,endZone))
     // setggg(ggg+1);
@@ -113,171 +110,16 @@ var ccost = 0;
       setFirstIP(value.ip)
       setCost(Prices2(startZone,endZone))
 
-      // if (startZone == endZone) {
-      //     if (startZone == endZone){
-      //       //console.log('10');
-      //       setCost("1")
-      //     }
-      //     else {
-      //       //console.log('15');
-      //       setCost("2")
-      //     }
-      //   }
-      //   else if (startZone !== endZone){
-      //     if (startZone == 'A') {
-      //       if (endZone == 'B'){
-      //         //console.log('20');
-      //         setCost("3")
-      //       }
-      //       else if (endZone == 'C'){
-      //         //console.log('25');
-      //         setCost("4")
-      //       }
-      //       else if (endZone == 'D'){
-      //         //console.log('20');
-      //         setCost("5")
-      //       }
-      //     }
-      //     else if (startZone == 'B') {
-      //       if (endZone == 'C'){
-      //         //console.log('20');
-      //         setCost("6")
-      //       }
-      //       else if (endZone == 'D'){
-      //         //console.log('25');
-      //         setCost("7")
-      //       }
-      //       else if (endZone == 'A'){
-      //         //console.log('20');
-      //        setCost("8")
-      //       }
-      //     }
-      //     else if (startZone == 'C') {
-      //       if (endZone == 'D'){
-      //         //console.log('20');
-      //         setCost("9")
-      //       }
-      //       else if (endZone == 'A'){
-      //         //console.log('25');
-      //         setCost("100")
-      //       }
-      //       else if (endZone == 'B'){
-      //         //console.log('20');
-      //         setCost("11")
-      //       }
-      //     }
-      //     else if (startZone == 'D') {
-      //       if (endZone == 'C'){
-      //         //console.log('20');
-      //         setCost("12")
-      //       }
-      //       else if (endZone == 'A'){
-      //         //console.log('25');
-      //         setCost("13")
-      //       }
-      //       else if (endZone == 'B'){
-      //         //console.log('20');
-      //         setCost("14")
-      //       }
-      //     }
-      //   }else {
-      //    setCost("0")
-      //   }
 
 
-
-      //console.log(Prices2(startZone,endZone))
-      // pp = Prices2(startZone,endZone)
-      // setCost(pp)
-      //setpricenow(value.zone)
-      //AddPrice(cost)
     } else if (place == "place2"){
       setLastL(value.name)
       setEndZone(value.zone)
       setLastIP(value.ip)
       setCost(Prices2(startZone,endZone))
 
-      //  if (startZone == endZone) {
-      //     if (startZone == endZone){
-      //       //console.log('10');
-      //       setCost("1")
-      //     }
-      //     else {
-      //       //console.log('15');
-      //       setCost("2")
-      //     }
-      //   }
-      //   else if (startZone !== endZone){
-      //     if (startZone == 'A') {
-      //       if (endZone == 'B'){
-      //         //console.log('20');
-      //         setCost("3")
-      //       }
-      //       else if (endZone == 'C'){
-      //         //console.log('25');
-      //         setCost("4")
-      //       }
-      //       else if (endZone == 'D'){
-      //         //console.log('20');
-      //         setCost("5")
-      //       }
-      //     }
-      //     else if (startZone == 'B') {
-      //       if (endZone == 'C'){
-      //         //console.log('20');
-      //         setCost("6")
-      //       }
-      //       else if (endZone == 'D'){
-      //         //console.log('25');
-      //         setCost("7")
-      //       }
-      //       else if (endZone == 'A'){
-      //         //console.log('20');
-      //        setCost("8")
-      //       }
-      //     }
-      //     else if (startZone == 'C') {
-      //       if (endZone == 'D'){
-      //         //console.log('20');
-      //         setCost("9")
-      //       }
-      //       else if (endZone == 'A'){
-      //         //console.log('25');
-      //         setCost("100")
-      //       }
-      //       else if (endZone == 'B'){
-      //         //console.log('20');
-      //         setCost("11")
-      //       }
-      //     }
-      //     else if (startZone == 'D') {
-      //       if (endZone == 'C'){
-      //         //console.log('20');
-      //         setCost("12")
-      //       }
-      //       else if (endZone == 'A'){
-      //         //console.log('25');
-      //         setCost("13")
-      //       }
-      //       else if (endZone == 'B'){
-      //         //console.log('20');
-      //         setCost("14")
-      //       }
-      //     }
-      //   }else {
-      //    setCost("0")
-      //   }
-
-
-
-
-      //console.log(Prices2(startZone,endZone))
-      //  pp = Prices2(startZone,endZone)
-      // setCost(pp)
-      //AddPrice(cost)
-      //setpricenow(value.zone)
+     
     }
-    //setCost(pp)
   }
 
   const { profileImg, name } = userDetail; //df
@@ -414,14 +256,9 @@ var ccost = 0;
       ),
     });
   }, [navigation]);
+  
   useEffect(() => {
-    //onChangeHandler();
-    //ggg;
-    //setCost;
-    //cost;
-    //zch;
-    //setCost(Prices2(startZone,endZone));
-    //setCost(Prices2(startZone,endZone));
+   
     dispatchLoaderAction({
       type: LOADING_START,
     });
@@ -455,16 +292,7 @@ var ccost = 0;
             type: LOADING_STOP,
           });
         });
-        // firebase
-        // .database()
-        // .ref("actives/"+uuid+"/myprice")
-        // .on("value", (dataSnapshot) => {
-        //   pricefornow = dataSnapshot.val();
-        //   setpricenow(pricefornow)
-        //   // dispatchLoaderAction({
-        //   //   type: LOADING_STOP,
-        //   // });
-        // });
+       
     } catch (error) {
       alert(error);
       dispatchLoaderAction({
@@ -472,6 +300,7 @@ var ccost = 0;
       });
     }
   },[]
+
    );
    useEffect (() => {
     setCost(Prices2(startZone,endZone));
@@ -492,14 +321,7 @@ var ccost = 0;
      AddActive(location,price,uuid,name);
       
   };
-  var rp = 0
-  const pushfp = () => {
-    console.log(fp)
-     fp = fp+1
-     setFP(fp)
-     console.log(fp)
-      
-  };
+ 
 
     const DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
      AddTask(location,destinationq,price,uuid,name,dummyzoneq,startipq,destipq);
@@ -611,8 +433,8 @@ var ccost = 0;
        onPress={() =>  navigation.navigate("Lobby")} />
        {/* <RoundCornerButton title="Enter Yardfon" 
        onPress={() =>  navigation.navigate("Yardfon")} /> */}
-       <RoundCornerButton title="Enter Yardfon" 
-       onPress={() =>  pushfp()} />
+       {/* <RoundCornerButton title="Enter Yardfon" 
+       onPress={() =>  pushfp()} /> */}
        <RoundCornerButton title="Find Driver" 
        onPress={() =>  DataPusher2(firstL,lastL,cost,uuid,startZone,firstIP,lastIP)} />
        {/* <RoundCornerButton title="Dashboard" 

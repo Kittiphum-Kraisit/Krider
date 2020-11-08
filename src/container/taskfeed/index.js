@@ -9,12 +9,11 @@ import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight,cuuid,setCus, zonesort ,setZone } from "../../utility/constants";
 import { clearAsyncStorage , setAsyncStorage,cuskeys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import {  LogOutUser, RemoveTask, UpdateActive,UpdateActiveDid } from "../../network";
+import {  LogOutUser, RemoveTask, UpdateActive,UpdateActiveDid,UpdateActiveTransaction } from "../../network";
 import {Mutex, MutexInterface, Semaphore, SemaphoreInterface, withTimeout} from 'async-mutex';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import Geolocation from '@react-native-community/geolocation'; 
-import { UpdateActiveTransaction } from "../../network/active";
 
 
 

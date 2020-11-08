@@ -5,68 +5,68 @@ const Prices2 = (place1,place2) => {
         if (place1 == place2) {
           if (place1 == place2){
             //console.log('10');
-            return '1'
+            return '10'
           }
           else {
             //console.log('15');
-            return '2'
+            return '15'
           }
         }
         else if (place1 !== place2){
           if (place1 == 'A') {
             if (place2 == 'B'){
               //console.log('20');
-              return '4544'
+              return '20'
             }
             else if (place2 == 'C'){
               //console.log('25');
-              return '4'
+              return '25'
             }
             else if (place2 == 'D'){
               //console.log('20');
-              return '5'
+              return '20'
             }
           }
           else if (place1 == 'B') {
             if (place2 == 'C'){
               //console.log('20');
-              return '6'
+              return '20'
             }
             else if (place2 == 'D'){
               //console.log('25');
-              return '7'
+              return '25'
             }
             else if (place2 == 'A'){
               //console.log('20');
-              return '8'
+              return '20'
             }
           }
           else if (place1 == 'C') {
             if (place2 == 'D'){
               //console.log('20');
-              return '9'
+              return '20'
             }
             else if (place2 == 'A'){
               //console.log('25');
-              return '10'
+              return '25'
             }
             else if (place2 == 'B'){
               //console.log('20');
-              return '11'
+              return '20'
             }
           }
           else if (place1 == 'D') {
             if (place2 == 'C'){
               //console.log('20');
-              return '12'
+              return '20'
             }
             else if (place2 == 'A'){
               //console.log('25');
-              return '33'
+              return '25'
             }
             else if (place2 == 'B'){
               //console.log('20');
-              return '115'
+              return '20'
             }
           }
         }else {

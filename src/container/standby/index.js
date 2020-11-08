@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,Image,Linking } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import ImagePicker from "react-native-image-picker";
 import { Profile, ShowUsers, StickyHeader } from "../../component";
@@ -12,6 +12,7 @@ import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default ({ navigation }) => {
   const globalState = useContext(Store);
@@ -28,10 +29,91 @@ export default ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <SimpleLineIcons
+        <View>
+          <TouchableOpacity style={{ right: 10 }} onPress={() =>
+            Alert.alert(
+              "Options",
+              "What do you want to do ?",
+              [
+                {
+                  text: "Log out",
+                  onPress: () => Alert.alert(
+              "Log Out",
+              "Do you want to log out ?",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "No",
+                },
+              ],
+              { cancelable: false }
+            ),
+                },
+                {
+                  text:"Cancel",
+                  
+                },
+                {
+                  text: "Support",
+                  onPress: () => Alert.alert(
+              "Support",
+              "What do you want us to help you with ?",
+              [
+                {
+                  text: "Contact Us",
+                  onPress: () => Linking.openURL('mailto:konfiree@gmail.com?subject=K-RIDER Support&body=Describe Your Problems Here'),
+                },
+                {
+                  text: "Cancel",
+                },
+                {
+                  text: "Map Tour",
+                  onPress:()=>navigation.navigate("Map Tour"),
+                }
+              ],
+              { cancelable: false }
+            ),
+                },
+                
+                
+
+              ],
+              { cancelable: false }
+            )
+          }>
+                  <Image 
+                  source={require("./logkout4.png")}
+                />
+                </TouchableOpacity>
+                {/* <SimpleLineIcons
           name="logout"
           size={26}
           color={color.WHITE}
+          style={{ right: 30 }}
+          onPress={() =>
+            Alert.alert(
+              "Accident Prevention",
+              "Do you want to log out",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+              ],
+              { cancelable: false }
+            )
+          }
+        /> */}
+        {/* <SimpleLineIcons
+          name="logout"
+          size={26}
+          color={color.Orange}
           style={{ right: 10 }}
           onPress={() =>
             Alert.alert(
@@ -49,7 +131,30 @@ export default ({ navigation }) => {
               { cancelable: false }
             )
           }
-        />
+        /> */}
+        </View>
+        // <SimpleLineIcons
+        //   name="logout"
+        //   size={26}
+        //   color={color.Orange}
+        //   style={{ right: 10 }}
+        //   onPress={() =>
+        //     Alert.alert(
+        //       "Accident Prevention",
+        //       "Do you want to log out",
+        //       [
+        //         {
+        //           text: "Sure",
+        //           onPress: () => logout(),
+        //         },
+        //         {
+        //           text: "Cancel",
+        //         },
+        //       ],
+        //       { cancelable: false }
+        //     )
+        //   }
+        // />
         
       ),
     });
@@ -191,7 +296,7 @@ export default ({ navigation }) => {
     }
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: color.WHITE }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: color.CREAM }}>
       {/* {getScrollPosition > getOpacity() && (
         <StickyHeader
           name={name}
@@ -199,9 +304,15 @@ export default ({ navigation }) => {
         //   onImgTap={() => imgTap(profileImg, name)}
         />
       )} */}
+      <Text> </Text>
+      <Text> </Text>
       <Text
-
-      >Welcome Back {name} ! Select your role to continue</Text>
+      style={{textAlign: "center",color : color.Orange,fontSize: 25,fontWeight: 'bold'}}
+      >Welcome Back {name} ! </Text>
+      <Text
+      style={{textAlign: "center",color : color.WHITE,fontSize: 25,fontWeight: 'bold'}}
+      > Select your role to continue </Text>
+      <Text> </Text>
       <RoundCornerButton title="Enter As Driver" 
        onPress={() => navigation.navigate("Task Feed")} />
        <RoundCornerButton title="Enter As Customer" 

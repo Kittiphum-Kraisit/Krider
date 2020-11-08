@@ -12,7 +12,7 @@ export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,sti
         endlocation: lastlocation,
         price: price,
         uuid: uid,
-        driver: " ",
+        driver: "",
         driveid: "no",
         startip : stip,
         destip : deip
@@ -57,33 +57,6 @@ export const UpdateActiveMeet = async (myId) => {
     return error;
   }
 };
-export const UpdateActive = async (guestUserId, driver, driveid) => {
-DriveIdRef = firebase.database().ref("actives/" + guestUserId + "driveid");
-DriveIdRef.transaction.update(function(id) {
-    if (id == 'no' || id == null) {
-      return driveid
-    } else {
-      console.log("ID has been written by another invoker")
-      return;
-    }
-});
-DriverRef = firebase.database().ref("actives/" + guestUserId + "driver" )
-DriverRef.transaction.update(function(name){
-  if (name == null) {
-    return driver
-  } else {
-    console.log("Name is already written")
-  }
-});
-DriverRef = firebase.database().ref("actives/" + guestUserId + "waiter" )
-DriverRef.transaction.update(function(wait){
-  if (wait == "Finding your driver") {
-    return "Found your driver"
-  } else {
-    console.log("Name is already written")
-  }
-});
-}
 /*
 export const UpdateActive = async (guestUserId, driver, driveid) => {
   // try {
@@ -108,6 +81,44 @@ export const UpdateActive = async (guestUserId, driver, driveid) => {
   })
 }
 */
+export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
+  var DriveidRef = firebase.database().ref('actives/'+ guestUserId + "/driveid")
+  DriveidRef.transaction(function(DriveID) {
+    if (DriveID == 'no') {
+      console.log(DriveID)
+      console.log(driveid)
+      DriveID = driveid
+      console.log('Transaction Successful')
+      return driveid
+    } else {
+      console.log('abandoned')
+      return;
+    }
+  })
+  var DriverRef = firebase.database().ref('actives/'+ guestUserId + '/driver')
+    DriverRef.transaction(function(Driver) {
+      if (Driver == '') {
+        Driver = driver
+        console.log('Transaction Successful')
+        return driver
+      } else {
+        console.log('abandoned')
+        return;
+      }
+    })
+  var WaiterRef = firebase.database().ref('actives/'+ guestUserId + '/waiter')
+    WaiterRef.transaction(function(WAITER) {
+      if (WAITER == "Finding your driver") {
+        WAITER = "Found your driver"
+        console.log('Transaction Successful')
+        return "Found your driver"
+      } else {
+        console.log('abandoned')
+        return;
+      }
+    })
+
+};
 /*
   REFERENCE
 // Try to create a user for ada, but only if the user id 'ada' isn't

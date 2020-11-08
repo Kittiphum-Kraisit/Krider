@@ -13,6 +13,7 @@ import {
   Lobby,
   Taskroom,
   RoleSelect,
+  LocationF,
   TaskLoader,
   ZoneA,
   ZoneB,
@@ -33,8 +34,9 @@ function NavContainer() {
         initialRouteName="Splash"
         screenOptions={{
           headerShown: true,
-          headerStyle: { backgroundColor: color.DARK_GRAY },
+          headerStyle: { backgroundColor: color.WHITE },
           headerTitleStyle: {
+            color: color.Orange,
             fontWeight: "bold",
             fontSize: 20,
           },
@@ -175,6 +177,12 @@ function NavContainer() {
           }}
         />
         <Stack.Screen
+          name="Yardfon"
+          component={LocationF}
+          options={{
+            headerBackTitle: null,
+          }}/>
+          <Stack.Screen
           name="Task Loader"
           component={TaskLoader}
           options={{ headerShown: false }}

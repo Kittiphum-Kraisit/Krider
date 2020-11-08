@@ -1,5 +1,5 @@
 import React, {Component,useContext, useEffect, useState, useLayoutEffect} from 'react';
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker,TextInput,Linking} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker,TextInput,Linking,Image} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { ShowTasks,ShowLocas } from "../../component";
 import firebase from "../../firebase/config";
@@ -217,14 +217,94 @@ useEffect(() => {
   //   const globalState = useContext(Store);
   // const { dispatchLoaderAction } = globalState;
 const [getScrollPosition, setScrollPosition] = useState(0);
-
-  useLayoutEffect(() => {
+ useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <SimpleLineIcons
+        <View>
+          <TouchableOpacity style={{ right: 10 }} onPress={() =>
+            Alert.alert(
+              "Options",
+              "What do you want ?",
+              [
+                {
+                  text: "Log out",
+                  onPress: () => Alert.alert(
+              "Log Out",
+              "Do you want to log out ?",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "No",
+                },
+              ],
+              { cancelable: false }
+            ),
+                },
+                {
+                  text:"Change Role",
+                  onPress:()=>navigation.navigate("Role Select"),
+                },
+                {
+                  text: "Support",
+                  onPress: () => Alert.alert(
+              "Support",
+              "What do you want us to help you with ?",
+              [
+                {
+                  text: "Contact Us",
+                  onPress: () => Linking.openURL('mailto:konfiree@gmail.com?subject=K-RIDER Support&body=Describe Your Problems Here'),
+                },
+                {
+                  text: "Cancel",
+                },
+                {
+                  text: "Go Back",
+                  onPress:()=>navigation.goBack(),
+                }
+              ],
+              { cancelable: false }
+            ),
+                },
+                
+                
+
+              ],
+              { cancelable: false }
+            )
+          }>
+                  <Image 
+                  source={require("./logkout4.png")}
+                />
+                </TouchableOpacity>
+                {/* <SimpleLineIcons
           name="logout"
           size={26}
           color={color.WHITE}
+          style={{ right: 30 }}
+          onPress={() =>
+            Alert.alert(
+              "Accident Prevention",
+              "Do you want to log out",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+              ],
+              { cancelable: false }
+            )
+          }
+        /> */}
+        {/* <SimpleLineIcons
+          name="logout"
+          size={26}
+          color={color.Orange}
           style={{ right: 10 }}
           onPress={() =>
             Alert.alert(
@@ -242,11 +322,42 @@ const [getScrollPosition, setScrollPosition] = useState(0);
               { cancelable: false }
             )
           }
-        />
-        
+        /> */}
+        </View>
       ),
     });
   }, [navigation]);
+
+
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => (
+  //       <SimpleLineIcons
+  //         name="logout"
+  //         size={26}
+  //         color={color.WHITE}
+  //         style={{ right: 10 }}
+  //         onPress={() =>
+  //           Alert.alert(
+  //             "Accident Prevention",
+  //             "Do you want to log out",
+  //             [
+  //               {
+  //                 text: "Sure",
+  //                 onPress: () => logout(),
+  //               },
+  //               {
+  //                 text: "Cancel",
+  //               },
+  //             ],
+  //             { cancelable: false }
+  //           )
+  //         }
+  //       />
+        
+  //     ),
+  //   });
+  // }, [navigation]);
   const logout = () => {
     LogOutUser()
       .then(() => {

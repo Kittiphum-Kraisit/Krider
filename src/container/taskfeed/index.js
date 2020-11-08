@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking,Image} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { ShowTasks } from "../../component";
 import firebase from "../../firebase/config";
@@ -14,6 +14,7 @@ import {Mutex, MutexInterface, Semaphore, SemaphoreInterface, withTimeout} from 
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import Geolocation from '@react-native-community/geolocation'; 
+import { UpdateActiveTransaction } from "../../network/active";
 
 
 
@@ -46,7 +47,7 @@ export default ({ navigation }) => {
    const [selectedValue, setSelectedValue] = useState("");
  // const [name,setUserDetailn]=useState("");
  const [nearest,setnear]=useState("Identify your zone ");
- var near = "hithere"
+ //var near = "hi"
  //const [tryme,settry]=useState("sawas");
 
   
@@ -142,10 +143,91 @@ export default ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <SimpleLineIcons
+        <View>
+          <TouchableOpacity style={{ right: 10 }} onPress={() =>
+            Alert.alert(
+              "Options",
+              "What do you want ?",
+              [
+                {
+                  text: "Log out",
+                  onPress: () => Alert.alert(
+              "Log Out",
+              "Do you want to log out ?",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "No",
+                },
+              ],
+              { cancelable: false }
+            ),
+                },
+                {
+                  text:"Change Role",
+                  onPress:()=>navigation.navigate("Role Select"),
+                },
+                {
+                  text: "Support",
+                  onPress: () => Alert.alert(
+              "Support",
+              "What do you want us to help you with ?",
+              [
+                {
+                  text: "Contact Us",
+                  onPress: () => Linking.openURL('mailto:konfiree@gmail.com?subject=K-RIDER Support&body=Describe Your Problems Here'),
+                },
+                {
+                  text: "Cancel",
+                },
+                {
+                  text: "Map Tour",
+                  onPress:()=>navigation.navigate("Map Tour"),
+                }
+              ],
+              { cancelable: false }
+            ),
+                },
+                
+                
+
+              ],
+              { cancelable: false }
+            )
+          }>
+                  <Image 
+                  source={require("./logkout4.png")}
+                />
+                </TouchableOpacity>
+                {/* <SimpleLineIcons
           name="logout"
           size={26}
           color={color.WHITE}
+          style={{ right: 30 }}
+          onPress={() =>
+            Alert.alert(
+              "Accident Prevention",
+              "Do you want to log out",
+              [
+                {
+                  text: "Sure",
+                  onPress: () => logout(),
+                },
+                {
+                  text: "Cancel",
+                },
+              ],
+              { cancelable: false }
+            )
+          }
+        /> */}
+        {/* <SimpleLineIcons
+          name="logout"
+          size={26}
+          color={color.Orange}
           style={{ right: 10 }}
           onPress={() =>
             Alert.alert(
@@ -163,13 +245,15 @@ export default ({ navigation }) => {
               { cancelable: false }
             )
           }
-        />
-        
+        /> */}
+        </View>
       ),
     });
   }, [navigation]);
 
   useEffect(() => {
+    getLocation();
+    subLocation();
     const requestLocaPermission = async()=>{
       if (Platform.OS==='ios'){
         getLocation();
@@ -304,7 +388,7 @@ export default ({ navigation }) => {
     setAsyncStorage(cuskeys.cuuid, guestUserId);
            RemoveTask(guestUserId);
            //let reusersagain = [];
-           UpdateActive(guestUserId,name,uuid);
+           UpdateActiveTransaction(guestUserId,name,uuid);
            setCus(guestUserId);
            //setAllUsers(reusersagain);
            navigation.navigate("Task Room");
@@ -346,32 +430,47 @@ export default ({ navigation }) => {
     setnear(near)
     settry("deekrub")
   }
+  const DoubleCal = ()=>{
+    getLocation();
+    getLocation();
+    ZoneCal();
+    getLocation();
+     ZoneCal();
+  }
   const ZoneCal = () => {
     getLocation();
+    subLocation();
 
-    near = "Locating you"
+    //near = "Locating you"
     if (currentLong>=100.778166 && currentLong<=100.9){
       if (currentLa>=13.728611 && currentLa<=13.9){
-        near = "Zone B"
+        setnear("Zone B")
+        
       }else if (currentLa<13.728611 && currentLa>=13.1){
-        near = "Zone A"
+        setnear("Zone A")
+        
       }else {
-        near = "You are too far from KMITL"
+        setnear("You are too far from KMITL")
+        
       }
     }
     else if (currentLong <100.778166 && currentLong >=100.1){
       if (currentLa>=13.728611 && currentLa<=13.9){
-        near = "Zone C"
+        setnear("Zone C")
+        
       }else if (currentLa <13.728611 && currentLa>= 13.1){
-        near = "Zone D"
+       setnear("Zone D")
+        
       }else {
-        near = "You are too far from KMITL"
+        setnear("You are too far from KMITL")
+        
       }
     }
     else {
-      near = "You are too far from KMITL"
+      setnear("You are too far from KMITL")
+      
     }
-    setnear(near)
+    //setnear(near)
 
   };
   // near = "Locating you"
@@ -514,9 +613,9 @@ export default ({ navigation }) => {
 
     //render(){
   return(
-    <SafeAreaView style={{ flex: 1, backgroundColor: color.WHITE }}>
-      <RoundCornerButton title="Map Tour" 
-       onPress={() => navigation.navigate("Map Tour")} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: color.CREAM }}>
+      {/* <RoundCornerButton title="Map Tour" 
+       onPress={() => navigation.navigate("Map Tour")} /> */}
        {/* <RoundCornerButton title="Identify My Zone" 
         onPress={getLocation}
        /> */}
@@ -528,7 +627,8 @@ export default ({ navigation }) => {
        <Text
        style={color.BLACK}>Longitude: {currentLong}</Text> */}
        <Text
-       style={color.BLACK}>Your Nearest Zone: {nearest}</Text>
+       style={{textAlign: "center",color : color.WHITE,fontSize: 18, fontWeight: 'bold'}}
+       >Your Nearest Zone: {nearest}</Text>
        {/* <Button
         //onPress={() => }
         onPress={trygetLocation}
@@ -541,14 +641,14 @@ export default ({ navigation }) => {
        
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
+        style={{ height: 70, width: 150,color : color.WHITE ,fontSize: 18, fontWeight: 'bold'}}
         onValueChange={(itemValue, itemIndex) => zonerMaster(itemValue)}
       >
-        <Picker.Item label="All Zone" value="z" />
-        <Picker.Item label="Zone A" value="a" />
-        <Picker.Item label="Zone B" value="b" />
-        <Picker.Item label="Zone C" value="c" />
-        <Picker.Item label="Zone D" value="d" />
+        <Picker.Item label="All Zone" value="Z" />
+        <Picker.Item label="Zone A" value="A" />
+        <Picker.Item label="Zone B" value="B" />
+        <Picker.Item label="Zone C" value="C" />
+        <Picker.Item label="Zone D" value="D" />
       </Picker>
       {/* All tasks */}
   {/* <Text>{zonesort}</Text> */}

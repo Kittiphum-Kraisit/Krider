@@ -8,14 +8,11 @@ import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
-import { UpdateUser, LogOutUser , AddTask, AddActive, DataPusher2 } from "../../network";
+import { UpdateUser, LogOutUser , AddTask, AddActive } from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import { globalStyle, color } from "../../utility";
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-var newname = firebase.database().ref("users/"+ uuid + "/name");
-  
 
 export default class App extends Component {
 //const App = () => {
@@ -29,15 +26,15 @@ export default class App extends Component {
         zone1: '',
         ip1: '',
         ip2: '',
-        //myactualname: '',
+        myactualname: ''
       }
     };
-  //    DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
-  //    AddTask(location,destinationq,price,uuid,name,dummyzoneq,startipq,destipq);
-  //    AddActive(location,destinationq,price,uuid,name,startipq,destipq);
-  //    navigation.navigate("Lobby");
+     DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
+     AddTask(location,destinationq,price,uuid,name,dummyzoneq,startipq,destipq);
+     AddActive(location,destinationq,price,uuid,name,startipq,destipq);
+     navigation.navigate("Lobby");
       
-  // };
+  };
 
     Place=()=>{
       alert(this.state.PickerValue);
@@ -148,7 +145,7 @@ export default class App extends Component {
         <View>
           <RoundCornerButton
             title="find driver"
-            onPress={() =>  DataPusher2(this.state.place1,this.state.place2,this.state.Price,uuid,this.state.zone1,this.state.ip1,this.state.ip2,newname)}
+            onPress={() =>  DataPusher2(location,destination,price,uuid,dummyzone,startip,destip)}
             //onPress={this.onChangeHandler}
             //onPress={()=>Alert.alert("Find your driver")}
             //this.props.navigation.navigate("...")}

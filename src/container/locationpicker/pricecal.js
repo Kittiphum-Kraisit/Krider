@@ -3,7 +3,11 @@ const onChangeHandler = require('./index');
 
 const Prices2 = (place1,place2) => {
         if (place1 == place2) {
-          if (place1 == place2){
+          if (place2 == 'Z'){
+              //console.log('20');
+              return 'ask your driver'
+            }
+          else if (place1 == place2){
             //console.log('10');
             return '10'
           }
@@ -26,6 +30,10 @@ const Prices2 = (place1,place2) => {
               //console.log('20');
               return '20'
             }
+            else if (place2 == 'Z'){
+              //console.log('20');
+              return 'ask your driver'
+            }
           }
           else if (place1 == 'B') {
             if (place2 == 'C'){
@@ -39,6 +47,10 @@ const Prices2 = (place1,place2) => {
             else if (place2 == 'A'){
               //console.log('20');
               return '20'
+            }
+            else if (place2 == 'Z'){
+              //console.log('20');
+              return 'ask your driver'
             }
           }
           else if (place1 == 'C') {
@@ -54,6 +66,10 @@ const Prices2 = (place1,place2) => {
               //console.log('20');
               return '20'
             }
+            else if (place2 == 'Z'){
+              //console.log('20');
+              return 'ask your driver'
+            }
           }
           else if (place1 == 'D') {
             if (place2 == 'C'){
@@ -67,6 +83,28 @@ const Prices2 = (place1,place2) => {
             else if (place2 == 'B'){
               //console.log('20');
               return '20'
+            }
+            else if (place2 == 'Z'){
+              //console.log('20');
+              return 'ask your driver'
+            }
+          }
+          else if (place1 == 'Z') {
+            if (place2 == 'C'){
+              //console.log('20');
+              return 'ask your driver'
+            }
+            else if (place2 == 'A'){
+              //console.log('25');
+              return 'ask your driver'
+            }
+            else if (place2 == 'B'){
+              //console.log('20');
+              return 'ask your driver'
+            }
+            else if (place2 == 'D'){
+              //console.log('20');
+              return 'ask your driver'
             }
           }
         }else {

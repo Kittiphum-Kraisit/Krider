@@ -12,7 +12,7 @@ export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,sti
         endlocation: lastlocation,
         price: price,
         uuid: uid,
-        driver: " ",
+        driver: "",
         driveid: "no",
         startip : stip,
         destip : deip
@@ -57,6 +57,107 @@ export const UpdateActiveMeet = async (myId) => {
     return error;
   }
 };
+export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
+  var DriveidRef = firebase.database().ref('actives/'+ guestUserId + "/driveid")
+  DriveidRef.transaction(function(DriveID) {
+    console.log(DriveID)
+    console.log(guestUserId)
+    if (DriveID == 'no') {
+        DriveID = driveid
+      return driveid
+    } else {
+        console.log('abandoned ID')
+      return 0;
+    }
+  }, function(error, committed, snapshot) {
+    if (error) {
+      console.log('Transaction failed abnormally!', error);
+    } else if (!committed) {
+      console.log('We aborted the transaction (because DriveID already exists).');
+    } else {
+      console.log('DriveID added!');
+    }
+    //console.log("DriveID: ", snapshot.val());
+  });
+  var DriverRef = firebase.database().ref('actives/'+ guestUserId + '/driver')
+    DriverRef.transaction(function(Driver) {
+      console.log(Driver)
+      if (Driver == '') {
+        Driver = driver
+        return driver
+      } else {
+        return 0;
+      }
+    }, function(error, committed, snapshot) {
+      if (error) {
+        console.log('Transaction failed abnormally!', error);
+      } else if (!committed) {
+        console.log('We aborted the transaction (because Driver already exists).');
+      } else {
+        console.log('Driver Updated!');
+      }
+      //console.log("Driver: ", snapshot.val());
+    }); 
+  var WaiterRef = firebase.database().ref('actives/'+ guestUserId + '/waiter')
+    WaiterRef.transaction(function(WAITER) {
+      if (WAITER == "Finding your driver") {
+        WAITER = "Found your driver"
+        return "Found your driver"
+      } else {
+        return 0;
+      }
+    }, function(error, committed, snapshot) {
+      if (error) {
+        console.log('Transaction failed abnormally!', error);
+      } else if (!committed) {
+        console.log('We aborted the transaction (because WAITER already exists).');
+      } else {
+        console.log('WAITER updated!');
+      }
+      //console.log("WAITER: ", snapshot.val());
+    });
+
+};
+
+
+// export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
+//   var DriveidRef = firebase.database().ref('actives/'+ guestUserId + "/driveid")
+//   DriveidRef.transaction(function(DriveID) {
+//     if (DriveID == "no") {
+//       console.log(DriveID)
+//       console.log(driveid)
+//       DriveID = driveid
+//       console.log('Transaction Successful')
+//       return driveid
+//     } else {
+//       console.log('abandoned')
+//       return;
+//     }
+//   })
+//   var DriverRef = firebase.database().ref('actives/'+ guestUserId + '/driver')
+//     DriverRef.transaction(function(Driver) {
+//       if (Driver == "") {
+//         Driver = driver
+//         console.log('Transaction Successful')
+//         return driver
+//       } else {
+//         console.log('abandoned')
+//         return;
+//       }
+//     })
+//   var WaiterRef = firebase.database().ref('actives/'+ guestUserId + '/waiter')
+//     WaiterRef.transaction(function(WAITER) {
+//       if (WAITER == "Finding your driver") {
+//         WAITER = "Found your driver"
+//         console.log('Transaction Successful')
+//         return "Found your driver"
+//       } else {
+//         console.log('abandoned')
+//         return;
+//       }
+//     })
+
+// };
 // export const UpdateActive = async (guestUserId, driver, driveid) => {
 //   // try {
 //     return await firebase

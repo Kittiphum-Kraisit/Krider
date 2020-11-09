@@ -429,8 +429,8 @@ var ccost = 0;
             Price : {cost} baht
           </Text>
       
-       <RoundCornerButton title="Enter Lobby" 
-       onPress={() =>  navigation.navigate("Lobby")} />
+       {/* <RoundCornerButton title="Enter Lobby" 
+       onPress={() =>  navigation.navigate("Lobby")} /> */}
        {/* <RoundCornerButton title="Enter Yardfon" 
        onPress={() =>  navigation.navigate("Yardfon")} /> */}
        {/* <RoundCornerButton title="Enter Yardfon" 

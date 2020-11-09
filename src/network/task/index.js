@@ -13,7 +13,6 @@ export const AddTask = async (firstlocation,lastlocation,price,uid,cusname,stzon
         price: price,
         uuid: uid,
         zone: stzone,
-        allzone: "Z",
         startip : stip,
         destip : deip,
       });

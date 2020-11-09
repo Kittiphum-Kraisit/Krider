@@ -33,6 +33,7 @@ export default ({ navigation }) => {
   const[locaStatus,setlocaStatus]=useState('');
 
 
+
   const [checkdriveridt,Checkdrivebf] = useState("");
 
   const [userDetail, setUserDetail] = useState({
@@ -546,7 +547,7 @@ export default ({ navigation }) => {
               // currentUser.desip = child.val().desip;
             } else {
               if (child.val().zone== zonesort
-              || child.val().allzone == zonesort
+              || "Z" == zonesort
               ){
               users.push({
                 id: child.val().uuid,

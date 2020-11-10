@@ -248,9 +248,9 @@ const [getScrollPosition, setScrollPosition] = useState(0);
                   onPress:()=>navigation.navigate("Role Select"),
                 },
                 {
-                  text: "Support",
+                  text: "More",
                   onPress: () => Alert.alert(
-              "Support",
+              "More",
               "What do you want us to help you with ?",
               [
                 {
@@ -276,7 +276,7 @@ const [getScrollPosition, setScrollPosition] = useState(0);
             )
           }>
                   <Image 
-                  source={require("./logkout4.png")}
+                  source={require("./optionsmaster.png")}
                 />
                 </TouchableOpacity>
                 {/* <SimpleLineIcons

@@ -27,13 +27,13 @@ export default ({ navigation }) => {
   var price = 40;
   var destip = "https://goo.gl/maps/Jvk9PG1CUehnUAo89";
   var destination = "Bunnag Building";
-  var startip = "https://goo.gl/maps/A8mT6vJGL19ZDcgv8";
+  var startip = "https://goo.gl/maps/A8mT6vJGL19ZDcgv8"; 
   var dummyzone = "d";
   let items = require('./localist.json');
-  const [firstL,setFirstL] = useState("");
-  const [lastL,setLastL] = useState("");
-  const [firstIP,setFirstIP] = useState("");
-  const [lastIP,setLastIP] = useState("");
+  const [firstL,setFirstL] = useState("Faculty of Medicine");
+  const [lastL,setLastL] = useState("Faculty of Medicine");
+  const [firstIP,setFirstIP] = useState("https://goo.gl/maps/9NrZQhdYj7j1CMYXA");
+  const [lastIP,setLastIP] = useState("https://goo.gl/maps/9NrZQhdYj7j1CMYXA");
   const [startZone,setStartZone] = useState('A');
   const[endZone,setEndZone]=useState('A');
   const [cost,setCost] = useState(0);
@@ -182,7 +182,7 @@ var ccost = 0;
             )
           }>
                   <Image 
-                  source={require("./logkout4.png")}
+                  source={require("./optionsmaster.png")}
                 />
                 </TouchableOpacity>
                 {/* <SimpleLineIcons
@@ -429,8 +429,8 @@ var ccost = 0;
             Price : {cost} baht
           </Text>
       
-       <RoundCornerButton title="Enter Lobby" 
-       onPress={() =>  navigation.navigate("Lobby")} />
+       {/* <RoundCornerButton title="Enter Lobby" 
+       onPress={() =>  navigation.navigate("Lobby")} /> */}
        {/* <RoundCornerButton title="Enter Yardfon" 
        onPress={() =>  navigation.navigate("Yardfon")} /> */}
        {/* <RoundCornerButton title="Enter Yardfon" 

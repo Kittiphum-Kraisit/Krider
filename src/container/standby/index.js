@@ -85,7 +85,7 @@ export default ({ navigation }) => {
             )
           }>
                   <Image 
-                  source={require("./logkout4.png")}
+                  source={require("./optionsmaster.png")}
                 />
                 </TouchableOpacity>
                 {/* <SimpleLineIcons

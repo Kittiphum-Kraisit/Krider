@@ -33,6 +33,7 @@ export default ({ navigation }) => {
   const[locaStatus,setlocaStatus]=useState('');
 
 
+
   const [checkdriveridt,Checkdrivebf] = useState("");
 
   const [userDetail, setUserDetail] = useState({
@@ -198,7 +199,7 @@ export default ({ navigation }) => {
             )
           }>
                   <Image 
-                  source={require("./logkout4.png")}
+                  source={require("./optionsmaster.png")}
                 />
                 </TouchableOpacity>
                 {/* <SimpleLineIcons
@@ -387,6 +388,7 @@ export default ({ navigation }) => {
     setAsyncStorage(cuskeys.cuuid, guestUserId);
            RemoveTask(guestUserId);
            //let reusersagain = [];
+           //UpdateActive(guestUserId,name,uuid);
            UpdateActiveTransaction(guestUserId,name,uuid);
            setCus(guestUserId);
            //setAllUsers(reusersagain);
@@ -545,7 +547,7 @@ export default ({ navigation }) => {
               // currentUser.desip = child.val().desip;
             } else {
               if (child.val().zone== zonesort
-              || child.val().allzone == zonesort
+              || "Z" == zonesort
               ){
               users.push({
                 id: child.val().uuid,

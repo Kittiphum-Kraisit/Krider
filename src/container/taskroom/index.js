@@ -272,8 +272,10 @@ export default ({ navigation }) => {
         title= "Direction To Destination"
         disabled={isMet}
        />
-      <RoundCornerButton title="End Job" 
-       onPress={() => onEndJob()} />
+       <Text> </Text>
+       <Text> </Text>
+      {/* <RoundCornerButton title="End Job" 
+       onPress={() => onEndJob()} /> */}
        <Button
        style = {{ backgroundColor: color.Orange,
     width: '90%',

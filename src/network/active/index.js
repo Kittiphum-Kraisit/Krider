@@ -88,11 +88,11 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
     console.log(DriveID)
     console.log(guestUserId)
     if (DriveID == 'no') {
-        //DriveID = driveid
+        DriveID = driveid
       return driveid
     } else {
         console.log('abandoned ID')
-      return;
+      return 0;
     }
   }, function(error, committed, snapshot) {
     if (error) {
@@ -102,16 +102,16 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
     } else {
       console.log('DriveID added!');
     }
-    console.log("DriveID: ", snapshot.val());
+    //console.log("DriveID: ", snapshot.val());
   });
   var DriverRef = firebase.database().ref('actives/'+ guestUserId + '/driver')
     DriverRef.transaction(function(Driver) {
       console.log(Driver)
       if (Driver == '') {
-        //Driver = driver
+        Driver = driver
         return driver
       } else {
-        return;
+        return 0;
       }
     }, function(error, committed, snapshot) {
       if (error) {
@@ -121,15 +121,15 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
       } else {
         console.log('Driver Updated!');
       }
-      console.log("Driver: ", snapshot.val());
+      //console.log("Driver: ", snapshot.val());
     }); 
   var WaiterRef = firebase.database().ref('actives/'+ guestUserId + '/waiter')
     WaiterRef.transaction(function(WAITER) {
       if (WAITER == "Finding your driver") {
-        //WAITER = "Found your driver"
+        WAITER = "Found your driver"
         return "Found your driver"
       } else {
-        return;
+        return 0;
       }
     }, function(error, committed, snapshot) {
       if (error) {
@@ -139,7 +139,7 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
       } else {
         console.log('WAITER updated!');
       }
-      console.log("WAITER: ", snapshot.val());
+      //console.log("WAITER: ", snapshot.val());
     });
 
 };

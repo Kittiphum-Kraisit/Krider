@@ -118,6 +118,67 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
     });
 
 };
+export const LastUpdateActiveTransaction = async (guestUserId) => {
+  // var DriveidRef = firebase.database().ref('actives/'+ guestUserId + "/driveid")
+  // DriveidRef.transaction(function(DriveID) {
+  //   console.log(DriveID)
+  //   console.log(guestUserId)
+  //   if (DriveID == 'no') {
+  //       DriveID = driveid
+  //     return driveid
+  //   } else {
+  //       console.log('abandoned ID')
+  //     return 0;
+  //   }
+  // }, function(error, committed, snapshot) {
+  //   if (error) {
+  //     console.log('Transaction failed abnormally!', error);
+  //   } else if (!committed) {
+  //     console.log('We aborted the transaction (because DriveID already exists).');
+  //   } else {
+  //     console.log('DriveID added!');
+  //   }
+  //   //console.log("DriveID: ", snapshot.val());
+  // });
+  // var DriverRef = firebase.database().ref('actives/'+ guestUserId + '/driver')
+  //   DriverRef.transaction(function(Driver) {
+  //     console.log(Driver)
+  //     if (Driver == '') {
+  //       Driver = driver
+  //       return driver
+  //     } else {
+  //       return 0;
+  //     }
+  //   }, function(error, committed, snapshot) {
+  //     if (error) {
+  //       console.log('Transaction failed abnormally!', error);
+  //     } else if (!committed) {
+  //       console.log('We aborted the transaction (because Driver already exists).');
+  //     } else {
+  //       console.log('Driver Updated!');
+  //     }
+  //     //console.log("Driver: ", snapshot.val());
+  //   }); 
+  var WaiterRef = firebase.database().ref('actives/'+ guestUserId + '/waiter')
+    WaiterRef.transaction(function(WAITER) {
+      if (WAITER == "Enjoy The Ride !") {
+        WAITER = "Ending Your Ride"
+        return "Ending Your Ride"
+      } else {
+        return 0;
+      }
+    }, function(error, committed, snapshot) {
+      if (error) {
+        console.log('Transaction failed abnormally!', error);
+      } else if (!committed) {
+        console.log('We aborted the transaction (because WAITER is already done).');
+      } else {
+        console.log('WAITER updated last time!');
+      }
+      //console.log("WAITER: ", snapshot.val());
+    });
+
+};
 
 
 // export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {

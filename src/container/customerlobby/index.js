@@ -171,6 +171,12 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
+  useEffect (() => {
+    if (waitert== "Ending Your Ride"){
+      RemoveActive(cuuid);
+      navigation.navigate("Location Picker");
+    }
+   });
 
   useEffect(() => {
     dispatchLoaderAction({

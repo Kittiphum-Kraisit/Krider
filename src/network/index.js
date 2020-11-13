@@ -2,7 +2,7 @@ import LoginRequest from "./login";
 import SignUpRequest from "./signUp";
 import { AddUser, UpdateUser } from "./user";
 import LogOutUser from "./logout";
-import { senderMsg, recieverMsg } from "./messeges";
+import { senderMsg, recieverMsg,RemoveMessageLog } from "./messeges";
 import {AddTask , RemoveTask} from "./task"; 
 import {AddActive,RemoveActive,UpdateActive,UpdateActiveMeet,UpdateActiveTransaction,LastUpdateActiveTransaction} from "./active";
 
@@ -22,5 +22,6 @@ export {
   UpdateActive,
   UpdateActiveMeet,
   UpdateActiveTransaction,
-  LastUpdateActiveTransaction
+  LastUpdateActiveTransaction,
+  RemoveMessageLog
 };

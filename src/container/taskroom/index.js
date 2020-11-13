@@ -8,7 +8,7 @@ import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight,cuuid, setUniqueValue } from "../../utility/constants";
 import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,LastUpdateActiveTransaction } from "../../network";
+import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,LastUpdateActiveTransaction,RemoveMessageLog } from "../../network";
 import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
 
 export default ({ navigation }) => {
@@ -176,6 +176,7 @@ export default ({ navigation }) => {
     navigation.navigate("Task Feed");
   };
   const onnewEndJob = () => {
+    RemoveMessageLog(uuid)
     LastUpdateActiveTransaction(cuuid)
     setnewuuid = uuid;
     //RemoveActive(cuuid);

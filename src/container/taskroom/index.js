@@ -22,6 +22,8 @@ export default ({ navigation }) => {
   const [isMet,checkMeet] = useState(true);
   const [startipt,setStartIp]=useState("");
   const [destipt,setDestIp]=useState("");
+  const [driveState,setDriveState] = useState("");
+
 
   // var allprice = 800;
   // var head = 8;
@@ -67,6 +69,30 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
+  useEffect (() => {
+    firebase
+        .database()
+        .ref("actives/"+cuuid+"/driveid")
+        .once("value", (dataSnapshot) => {
+          checkdriveid = dataSnapshot.val();
+          if (checkdriveid != uuid){
+            var setnewuuid = uuid;
+            clearAsyncStorage()
+            setAsyncStorage(keys.uuid,setnewuuid)
+            setUniqueValue(setnewuuid);
+            navigation.navigate("Task Feed");
+          }
+        });
+   });
+  
+  useEffect (() => {
+    if (waitert== "Found your driver"){
+      setDriveState("Pickup Your Customer")
+    }
+    else if (waitert== "Enjoy The Ride !"){
+      setDriveState("Bring Your Customer To Destination")
+    }
+   });
   
 
   useEffect(() => {
@@ -168,7 +194,7 @@ export default ({ navigation }) => {
       .catch((err) => alert(err));
   };
   const onEndJob = () => {
-    setnewuuid = uuid;
+    var setnewuuid = uuid;
     RemoveActive(cuuid);
     clearAsyncStorage()
     setAsyncStorage(keys.uuid,setnewuuid)
@@ -178,7 +204,7 @@ export default ({ navigation }) => {
   const onnewEndJob = () => {
     RemoveMessageLog(uuid)
     LastUpdateActiveTransaction(cuuid)
-    setnewuuid = uuid;
+    var setnewuuid = uuid;
     //RemoveActive(cuuid);
     clearAsyncStorage()
     setAsyncStorage(keys.uuid,setnewuuid)
@@ -218,7 +244,7 @@ export default ({ navigation }) => {
       <Text
       style={{textAlign: "center",color : color.BLUE,fontSize: 25, fontWeight: 'bold'}}
       >
-        Status: Pick up your customer
+        Status: {driveState}
         </Text>
         <Text> </Text>
       <Text

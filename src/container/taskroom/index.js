@@ -81,6 +81,7 @@ export default ({ navigation }) => {
             setAsyncStorage(keys.uuid,setnewuuid)
             setUniqueValue(setnewuuid);
             navigation.navigate("Task Feed");
+            Alert.alert("Sorry, This Task has been taken.")
           }
         });
    });

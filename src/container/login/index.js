@@ -15,10 +15,7 @@ import { globalStyle, color } from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_START, LOADING_STOP } from "../../context/actions/type";
 import { setAsyncStorage, keys } from "../../asyncStorage";
-import {
-  setUniqueValue,
-  keyboardVerticalOffset,
-} from "../../utility/constants";
+import {setUniqueValue, keyboardVerticalOffset,} from "../../utility/constants";
 import { LoginRequest } from "../../network";
 import SearchableDropdown from 'react-native-searchable-dropdown';
 

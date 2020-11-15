@@ -7,13 +7,14 @@ import { color ,appStyle} from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight,cuuid,setCus, zonesort ,setZone } from "../../utility/constants";
-import { clearAsyncStorage , setAsyncStorage,cuskeys } from "../../asyncStorage";
+import { clearAsyncStorage , setAsyncStorage,cuskeys, keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import {  LogOutUser, RemoveTask, UpdateActive,UpdateActiveDid,UpdateActiveTransaction } from "../../network";
 import {Mutex, MutexInterface, Semaphore, SemaphoreInterface, withTimeout} from 'async-mutex';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import Geolocation from '@react-native-community/geolocation'; 
+import {setUniqueValue} from "../../utility/constants";
 
 
 
@@ -395,6 +396,31 @@ export default ({ navigation }) => {
            navigation.navigate("Task Room");
 
   };
+  const newacceptTap = ( guestUserId) => {
+    setAsyncStorage(cuskeys.cuuid, guestUserId);
+           RemoveTask(guestUserId);
+           //let reusersagain = [];
+           //UpdateActive(guestUserId,name,uuid);
+           UpdateActiveTransaction(guestUserId,name,uuid);
+           setCus(guestUserId);
+           //setAllUsers(reusersagain);
+           firebase
+        .database()
+        .ref("actives/"+cuuid+"/driveid")
+        .once("value", (dataSnapshot) => {
+          checkdriveid = dataSnapshot.val();
+          if (checkdriveid != uuid){
+            var setnewuuid = uuid;
+            clearAsyncStorage()
+            setAsyncStorage(keys.uuid,setnewuuid)
+            setUniqueValue(setnewuuid);
+            //navigation.navigate("Task Feed");
+            alert("Sorry, This Task has been taken.")
+          }else {
+            navigation.navigate("Task Room");
+          }
+        });
+  };
   const startloTap = (beginip) => {
     Linking.openURL(beginip);
   };
@@ -429,7 +455,7 @@ export default ({ navigation }) => {
       near = "You are too far from KMITL"
     }
     setnear(near)
-    settry("deekrub")
+    //settry("deekrub")
   }
   const DoubleCal = ()=>{
     getLocation();

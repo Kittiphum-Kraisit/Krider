@@ -8,7 +8,7 @@ import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight,cuuid, setUniqueValue } from "../../utility/constants";
 import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask } from "../../network";
+import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,LastUpdateActiveTransaction,RemoveMessageLog } from "../../network";
 import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
 
 export default ({ navigation }) => {
@@ -22,6 +22,8 @@ export default ({ navigation }) => {
   const [isMet,checkMeet] = useState(true);
   const [startipt,setStartIp]=useState("");
   const [destipt,setDestIp]=useState("");
+  const [driveState,setDriveState] = useState("");
+
 
   // var allprice = 800;
   // var head = 8;
@@ -67,6 +69,32 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
+  // useEffect (() => {
+  //   firebase
+  //       .database()
+  //       .ref("actives/"+cuuid+"/driveid")
+  //       .once("value", (dataSnapshot) => {
+  //         checkdriveid = dataSnapshot.val();
+  //         if (checkdriveid != uuid){
+  //           var setnewuuid = uuid;
+  //           clearAsyncStorage()
+  //           setAsyncStorage(keys.uuid,setnewuuid)
+  //           setUniqueValue(setnewuuid);
+  //           navigation.navigate("Task Feed");
+  //           Alert.alert("Sorry, This Task has been taken.")
+  //         }
+  //       });
+  //  });
+  
+  useEffect (() => {
+    if (waitert== "Found your driver"){
+      setDriveState("Pickup Your Customer")
+    }
+    else if (waitert== "Enjoy The Ride !"){
+      setDriveState("Bring Your Customer To Destination")
+    }
+   });
+  
 
   useEffect(() => {
     dispatchLoaderAction({
@@ -155,6 +183,13 @@ export default ({ navigation }) => {
     }
   }, []);
 
+
+
+const onCall = (phonenumb) => {
+  //Linking.openURL(`tel:${phoneNumber}`)
+  Linking.openURL(`tel:${phonenumb}`)
+  };
+
   const logout = () => {
     LogOutUser()
       .then(() => {
@@ -167,8 +202,18 @@ export default ({ navigation }) => {
       .catch((err) => alert(err));
   };
   const onEndJob = () => {
-    setnewuuid = uuid;
+    var setnewuuid = uuid;
     RemoveActive(cuuid);
+    clearAsyncStorage()
+    setAsyncStorage(keys.uuid,setnewuuid)
+    setUniqueValue(setnewuuid);
+    navigation.navigate("Task Feed");
+  };
+  const onnewEndJob = () => {
+    RemoveMessageLog(uuid)
+    LastUpdateActiveTransaction(cuuid)
+    var setnewuuid = uuid;
+    //RemoveActive(cuuid);
     clearAsyncStorage()
     setAsyncStorage(keys.uuid,setnewuuid)
     setUniqueValue(setnewuuid);
@@ -207,7 +252,7 @@ export default ({ navigation }) => {
       <Text
       style={{textAlign: "center",color : color.BLUE,fontSize: 25, fontWeight: 'bold'}}
       >
-        Status: Pick up your customer
+        Status: {driveState}
         </Text>
         <Text> </Text>
       <Text
@@ -302,6 +347,20 @@ export default ({ navigation }) => {
     //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
         onPress={() => onEndJob()}
+        disabled={isMet}
+        title= "End Job"
+       />
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => onnewEndJob()}
         disabled={isMet}
         title= "End Job"
        />

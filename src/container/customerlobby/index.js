@@ -8,7 +8,7 @@ import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet } from "../../network";
+import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet,RemoveMessageLog } from "../../network";
 import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
 
 
@@ -170,7 +170,14 @@ export default ({ navigation }) => {
         
       ),
     });
-  }, [navigation]);
+  }, [navigation]); 
+  useEffect (() => {
+    if (waitert== "Ending Your Ride"){
+      RemoveMessageLog(uuid)
+      RemoveActive(uuid);
+      navigation.navigate("Location Picker");
+    }
+   });
 
   useEffect(() => {
     dispatchLoaderAction({
@@ -296,6 +303,10 @@ export default ({ navigation }) => {
     Linking.openURL(itsip);
   };
 
+  const onCall = (phonenumb) => {
+  //Linking.openURL(`tel:${phoneNumber}`)
+  Linking.openURL(`tel:${phonenumb}`)
+  };
   
 
 

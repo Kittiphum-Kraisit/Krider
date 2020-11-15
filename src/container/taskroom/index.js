@@ -183,6 +183,13 @@ export default ({ navigation }) => {
     }
   }, []);
 
+
+
+const onCall = (phonenumb) => {
+  //Linking.openURL(`tel:${phoneNumber}`)
+  Linking.openURL(`tel:${phonenumb}`)
+  };
+
   const logout = () => {
     LogOutUser()
       .then(() => {
@@ -340,6 +347,20 @@ export default ({ navigation }) => {
     //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
         onPress={() => onEndJob()}
+        disabled={isMet}
+        title= "End Job"
+       />
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => onnewEndJob()}
         disabled={isMet}
         title= "End Job"
        />

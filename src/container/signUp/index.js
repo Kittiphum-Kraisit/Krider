@@ -17,7 +17,7 @@ import {
   setUniqueValue,
   keyboardVerticalOffset,
 } from "../../utility/constants";
-import { SignUpRequest, AddUser } from "../../network";
+import { SignUpRequest, AddUser,AddNewUser } from "../../network";
 
 export default ({ navigation }) => {
   const globalState = useContext(Store);
@@ -27,12 +27,13 @@ export default ({ navigation }) => {
     email: "",
     password: "",
     confirmPassword: "",
+    phone: ""
   });
   const [logo, toggleLogo] = useState(true);
-  const { email, password, confirmPassword, name } = credential;
+  const { email, password, confirmPassword, name,phone } = credential;
 
   const setInitialState = () => {
-    setCredential({ email: "", password: "", confirmPassword: "" });
+    setCredential({ email: "", password: "", confirmPassword: "",phone:"" });
   };
 
   //   * ON SIGN UP PRESS
@@ -46,6 +47,8 @@ export default ({ navigation }) => {
       alert("Password is needed");
     } else if (password !== confirmPassword) {
       alert("Password is not match");
+    } else if (!phone) {
+      alert("Please enter your phone number correctly");
     } else {
       dispatchLoaderAction({
         type: LOADING_START,
@@ -61,7 +64,8 @@ export default ({ navigation }) => {
           }
           let uid = firebase.auth().currentUser.uid;
           let profileImg = "";
-          AddUser(name, email, uid, profileImg)
+          //AddUser(name, email, uid, profileImg)
+          AddNewUser(name,email,uid,profileImg,phone)
             .then(() => {
               setAsyncStorage(keys.uuid, uid);
               setUniqueValue(uid);
@@ -132,6 +136,13 @@ export default ({ navigation }) => {
               placeholder="Enter your email"
               value={email}
               onChangeText={(text) => handleOnChange("email", text)}
+              onFocus={() => handleFocus()}
+              onBlur={() => handleBlur()}
+            />
+            <InputField
+              placeholder="Enter your phone number"
+              value={phone}
+              onChangeText={(text) => handleOnChange("phone", text)}
               onFocus={() => handleFocus()}
               onBlur={() => handleBlur()}
             />

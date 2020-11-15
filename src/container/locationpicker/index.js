@@ -21,14 +21,6 @@ import Prices2 from './pricecal';
 export default ({ navigation }) => {
   const globalState = useContext(Store);
   const { dispatchLoaderAction } = globalState;
-  //const [selectedValue, setSelectedValue] = useState("java");
-  var location = "E12 Building";
-  //var location2 = "World"
-  var price = 40;
-  var destip = "https://goo.gl/maps/Jvk9PG1CUehnUAo89";
-  var destination = "Bunnag Building";
-  var startip = "https://goo.gl/maps/A8mT6vJGL19ZDcgv8"; 
-  var dummyzone = "d";
   let items = require('./localist.json');
   const [firstL,setFirstL] = useState("Faculty of Medicine");
   const [lastL,setLastL] = useState("Faculty of Medicine");
@@ -53,41 +45,7 @@ export default ({ navigation }) => {
   
   
 
-//   var items = [
-//   {
-//     id: 1,
-//     name: 'HM Building',
-//   },
-//   {
-//     id: 2,
-//     name: 'E12 Building',
-//   },
-//   {
-//     id: 3,
-//     name: 'Airport raillink',
-//   },
-//   {
-//     id: 4,
-//     name: 'a',
-//   },
-//   {
-//     id: 5,
-//     name: 'RNP Alley',
-//   },
-//   {
-//     id: 6,
-//     name: 'AJ Park',
-//   },
-//   {
-//     id: 7,
-//     name: 'b',
-//   },
-//   {
-//     id: 8,
-//     name: 'c',
-//   },
-// ];
-var ccost = 0;
+
 
   const [userDetail, setUserDetail] = useState({
     id: "",

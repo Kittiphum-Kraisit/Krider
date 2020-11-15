@@ -429,7 +429,7 @@ export default ({ navigation }) => {
       near = "You are too far from KMITL"
     }
     setnear(near)
-    settry("deekrub")
+    //settry("deekrub")
   }
   const DoubleCal = ()=>{
     getLocation();

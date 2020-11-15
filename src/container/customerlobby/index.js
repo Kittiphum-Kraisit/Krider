@@ -303,6 +303,10 @@ export default ({ navigation }) => {
     Linking.openURL(itsip);
   };
 
+  const onCall = (phonenumb) => {
+  //Linking.openURL(`tel:${phoneNumber}`)
+  Linking.openURL(`tel:${phonenumb}`)
+  };
   
 
 

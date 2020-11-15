@@ -286,7 +286,7 @@ export default ({ navigation }) => {
     marginVertical: appStyle.btnMarginVertical,
     //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
-        onPress={() => onChattap(drivet,cuuid)}
+        onPress={() => onChattap(cusn,cuuid)}
         title= "Chat"
        />
        <Text> </Text>

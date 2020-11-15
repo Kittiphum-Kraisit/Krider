@@ -45,7 +45,7 @@ export const recieverMsg = async (
 
 export const RemoveMessageLog = async (myid) => {
   try {
-    firebase.database().ref('messages').child(myid).remove();
+    firebase.database().ref('messeges').child(myid).remove();
   } catch (error) {
     return error;
   }

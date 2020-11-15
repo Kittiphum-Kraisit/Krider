@@ -69,22 +69,22 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
-  useEffect (() => {
-    firebase
-        .database()
-        .ref("actives/"+cuuid+"/driveid")
-        .once("value", (dataSnapshot) => {
-          checkdriveid = dataSnapshot.val();
-          if (checkdriveid != uuid){
-            var setnewuuid = uuid;
-            clearAsyncStorage()
-            setAsyncStorage(keys.uuid,setnewuuid)
-            setUniqueValue(setnewuuid);
-            navigation.navigate("Task Feed");
-            Alert.alert("Sorry, This Task has been taken.")
-          }
-        });
-   });
+  // useEffect (() => {
+  //   firebase
+  //       .database()
+  //       .ref("actives/"+cuuid+"/driveid")
+  //       .once("value", (dataSnapshot) => {
+  //         checkdriveid = dataSnapshot.val();
+  //         if (checkdriveid != uuid){
+  //           var setnewuuid = uuid;
+  //           clearAsyncStorage()
+  //           setAsyncStorage(keys.uuid,setnewuuid)
+  //           setUniqueValue(setnewuuid);
+  //           navigation.navigate("Task Feed");
+  //           alert("Sorry, This Task has been taken.")
+  //         }
+  //       });
+  //  });
   
   useEffect (() => {
     if (waitert== "Found your driver"){
@@ -333,6 +333,7 @@ const onCall = (phonenumb) => {
   }}
         onPress={() => onChattap(cusn,cuuid)}
         title= "Chat"
+        disabled={!isMet}
        />
        <Text> </Text>
        <Text> </Text>

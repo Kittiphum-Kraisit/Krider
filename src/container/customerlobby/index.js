@@ -174,7 +174,7 @@ export default ({ navigation }) => {
   useEffect (() => {
     if (waitert== "Ending Your Ride"){
       RemoveMessageLog(uuid)
-      RemoveActive(cuuid);
+      RemoveActive(uuid);
       navigation.navigate("Location Picker");
     }
    });
@@ -382,7 +382,7 @@ export default ({ navigation }) => {
     fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
          onPress={() => onChattap(drivet,driveidt)}
-        disabled={isFound}
+        disabled={isMetc}
         title="Chat"
         
        />

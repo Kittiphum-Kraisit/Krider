@@ -3,12 +3,12 @@ export let keyboardVerticalOffset = -50;
 export const smallDeviceHeight = 650;
 export let cuuid = "";
 export let zonesort = "z";
-export let gettask = ""
+export let gettask = "";
 
 export const setUniqueValue = (u) => {
   uuid = u;
 };
-export const setisgetTask = (g) => {
+export const setisgetTask = (g)=> {
   gettask = g;
 };
 

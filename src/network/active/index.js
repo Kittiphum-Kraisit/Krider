@@ -90,12 +90,11 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
     console.log(guestUserId)
     if (DriveID == 'no') {
         DriveID = driveid
-        
+        setisgetTask("gottask")
       return driveid
     } else {
         console.log('abandoned ID')
         setisgetTask("aborttask")
-        console.log(gettask)
       return 0;
     }
   }, function(error, committed, snapshot) {

@@ -8,7 +8,7 @@ import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet,RemoveMessageLog } from "../../network";
+import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet,RemoveMessageLog, UserFree } from "../../network";
 import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -181,6 +181,7 @@ export default ({ navigation }) => {
     if (waitert== "Ending Your Ride"){
       RemoveMessageLog(uuid)
       RemoveActive(uuid);
+      UserFree(uuid)
       navigation.navigate("Location Picker");
     }
    });
@@ -270,6 +271,10 @@ export default ({ navigation }) => {
             checkFound(false)
             checkMeetc(false)
           }
+          // if(waiternow != "Enjoy The Ride !"){
+          //   checkFound(false)
+          //   checkMeetc(false)
+          // }
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
@@ -298,6 +303,7 @@ export default ({ navigation }) => {
     navigation.navigate("Location Picker");
     RemoveTask(uuid);
     RemoveActive(uuid);
+    UserFree(uuid)
 
   };
   const onMeet = () => {

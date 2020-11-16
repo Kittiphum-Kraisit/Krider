@@ -6,10 +6,10 @@ import firebase from "../../firebase/config";
 import { color ,appStyle} from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
-import { uuid, smallDeviceHeight,cuuid,setCus, zonesort ,setZone,setUniqueValue, gettask,} from "../../utility/constants";
+import { uuid, smallDeviceHeight,cuuid,setCus, zonesort ,setZone,setUniqueValue,gettask, setisgetTask } from "../../utility/constants";
 import { clearAsyncStorage , setAsyncStorage,cuskeys,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
-import {  LogOutUser, RemoveTask, UpdateActive,UpdateActiveDid,UpdateActiveTransaction } from "../../network";
+import {  LogOutUser, RemoveTask, UpdateActive,UpdateActiveDid,UpdateActiveTransaction,UserAsDriver,UserFree } from "../../network";
 import {Mutex, MutexInterface, Semaphore, SemaphoreInterface, withTimeout} from 'async-mutex';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { InputField, RoundCornerButton, Logo } from "../../component";
@@ -31,8 +31,7 @@ export default ({ navigation }) => {
   const[currentLa,setLa]=useState();
   const[locaStatus,setlocaStatus]=useState('');
   const [checkmyid,setcheckmyid] = useState("");
-
-
+  const [tempcuuid,settempc] = useState("");
 
 
   const [checkdriveridt,Checkdrivebf] = useState("");
@@ -50,6 +49,7 @@ export default ({ navigation }) => {
  const [nearest,setnear]=useState("Identify your zone ");
  //var near = "hi"
  //const [tryme,settry]=useState("sawas");
+ var checkid = ""
 
   
 
@@ -252,31 +252,28 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
-   useEffect(() => {
-    // firebase
-    //     .database()
-    //     .ref("actives/"+cuuid+"/driveid")
-    //     .on("value", (dataSnapshot) => {
-    //        checkid = dataSnapshot.val();
-    //        setcheckmyid(checkid)  
-    //     })
-    console.log(checkmyid + "A1")
-    if (checkmyid == uuid) {
-    console.log(checkmyid+"A2")
-    navigation.navigate("Task Room")
-    setcheckmyid("")
-    }
+  // useEffect(() => {
+  //       //    firebase
+  //       // .database()
+  //       // .ref("actives/"+cuuid+"/driveid")
+  //       // .on("value", (dataSnapshot) => {
+  //       //     checkid = dataSnapshot.val();
+  //       //    //setcheckmyid(checkid)
+  //       //    setcheckmyid(checkid)
+           
+  //       // })
+  //          if (checkmyid == uuid) {
+  //   navigation.navigate("Task Room")
+  //   setcheckmyid("")
+  //   }
+        
+    
     // else if (gettask == "aborttask") {
     //   alert("Task has been taken")
     //   setisgetTask("")
     // }
-  });
-  
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => true)
-    return () =>
-      BackHandler.removeEventListener('hardwareBackPress', () => true)
-  }, [])
+  // },[checkmyid])
+
   useEffect(() => {
     getLocation();
     subLocation();
@@ -377,6 +374,19 @@ export default ({ navigation }) => {
         //   });
           
         // });
+
+
+        // firebase
+        // .database()
+        // .ref("actives/"+tempcuuid+"/driveid")
+        // .on("value", (dataSnapshot) => {
+        //     checkid = dataSnapshot.val();
+        //    //setcheckmyid(checkid)
+        //    setcheckmyid(checkid)
+           
+           
+        // })
+        
         firebase
         .database()
         .ref("actives/"+cuuid+"/driveid")
@@ -421,14 +431,16 @@ export default ({ navigation }) => {
   }, []);
 
   const acceptTap = ( guestUserId) => {
-    setAsyncStorage(cuskeys.cuuid, guestUserId);
+    //setAsyncStorage(cuskeys.cuuid, guestUserId);
            RemoveTask(guestUserId);
            //let reusersagain = [];
            //UpdateActive(guestUserId,name,uuid);
            UpdateActiveTransaction(guestUserId,name,uuid);
-           setCus(guestUserId);
+           //settempc(tempcuuid)
+           setCus(guestUserId)
+           UserAsDriver(uuid,guestUserId)
            //setAllUsers(reusersagain);
-           //navigation.navigate("Task Room");
+           navigation.navigate("Task Room");
 
   };
   const newacceptTap = ( guestUserId) => {

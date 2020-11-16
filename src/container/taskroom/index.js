@@ -23,6 +23,7 @@ export default ({ navigation }) => {
   const [startipt,setStartIp]=useState("");
   const [destipt,setDestIp]=useState("");
   const [driveState,setDriveState] = useState("");
+  const[custphone,setCustphone]=useState("");
 
 
   // var allprice = 800;
@@ -111,6 +112,16 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
+      firebase
+        .database()
+        .ref("actives/"+cuuid+"/cusphone")
+        .on("value", (dataSnapshot) => {
+          cusphonenow = dataSnapshot.val();
+          setCustphone(cusphonenow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
         firebase
         .database()
         .ref("actives/"+cuuid+"/cusname")
@@ -327,6 +338,24 @@ const onCall = (phonenumb) => {
         onPress={() => openLink(destipt)}
         title= "Direction To Destination"
         disabled={isMet}
+       />
+       <Text> </Text>
+       <Text> </Text>
+      {/* <RoundCornerButton title="End Job" 
+       onPress={() => onEndJob()} /> */}
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+        onPress={() => onCall(custphone)}
+        title= "Call Customer"
+        disabled={!isMet}
        />
        <Text> </Text>
        <Text> </Text>

@@ -25,6 +25,7 @@ export default ({ navigation }) => {
   const [isMetc,checkMeetc] = useState(true);
   const [startipt,setStartIp]=useState("");
   const [destipt,setDestIp]=useState("");
+  const [callnumb,setCallnumb] = useState("");
  
 
   const [userDetail, setUserDetail] = useState({
@@ -197,6 +198,16 @@ export default ({ navigation }) => {
         });
         firebase
         .database()
+        .ref("actives/"+uuid+"/drivephone")
+        .on("value", (dataSnapshot) => {
+          drivephonenow = dataSnapshot.val();
+          setCallnumb(drivephonenow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
+        firebase
+        .database()
         .ref("actives/"+uuid+"/driver")
         .on("value", (dataSnapshot) => {
           drivenow = dataSnapshot.val();
@@ -265,10 +276,10 @@ export default ({ navigation }) => {
             checkFound(false)
             checkMeetc(false)
           }
-          if(waiternow != "Enjoy The Ride !"){
-            checkFound(false)
-            checkMeetc(false)
-          }
+          // if(waiternow != "Enjoy The Ride !"){
+          //   checkFound(false)
+          //   checkMeetc(false)
+          // }
           dispatchLoaderAction({
             type: LOADING_STOP,
           });
@@ -369,6 +380,28 @@ export default ({ navigation }) => {
         
         {/* <RoundCornerButton title="Cancel Search" 
        onPress={() => onCanc()} /> */}
+       <Text> </Text>
+        <Text> </Text>
+         <Button
+       titleStyle={{
+       color: color.BLACK,
+       fontSize: 20,
+   }}
+       style = {{ 
+        backgroundColor: color.Orange,
+    width: '50%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
+         onPress={() => onCall(callnumb)}
+        disabled={isMetc}
+        title="Call Driver"
+        
+       />
 
         <Text> </Text>
         <Text> </Text>

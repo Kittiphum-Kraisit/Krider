@@ -1,7 +1,7 @@
 import firebase from "../../firebase/config";
 import { setisgetTask,gettask } from "../../utility/constants";
 
-export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,stip,deip ) => {
+export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,stip,deip,cusphonenumber ) => {
   try {
     return await firebase
       .database()
@@ -16,7 +16,9 @@ export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,sti
         driver: "",
         driveid: "no",
         startip : stip,
-        destip : deip
+        destip : deip,
+        cusphone: cusphonenumber,
+        drivephone: "",
       });
   } catch (error) {
     return error;
@@ -58,7 +60,7 @@ export const UpdateActiveMeet = async (myId) => {
     return error;
   }
 };
-export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
+export const UpdateActiveTransaction = async (guestUserId, driver, driveid,drivernumb) => {
   var DriveidRef = firebase.database().ref('actives/'+ guestUserId + "/driveid")
   DriveidRef.transaction(function(DriveID) {
     console.log(DriveID)
@@ -116,6 +118,24 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
         console.log('We aborted the transaction (because WAITER already exists).');
       } else {
         console.log('WAITER updated!');
+      }
+      //console.log("WAITER: ", snapshot.val());
+    });
+    var PhoneRef = firebase.database().ref('actives/'+ guestUserId + '/drivephone')
+   PhoneRef.transaction(function(DRIVECALL) {
+      if (DRIVECALL == "") {
+        DRIVECALL = drivernumb
+        return drivernumb
+      } else {
+        return 0;
+      }
+    }, function(error, committed, snapshot) {
+      if (error) {
+        console.log('Transaction failed abnormally!', error);
+      } else if (!committed) {
+        console.log('We aborted the transaction (because DPHONE already exists).');
+      } else {
+        console.log('DRIVECALL updated!');
       }
       //console.log("WAITER: ", snapshot.val());
     });

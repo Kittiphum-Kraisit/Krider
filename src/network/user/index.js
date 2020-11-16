@@ -48,18 +48,34 @@ export const UserAsCus = async (uid) => {
     return error;
   }
 };
-export const UserAsDriver = async (uid) => {
+export const UserAsDriver = async (uid,cuid) => {
   try {
     return await firebase
       .database()
       .ref("users/" + uid)
       .update({
         status : "Being Driver",
+        taskid : cuid,
       });
   } catch (error) {
     return error;
   }
 };
+
+export const UserFree = async (uid) => {
+  try {
+    return await firebase
+      .database()
+      .ref("users/" + uid)
+      .update({
+        status : "Free Roam",
+        taskid : "",
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
 export const UpdatePhone = async (uid,newnumb) => {
   try {
     return await firebase

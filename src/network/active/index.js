@@ -1,4 +1,5 @@
 import firebase from "../../firebase/config";
+import { setisgetTask,gettask } from "../../utility/constants";
 
 export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,stip,deip ) => {
   try {
@@ -64,9 +65,11 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
     console.log(guestUserId)
     if (DriveID == 'no') {
         DriveID = driveid
+        setisgetTask("gottask")
       return driveid
     } else {
         console.log('abandoned ID')
+        setisgetTask("aborttask")
       return 0;
     }
   }, function(error, committed, snapshot) {

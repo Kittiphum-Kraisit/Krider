@@ -6,7 +6,7 @@ import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
 import { uuid, smallDeviceHeight, setZone } from "../../utility/constants";
 import { clearAsyncStorage } from "../../asyncStorage";
-import { UpdateUser, LogOutUser , AddTask, AddActive } from "../../network";
+import { UpdateUser, LogOutUser , AddTask, AddActive,UserFree ,UserAsCus} from "../../network";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import { globalStyle, color } from "../../utility";
 import SearchableDropdown from 'react-native-searchable-dropdown';
@@ -284,6 +284,7 @@ export default ({ navigation }) => {
     const DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
      AddTask(location,destinationq,price,uuid,name,dummyzoneq,startipq,destipq);
      AddActive(location,destinationq,price,uuid,name,startipq,destipq);
+     UserAsCus(uuid)
      navigation.navigate("Lobby");
       
   };

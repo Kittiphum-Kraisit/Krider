@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState, useLayoutEffect } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking,Image} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker,Platform,PermissionsAndroid,Button,Linking,Image, BackHandler } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import { ShowTasks } from "../../component";
 import firebase from "../../firebase/config";
 import { color ,appStyle} from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
-import { uuid, smallDeviceHeight,cuuid,setCus, zonesort ,setZone,setUniqueValue } from "../../utility/constants";
+import { uuid, smallDeviceHeight,cuuid,setCus, zonesort ,setZone,setUniqueValue, gettask,} from "../../utility/constants";
 import { clearAsyncStorage , setAsyncStorage,cuskeys,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import {  LogOutUser, RemoveTask, UpdateActive,UpdateActiveDid,UpdateActiveTransaction } from "../../network";
@@ -14,7 +14,6 @@ import {Mutex, MutexInterface, Semaphore, SemaphoreInterface, withTimeout} from 
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { InputField, RoundCornerButton, Logo } from "../../component";
 import Geolocation from '@react-native-community/geolocation'; 
-
 
 
 
@@ -31,6 +30,8 @@ export default ({ navigation }) => {
   const [currentLong,setLong]=useState();
   const[currentLa,setLa]=useState();
   const[locaStatus,setlocaStatus]=useState('');
+  const [checkmyid,setcheckmyid] = useState("");
+
 
 
 
@@ -139,6 +140,7 @@ export default ({ navigation }) => {
       },
     );
   };
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -250,7 +252,31 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
-
+   useEffect(() => {
+    // firebase
+    //     .database()
+    //     .ref("actives/"+cuuid+"/driveid")
+    //     .on("value", (dataSnapshot) => {
+    //        checkid = dataSnapshot.val();
+    //        setcheckmyid(checkid)  
+    //     })
+    console.log(checkmyid + "A1")
+    if (checkmyid == uuid) {
+    console.log(checkmyid+"A2")
+    navigation.navigate("Task Room")
+    setcheckmyid("")
+    }
+    // else if (gettask == "aborttask") {
+    //   alert("Task has been taken")
+    //   setisgetTask("")
+    // }
+  });
+  
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', () => true)
+  }, [])
   useEffect(() => {
     getLocation();
     subLocation();
@@ -353,6 +379,15 @@ export default ({ navigation }) => {
         // });
         firebase
         .database()
+        .ref("actives/"+cuuid+"/driveid")
+        .on("value", (dataSnapshot) => {
+           checkid = dataSnapshot.val();
+           setcheckmyid(checkid) 
+           console.log("checkid:" + checkid)
+           console.log("cuuid:"+cuuid) 
+        })
+        firebase
+        .database()
         .ref("users")
         .on("value", (dataSnapshot) => {
           let usersn = [];
@@ -384,6 +419,7 @@ export default ({ navigation }) => {
       });
     }
   }, []);
+
   const acceptTap = ( guestUserId) => {
     setAsyncStorage(cuskeys.cuuid, guestUserId);
            RemoveTask(guestUserId);
@@ -392,7 +428,7 @@ export default ({ navigation }) => {
            UpdateActiveTransaction(guestUserId,name,uuid);
            setCus(guestUserId);
            //setAllUsers(reusersagain);
-           navigation.navigate("Task Room");
+           //navigation.navigate("Task Room");
 
   };
   const newacceptTap = ( guestUserId) => {

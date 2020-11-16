@@ -1,4 +1,5 @@
 import firebase from "../../firebase/config";
+import { setisgetTask,gettask } from "../../utility/constants";
 
 export const AddActive = async (firstlocation,lastlocation,price,uid,cusname,stip,deip ) => {
   try {
@@ -89,9 +90,12 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
     console.log(guestUserId)
     if (DriveID == 'no') {
         DriveID = driveid
+        
       return driveid
     } else {
         console.log('abandoned ID')
+        setisgetTask("aborttask")
+        console.log(gettask)
       return 0;
     }
   }, function(error, committed, snapshot) {
@@ -101,6 +105,8 @@ export const UpdateActiveTransaction = async (guestUserId, driver, driveid) => {
       console.log('We aborted the transaction (because DriveID already exists).');
     } else {
       console.log('DriveID added!');
+      setisgetTask("gottask")
+      console.log(gettask)
     }
     //console.log("DriveID: ", snapshot.val());
   });

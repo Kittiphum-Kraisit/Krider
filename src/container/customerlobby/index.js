@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking,BackHandler,Image } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
@@ -10,6 +10,7 @@ import { clearAsyncStorage } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,UpdateActiveMeet,RemoveMessageLog } from "../../network";
 import { InputField, RoundCornerButton, Logo, CuteButton } from "../../component";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 export default ({ navigation }) => {
@@ -171,6 +172,11 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]); 
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', () => true)
+  }, [])
   useEffect (() => {
     if (waitert== "Ending Your Ride"){
       RemoveMessageLog(uuid)

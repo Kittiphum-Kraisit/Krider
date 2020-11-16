@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState, useLayoutEffect,StatusBar } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking } from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList,StyleSheet,Button,Linking,BackHandler } from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
-import { uuid, smallDeviceHeight,cuuid, setUniqueValue } from "../../utility/constants";
+import { uuid, smallDeviceHeight,cuuid, setUniqueValue,setisgetTask,gettask } from "../../utility/constants";
 import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,LastUpdateActiveTransaction,RemoveMessageLog } from "../../network";
@@ -69,22 +69,40 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
-  useEffect (() => {
-    firebase
-        .database()
-        .ref("actives/"+cuuid+"/driveid")
-        .once("value", (dataSnapshot) => {
-          checkdriveid = dataSnapshot.val();
-          if (checkdriveid != uuid){
-            var setnewuuid = uuid;
-            clearAsyncStorage()
-            setAsyncStorage(keys.uuid,setnewuuid)
-            setUniqueValue(setnewuuid);
-            navigation.navigate("Task Feed");
-            Alert.alert("Sorry, This Task has been taken.")
-          }
-        });
-   }, []);
+  
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', () => true)
+  }, [])
+
+  // useEffect (() => {
+  //   firebase
+  //       .database()
+  //       .ref("actives/"+cuuid+"/driveid")
+  //       .once("value", (dataSnapshot) => {
+  //         checkdriveid = dataSnapshot.val();
+  //         if (checkdriveid != uuid ){
+  //           var setnewuuid = uuid;
+  //           clearAsyncStorage()
+  //           setAsyncStorage(keys.uuid,setnewuuid)
+  //           setUniqueValue(setnewuuid);
+  //           navigation.navigate("Task Feed");
+  //           Alert.alert("Sorry, This Task has been taken.")
+  //         }
+  //       });
+  //  });
+  // useEffect (() => {
+  //   if(gettask == "aborttask"){
+  //     console.log("XXAXAXX")
+  //     var setnewuuid = uuid;
+  //            clearAsyncStorage()
+  //            setAsyncStorage(keys.uuid,setnewuuid)
+  //          setUniqueValue(setnewuuid);
+  //           navigation.navigate("Task Feed");
+  //            Alert.alert("Sorry, This Task has been taken.")
+  //   }
+  //  },[]);
   
   useEffect (() => {
     if (waitert== "Found your driver"){

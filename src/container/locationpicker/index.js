@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useLayoutEffect, Component, Fragment } from "react";
-import { SafeAreaView, Alert, Text, View, FlatList ,Picker ,Image,Linking,StyleSheet} from "react-native";
+import { SafeAreaView, Alert, Text, View, FlatList ,Picker ,Image,Linking,StyleSheet,BackHandler} from "react-native";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import firebase from "../../firebase/config";
 import { Store } from "../../context/store";
@@ -214,7 +214,16 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
-  
+  // useEffect(() => {
+  //   BackHandler.addEventListener('hardwareBackPress', () => true)
+  //   return () =>
+  //     BackHandler.removeEventListener('hardwareBackPress', () => true)
+  // }, [])
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', () => true)
+  }, [])
   useEffect(() => {
    
     dispatchLoaderAction({
@@ -252,7 +261,7 @@ export default ({ navigation }) => {
         });
        
     } catch (error) {
-      alert(error);
+      alert(error); 
       dispatchLoaderAction({
         type: LOADING_STOP,
       });

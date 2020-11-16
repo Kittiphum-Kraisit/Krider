@@ -333,6 +333,7 @@ const onCall = (phonenumb) => {
   }}
         onPress={() => onChattap(cusn,cuuid)}
         title= "Chat"
+        disabled={!isMet}
        />
        <Text> </Text>
        <Text> </Text>

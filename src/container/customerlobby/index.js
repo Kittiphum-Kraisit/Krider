@@ -382,7 +382,7 @@ export default ({ navigation }) => {
     fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
          onPress={() => onChattap(drivet,driveidt)}
-        disabled={isFound}
+        disabled={isMetc}
         title="Chat"
         
        />

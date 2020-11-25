@@ -33,6 +33,7 @@ export default ({ navigation }) => {
     name: "",
     zone: "",
     ip: "",
+    //phone: "",
   });
   const [myitem2,setMyitem2] = useState("");
 
@@ -51,6 +52,7 @@ export default ({ navigation }) => {
     id: "",
     name: "",
     profileImg: "",
+    phone:"",
   });
   var places = {}
   var Place=()=>{
@@ -80,7 +82,7 @@ export default ({ navigation }) => {
     }
   }
 
-  const { profileImg, name } = userDetail; //df
+  const { profileImg, name,phone } = userDetail; //df
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -239,17 +241,20 @@ export default ({ navigation }) => {
             id: "",
             name: "",
             profileImg: "",
+            phone: "",
           };
           dataSnapshot.forEach((child) => {
             if (uuid === child.val().uuid) {
               currentUser.id = uuid;
               currentUser.name = child.val().name;
               currentUser.profileImg = child.val().profileImg;
+              currentUser.phone = child.val().phone;
             } else {
               users.push({
                 id: child.val().uuid,
                 name: child.val().name,
                 profileImg: child.val().profileImg,
+                phone: child.val().phone,
               });
             }
           });
@@ -288,11 +293,15 @@ export default ({ navigation }) => {
      AddActive(location,price,uuid,name);
       
   };
+  const onCall = (phonenumb) => {
+  //Linking.openURL(`tel:${phoneNumber}`)
+  Linking.openURL(`tel:${phonenumb}`)
+  };
  
 
     const DataPusher2 = (location,destinationq,price,uuid,dummyzoneq,startipq,destipq) => {
      AddTask(location,destinationq,price,uuid,name,dummyzoneq,startipq,destipq);
-     AddActive(location,destinationq,price,uuid,name,startipq,destipq);
+     AddActive(location,destinationq,price,uuid,name,startipq,destipq,phone);
      UserAsCus(uuid)
      navigation.navigate("Lobby");
       
@@ -304,6 +313,7 @@ export default ({ navigation }) => {
   return(
     <View style={[globalStyle.containerCentered]} >
       <Text>Where are you now ? </Text>
+      
       {/* <Text>{fp}</Text> */}
       <SearchableDropdown
             onTextChange={(text) => console.log(text)}
@@ -397,14 +407,16 @@ export default ({ navigation }) => {
             Price : {cost} baht
           </Text>
       
-       <RoundCornerButton title="Enter Lobby" 
-       onPress={() =>  navigation.navigate("Lobby")} />
+       {/* <RoundCornerButton title="Enter Lobby" 
+       onPress={() =>  navigation.navigate("Lobby")} /> */}
        {/* <RoundCornerButton title="Enter Yardfon" 
        onPress={() =>  navigation.navigate("Yardfon")} /> */}
        {/* <RoundCornerButton title="Enter Yardfon" 
        onPress={() =>  pushfp()} /> */}
        <RoundCornerButton title="Find Driver" 
        onPress={() =>  DataPusher2(firstL,lastL,cost,uuid,startZone,firstIP,lastIP)} />
+       {/* <RoundCornerButton title="Call me" 
+       onPress={() =>  onCall("0944647711")} /> */}
        {/* <RoundCornerButton title="Dashboard" 
        onPress={() =>  navigation.navigate("Dashboard")} /> */}
        

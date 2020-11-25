@@ -25,6 +25,7 @@ export default ({ navigation }) => {
     const [userDetailn, setUserDetailn] = useState({
     id: "",
     name: "",
+    phone:"",
   });
   //cuuid = "";
   const [currentLong,setLong]=useState();
@@ -43,7 +44,7 @@ export default ({ navigation }) => {
   });
   const [allUsers, setAllUsers] = useState([]);
   const [allUsersn, setAllUsersn] = useState([]);
-  const {  name } = userDetailn;
+  const {  name,phone } = userDetailn;
    const [selectedValue, setSelectedValue] = useState("");
  // const [name,setUserDetailn]=useState("");
  const [nearest,setnear]=useState("Identify your zone ");
@@ -404,11 +405,13 @@ export default ({ navigation }) => {
           let currentUsern = {
             id: "",
             name: "",
+            phone:"",
           };
           dataSnapshot.forEach((child) => {
             if (uuid === child.val().uuid) {
               currentUsern.id = uuid;
               currentUsern.name = child.val().name;
+              currentUsern.phone = child.val().phone;
             } else {
               usersn.push({
                 id: child.val().uuid,
@@ -435,7 +438,7 @@ export default ({ navigation }) => {
            RemoveTask(guestUserId);
            //let reusersagain = [];
            //UpdateActive(guestUserId,name,uuid);
-           UpdateActiveTransaction(guestUserId,name,uuid);
+           UpdateActiveTransaction(guestUserId,name,uuid,phone);
            //settempc(tempcuuid)
            setCus(guestUserId)
            UserAsDriver(uuid,guestUserId)

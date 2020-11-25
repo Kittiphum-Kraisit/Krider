@@ -5,7 +5,7 @@ import firebase from "../../firebase/config";
 import { color,appStyle } from "../../utility";
 import { Store } from "../../context/store";
 import { LOADING_STOP, LOADING_START } from "../../context/actions/type";
-import { uuid, smallDeviceHeight,cuuid, setUniqueValue,setisgetTask,gettask } from "../../utility/constants";
+import { uuid, smallDeviceHeight,cuuid, setUniqueValue,setisgetTask,gettask, setCus } from "../../utility/constants";
 import { clearAsyncStorage, setAsyncStorage,keys } from "../../asyncStorage";
 import { deviceHeight } from "../../utility/styleHelper/appStyle";
 import { UpdateUser, LogOutUser,AddTask, RemoveActive,RemoveTask,LastUpdateActiveTransaction,RemoveMessageLog, UserFree } from "../../network";
@@ -23,6 +23,10 @@ export default ({ navigation }) => {
   const [startipt,setStartIp]=useState("");
   const [destipt,setDestIp]=useState("");
   const [driveState,setDriveState] = useState("");
+  const[custphone,setCustphone]=useState("");
+  const [idstatus,setidstatus]=useState("");
+  const [taskid,settaskid]=useState("");
+
 
 
   // var allprice = 800;
@@ -69,6 +73,28 @@ export default ({ navigation }) => {
       ),
     });
   }, [navigation]);
+
+  // useEffect(() => {
+  //          firebase
+  //       .database()
+  //       .ref("users/"+uuid+"/status")
+  //       .on("value", (dataSnapshot) => {
+  //           id = dataSnapshot.val();
+  //          setidstatus(id)
+  //       });
+  //       firebase
+  //       .database()
+  //       .ref("actives/"+cuuid+"/driveid")
+  //       .on("value", (dataSnapshot) => {
+  //           tid = dataSnapshot.val();
+  //          settaskid(tid)
+  //       });
+  //          if (taskid != uuid & idstatus == "Being Driver") {
+  //            UserFree(uuid)
+  //            setCus("")
+  //           navigation.navigate("Task Feed")
+  //         }
+  // });
   
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', () => true)
@@ -118,6 +144,16 @@ export default ({ navigation }) => {
       type: LOADING_START,
     });
     try {
+      firebase
+        .database()
+        .ref("actives/"+cuuid+"/cusphone")
+        .on("value", (dataSnapshot) => {
+          cusphonenow = dataSnapshot.val();
+          setCustphone(cusphonenow)
+          dispatchLoaderAction({
+            type: LOADING_STOP,
+          });
+        });
         firebase
         .database()
         .ref("actives/"+cuuid+"/cusname")
@@ -349,13 +385,31 @@ const onCall = (phonenumb) => {
     marginVertical: appStyle.btnMarginVertical,
     //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
   }}
+        onPress={() => onCall(custphone)}
+        title= "Call Customer"
+        disabled={!isMet}
+       />
+       <Text> </Text>
+       <Text> </Text>
+      {/* <RoundCornerButton title="End Job" 
+       onPress={() => onEndJob()} /> */}
+       <Button
+       style = {{ backgroundColor: color.Orange,
+    width: '90%',
+    height: appStyle.btnHeight,
+    borderRadius: appStyle.btnBorderRadius,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: appStyle.btnMarginVertical,
+    //fontSize: 26, fontWeight: 'bold', color: appStyle.fieldTextColor
+  }}
         onPress={() => onChattap(cusn,cuuid)}
         title= "Chat"
         disabled={!isMet}
        />
        <Text> </Text>
        <Text> </Text>
-       <Button
+       {/* <Button
        style = {{ backgroundColor: color.Orange,
     width: '90%',
     height: appStyle.btnHeight,
@@ -368,7 +422,7 @@ const onCall = (phonenumb) => {
         onPress={() => onEndJob()}
         disabled={isMet}
         title= "End Job"
-       />
+       /> */}
        <Button
        style = {{ backgroundColor: color.Orange,
     width: '90%',

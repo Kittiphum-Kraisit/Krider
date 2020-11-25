@@ -31,6 +31,20 @@ const Chat = ({ route, navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: <Text>{name}</Text>,
+      headerRight: () => (
+        <View>
+          <TouchableOpacity style={{ right: 10 }} onPress={() =>
+            navigation.goBack()
+          }>
+                  <Image 
+                  source={require("./optionsmaster.png")}
+                />
+                </TouchableOpacity>
+                
+        </View>
+      
+        
+      ),
     });
   }, [navigation]);
 

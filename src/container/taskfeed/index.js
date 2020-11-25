@@ -278,6 +278,7 @@ export default ({ navigation }) => {
   useEffect(() => {
     getLocation();
     subLocation();
+    
     const requestLocaPermission = async()=>{
       if (Platform.OS==='ios'){
         getLocation();

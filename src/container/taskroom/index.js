@@ -28,7 +28,6 @@ export default ({ navigation }) => {
   const [taskid,settaskid]=useState("");
 
 
-
   // var allprice = 800;
   // var head = 8;
   // var eachprice = allprice/head;
@@ -86,22 +85,18 @@ export default ({ navigation }) => {
   //       .database()
   //       .ref("actives/"+cuuid+"/driveid")
   //       .on("value", (dataSnapshot) => {
-  //           tid = dataSnapshot.val();
+  //           var tid = dataSnapshot.val();
   //          settaskid(tid)
   //       });
+
   //          if (taskid != uuid & idstatus == "Being Driver") {
-  //            UserFree(uuid)
   //            setCus("")
+  //            UserFree(uuid)
   //           navigation.navigate("Task Feed")
   //         }
-  // });
-  
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => true)
-    return () =>
-      BackHandler.removeEventListener('hardwareBackPress', () => true)
-  }, [])
+  // })
 
+  
   // useEffect (() => {
   //   firebase
   //       .database()
